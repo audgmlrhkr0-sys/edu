@@ -1,0 +1,1175 @@
+/* ===== 사이보그틱 · 사이버펑크 테마 ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+:root {
+  --cyber-cyan: #00f5ff;
+  --cyber-magenta: #ff00aa;
+  --cyber-bg: #050508;
+  --cyber-bg-panel: rgba(8, 10, 15, 0.85);
+  --cyber-surface: rgba(10, 12, 18, 0.95);
+  --cyber-border: rgba(0, 245, 255, 0.25);
+  --cyber-border-dim: rgba(0, 245, 255, 0.12);
+  --cyber-text: #c8ced6;
+  --cyber-dim: rgba(180, 190, 200, 0.5);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  background: var(--cyber-bg);
+  color: var(--cyber-text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* 그리드 배경 */
+.cyber-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 245, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 245, 255, 0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 스캔라인 효과 */
+.scan-line {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    transparent 50%,
+    rgba(0, 0, 0, 0.15) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+.app-container {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* ===== 화면 전환 ===== */
+.screen {
+  display: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 1.5rem 1.25rem 2rem;
+  animation: fadeIn 0.35s ease-out;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== HUD 프레임 (사이버틱 레이아웃) ===== */
+.hud-frame {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem 1.25rem;
+  background: var(--cyber-bg-panel);
+  border: 1px solid var(--cyber-border-dim);
+}
+
+.hud-corners {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hud-corners::before,
+.hud-corners::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--cyber-cyan);
+  border-style: solid;
+  border-width: 0;
+}
+
+.hud-corners::before {
+  top: 8px;
+  left: 8px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+
+.hud-corners::after {
+  top: 8px;
+  right: 8px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+
+.hud-frame .hud-corners {
+  border-radius: 0;
+}
+
+.hud-frame::before {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid var(--cyber-cyan);
+  border-bottom: 2px solid var(--cyber-cyan);
+}
+
+.hud-frame::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--cyber-cyan);
+  border-bottom: 2px solid var(--cyber-cyan);
+}
+
+.hud-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--cyber-border-dim);
+}
+
+.hud-tag {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--cyber-cyan);
+  opacity: 0.9;
+}
+
+.hud-status {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  color: var(--cyber-dim);
+}
+
+.hud-panel {
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--cyber-border-dim);
+}
+
+.hud-start {
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.hud-question-header {
+  margin-bottom: 0.75rem;
+}
+
+.hud-question-header .question-number {
+  margin: 0;
+}
+
+/* ===== 사이버 라벨 ===== */
+.label-cyber {
+  display: block;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--cyber-cyan);
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+  text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+}
+
+/* ===== 시작 화면 ===== */
+#start-screen {
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.start-content h1 {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(1.6rem, 7vw, 2.5rem);
+  font-weight: 700;
+  margin: 0 0 1rem;
+  letter-spacing: 0.15em;
+  background: linear-gradient(135deg, var(--cyber-cyan) 0%, var(--cyber-magenta) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
+.start-content p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--cyber-dim);
+  margin: 0 0 2rem;
+}
+
+/* ===== 버튼 (사이보그 스타일) ===== */
+.btn-start,
+.btn-retry,
+.btn-confirm {
+  position: relative;
+  min-height: 54px;
+  min-width: 180px;
+  padding: 0.9rem 2rem;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--cyber-bg);
+  background: linear-gradient(135deg, var(--cyber-cyan) 0%, #00c8d4 100%);
+  border: 2px solid var(--cyber-cyan);
+  border-radius: 2px;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  box-shadow:
+    0 0 20px rgba(0, 245, 255, 0.3),
+    inset 0 0 20px rgba(0, 245, 255, 0.1);
+}
+
+.btn-start::before,
+.btn-retry::before,
+.btn-confirm::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 1px solid var(--cyber-cyan);
+  border-radius: 2px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.btn-start:active,
+.btn-retry:active,
+.btn-confirm:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+}
+
+.btn-start:hover,
+.btn-retry:hover,
+.btn-confirm:hover {
+  box-shadow:
+    0 0 30px rgba(0, 245, 255, 0.5),
+    inset 0 0 25px rgba(0, 245, 255, 0.15);
+}
+
+.btn-retry {
+  background: var(--cyber-surface);
+  color: var(--cyber-cyan);
+  border-color: var(--cyber-cyan);
+  box-shadow: 0 0 15px rgba(0, 245, 255, 0.2);
+}
+
+.btn-confirm:not(:disabled) {
+  background: linear-gradient(135deg, var(--cyber-cyan) 0%, #00c8d4 100%);
+  color: var(--cyber-bg);
+}
+
+.btn-retry:hover {
+  box-shadow: 0 0 25px rgba(0, 245, 255, 0.4);
+}
+
+/* ===== 사용자 설정 화면 (치지직) ===== */
+#settings-screen {
+  position: relative;
+  padding-top: 1.5rem;
+  overflow: hidden;
+}
+
+.static-overlay {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  animation: staticFlicker 0.08s steps(2) infinite;
+  pointer-events: none;
+}
+
+.static-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+#settings-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    transparent 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    transparent 100%
+  );
+  animation: staticScan 2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes staticScan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes staticFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.92; }
+}
+
+.settings-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.settings-content .hud-panel {
+  margin-bottom: 0;
+}
+
+.settings-content > .settings-group {
+  margin-bottom: 0;
+}
+
+.settings-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--cyber-cyan);
+  margin: 0 0 0.25rem;
+}
+
+.settings-desc {
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.settings-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--cyber-dim);
+}
+
+.settings-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.setting-option {
+  min-height: 48px;
+  padding: 0.7rem 1.2rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--cyber-text);
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--cyber-border-dim);
+  border-radius: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.2s ease;
+}
+
+.setting-option:hover {
+  background: rgba(0, 245, 255, 0.1);
+  border-color: rgba(0, 245, 255, 0.5);
+}
+
+.setting-option.selected {
+  background: rgba(0, 245, 255, 0.2);
+  border-color: var(--cyber-cyan);
+  box-shadow: 0 0 15px rgba(0, 245, 255, 0.3);
+}
+
+.btn-confirm {
+  margin-top: 0.5rem;
+}
+
+.btn-confirm:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-confirm:disabled:hover {
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+}
+
+/* ===== 작품 선택 화면 ===== */
+#work-select-screen {
+  padding: 1rem;
+}
+
+.work-select-content {
+  padding: 0.5rem 0;
+}
+
+.work-select-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  font-weight: 600;
+  color: var(--cyber-cyan);
+  margin: 0 0 1rem;
+}
+
+.exhibition-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.exhibition-category {
+  border: 1px solid var(--cyber-border-dim);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.category-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: var(--cyber-cyan);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.category-toggle:hover {
+  background: rgba(0, 245, 255, 0.05);
+}
+
+.category-arrow {
+  font-size: 0.7rem;
+  transition: transform 0.25s ease;
+}
+
+.exhibition-category.open .category-arrow {
+  transform: rotate(180deg);
+}
+
+.category-works {
+  display: none;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--cyber-border-dim);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.exhibition-category.open .category-works {
+  display: flex;
+}
+
+.work-option {
+  min-height: 42px;
+  padding: 0.5rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.82rem;
+  color: var(--cyber-text);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--cyber-border-dim);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.2s ease;
+}
+
+.work-option:hover {
+  background: rgba(0, 245, 255, 0.08);
+  border-color: rgba(0, 245, 255, 0.5);
+}
+
+.work-option.selected {
+  background: rgba(0, 245, 255, 0.15);
+  border-color: var(--cyber-cyan);
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.25);
+}
+
+/* ===== 질문 화면 ===== */
+#question-screen {
+  padding: 1rem;
+}
+
+.question-block {
+  margin-top: 0.75rem;
+}
+
+.progress-bar {
+  height: 3px;
+  background: rgba(0, 245, 255, 0.15);
+  border-radius: 0;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0, 245, 255, 0.2);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyber-cyan), var(--cyber-magenta));
+  border-radius: 0;
+  transition: width 0.35s ease;
+  box-shadow: 0 0 10px var(--cyber-cyan);
+}
+
+.question-number {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--cyber-cyan);
+  margin: 0 0 0.5rem;
+  opacity: 0.9;
+}
+
+.question-text {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: clamp(1.1rem, 4.5vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.55;
+  margin: 0 0 1.75rem;
+  color: var(--cyber-text);
+}
+
+/* ===== 보기 옵션 (자유분방한 작은 칸) ===== */
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.option {
+  display: inline-flex;
+  width: auto;
+  min-width: fit-content;
+  min-height: 42px;
+  padding: 0.5rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.82rem;
+  text-align: center;
+  color: var(--cyber-text);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--cyber-border-dim);
+  border-radius: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* 자유분방한 배치 - 각 보기별로 다른 여백으로 흩어져 배치 */
+.option-wiggle-1 { margin: 0 0.4rem 0.3rem 0; }
+.option-wiggle-2 { margin: 0.6rem 0 0 1rem; }
+.option-wiggle-3 { margin: 0.2rem 0.5rem 0.4rem 0; }
+.option-wiggle-4 { margin: 0.4rem 0 0 0.3rem; }
+.option-wiggle-5 { margin: 0.7rem 0.6rem 0 0; }
+.option-wiggle-6 { margin: 0.1rem 0 0 0.8rem; }
+.option-wiggle-7 { margin: 0.3rem 0.2rem 0 0; }
+.option-wiggle-8 { margin: 0.5rem 0 0 0.4rem; }
+.option-wiggle-9 { margin: 0 0.6rem 0.3rem 0; }
+.option-wiggle-10 { margin: 0.2rem 0 0 0.6rem; }
+
+.option::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.option:hover {
+  background: rgba(0, 245, 255, 0.08);
+  border-color: rgba(0, 245, 255, 0.5);
+}
+
+.option:hover::before {
+  background: var(--cyber-cyan);
+}
+
+.option:active {
+  transform: scale(0.98);
+}
+
+.option.selected {
+  background: rgba(0, 245, 255, 0.15);
+  border-color: var(--cyber-cyan);
+  box-shadow:
+    0 0 12px rgba(0, 245, 255, 0.25),
+    inset 0 0 15px rgba(0, 245, 255, 0.05);
+}
+
+.option.selected::before {
+  background: var(--cyber-cyan);
+  box-shadow: 0 0 8px var(--cyber-cyan);
+}
+
+/* ===== 결과 화면 ===== */
+#result-screen {
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.hud-result .result-content {
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.result-content h2 {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin: 0 0 1rem;
+  color: var(--cyber-text);
+}
+
+.result-type {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, var(--cyber-cyan), var(--cyber-magenta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  text-shadow: none;
+}
+
+.result-description {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--cyber-dim);
+  margin: 0 auto 2rem;
+  max-width: 320px;
+  text-align: center;
+}
+
+/* ===== 글리치 효과 (고장난 모니터) ===== */
+
+/* 전체 화면 글리치 오버레이 */
+.glitch-screen {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+}
+
+.glitch-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    transparent 0%,
+    transparent 30%,
+    rgba(255, 0, 80, 0.15) 35%,
+    transparent 40%,
+    transparent 55%,
+    rgba(0, 245, 255, 0.15) 60%,
+    transparent 65%,
+    transparent 85%,
+    rgba(255, 0, 200, 0.1) 90%,
+    transparent 100%
+  );
+  transform: translateX(-8px);
+  animation: glitchScreen 0.1s steps(2) infinite;
+  clip-path: inset(0 0 50% 0);
+  mix-blend-mode: screen;
+}
+
+.glitch-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  clip-path: inset(50% 0 0 0);
+  transform: translateX(8px);
+  animation: glitchScreenAlt 0.1s steps(2) infinite;
+  animation-delay: 0.03s;
+  background: linear-gradient(
+    transparent 0%,
+    rgba(0, 255, 255, 0.12) 20%,
+    transparent 35%,
+    transparent 60%,
+    rgba(255, 0, 100, 0.12) 75%,
+    transparent 90%
+  );
+  mix-blend-mode: screen;
+}
+
+.glitch-screen.active {
+  animation: glitchFlash 0.2s steps(2);
+}
+
+.glitch-screen.active::before,
+.glitch-screen.active::after {
+  animation: glitchScreen 0.06s steps(2) 4;
+}
+
+@keyframes glitchScreen {
+  0% { transform: translateX(-8px); }
+  50% { transform: translateX(8px); }
+  100% { transform: translateX(-8px); }
+}
+
+@keyframes glitchScreenAlt {
+  0% { transform: translateX(8px); }
+  50% { transform: translateX(-8px); }
+  100% { transform: translateX(8px); }
+}
+
+@keyframes glitchFlash {
+  0%, 100% { opacity: 0; }
+  25%, 75% { opacity: 1; }
+}
+
+/* 타이틀 글리치 (RGB 분리) */
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  text-shadow: none;
+}
+
+.glitch-text::before {
+  color: #ff0040;
+  -webkit-text-fill-color: #ff0040;
+  animation: glitchBefore 3s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  transform: translate(-2px, 2px);
+}
+
+.glitch-text::after {
+  color: #00fff7;
+  -webkit-text-fill-color: #00fff7;
+  animation: glitchAfter 2.5s infinite;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  transform: translate(2px, -2px);
+}
+
+@keyframes glitchBefore {
+  0%, 90%, 100% { opacity: 0; transform: translate(-2px, 2px); }
+  92% { opacity: 0.9; transform: translate(-3px, 1px); }
+  94% { opacity: 0; transform: translate(2px, -2px); }
+  96% { opacity: 0.9; transform: translate(-4px, 3px); }
+  98% { opacity: 0; transform: translate(-2px, 2px); }
+}
+
+@keyframes glitchAfter {
+  0%, 88%, 100% { opacity: 0; transform: translate(2px, -2px); }
+  91% { opacity: 0.9; transform: translate(4px, -1px); }
+  93% { opacity: 0; transform: translate(-2px, 2px); }
+  95% { opacity: 0.9; transform: translate(3px, -3px); }
+  97% { opacity: 0; transform: translate(2px, -2px); }
+}
+
+/* 작은 텍스트 글리치 (질문, 결과) - 아래 확장 키프레임 사용 */
+.glitch-text-sm {
+  animation: glitchTextShadow 4s infinite;
+}
+
+/* 라벨 글리치 (깜빡임 + 미세 이동) */
+.glitch-label {
+  animation: glitchLabel 5s infinite;
+}
+
+@keyframes glitchLabel {
+  0%, 94%, 100% {
+    opacity: 0.9;
+    transform: translateX(0);
+  }
+  95% {
+    opacity: 0.5;
+    transform: translateX(-1px);
+  }
+  96% {
+    opacity: 1;
+    transform: translateX(1px);
+  }
+  97% {
+    opacity: 0.7;
+    transform: translateX(0);
+  }
+}
+
+/* 스캔라인 강화 (간헐적 강화) */
+.scan-line {
+  animation: scanlinePulse 8s infinite;
+}
+
+@keyframes scanlinePulse {
+  0%, 95%, 100% { opacity: 0.6; }
+  96% { opacity: 1; }
+  98% { opacity: 0.4; }
+}
+
+/* ===== 전체 글리치 확장 ===== */
+
+/* 그리드 배경 글리치 */
+.glitch-grid {
+  animation: glitchGrid 6s infinite;
+}
+
+@keyframes glitchGrid {
+  0%, 93%, 100% {
+    background-position: 0 0, 0 0;
+    opacity: 1;
+  }
+  94% {
+    background-position: -2px 0, 2px 0;
+    opacity: 0.9;
+  }
+  96% {
+    background-position: 2px 1px, -2px -1px;
+    opacity: 1;
+  }
+  97% {
+    background-position: 0 0, 0 0;
+  }
+}
+
+/* 버튼 글리치 (테두리/글로우 깜빡임) */
+.glitch-btn {
+  animation: glitchBtn 7s infinite;
+}
+
+@keyframes glitchBtn {
+  0%, 91%, 100% {
+    box-shadow:
+      0 0 20px rgba(0, 245, 255, 0.3),
+      inset 0 0 20px rgba(0, 245, 255, 0.1);
+  }
+  92% {
+    box-shadow:
+      -1px 0 25px rgba(255, 0, 80, 0.4),
+      1px 0 25px rgba(0, 255, 255, 0.4);
+  }
+  94% {
+    box-shadow:
+      0 0 20px rgba(0, 245, 255, 0.3),
+      inset 0 0 20px rgba(0, 245, 255, 0.1);
+  }
+  96% {
+    box-shadow:
+      2px 0 30px rgba(255, 0, 200, 0.3),
+      -2px 0 30px rgba(0, 245, 255, 0.3);
+  }
+}
+
+.btn-retry.glitch-btn {
+  animation-name: glitchBtnRetry;
+}
+
+@keyframes glitchBtnRetry {
+  0%, 91%, 100% {
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.2);
+  }
+  92% {
+    box-shadow:
+      -1px 0 20px rgba(255, 0, 80, 0.35),
+      1px 0 20px rgba(0, 255, 255, 0.35);
+  }
+  96% {
+    box-shadow:
+      2px 0 25px rgba(255, 0, 200, 0.3),
+      -2px 0 25px rgba(0, 245, 255, 0.3);
+  }
+}
+
+/* 프로그레스 바 글리치 */
+.glitch-progress {
+  animation: glitchProgress 5s infinite;
+}
+
+@keyframes glitchProgress {
+  0%, 94%, 100% {
+    transform: translateX(0);
+    border-color: rgba(0, 245, 255, 0.2);
+  }
+  95% {
+    transform: translateX(-2px);
+    border-color: rgba(255, 0, 80, 0.4);
+  }
+  96% {
+    transform: translateX(2px);
+    border-color: rgba(0, 255, 255, 0.4);
+  }
+  97% {
+    transform: translateX(0);
+  }
+}
+
+.progress-fill {
+  animation: glitchProgressFill 5.5s infinite;
+}
+
+@keyframes glitchProgressFill {
+  0%, 93%, 100% {
+    filter: none;
+  }
+  94% {
+    filter: hue-rotate(-10deg);
+  }
+  96% {
+    filter: hue-rotate(10deg);
+  }
+}
+
+/* 옵션 보기 - 꼬물거리는 애니메이션 (각 개체별) */
+.option {
+  overflow: visible;
+}
+
+.option-inner {
+  display: inline-block;
+}
+
+.option-wiggle {
+  animation: glitchOption 9s infinite;
+}
+
+.option-wiggle-1 { animation: wiggle1 2.5s ease-in-out infinite; }
+.option-wiggle-2 { animation: wiggle2 2.8s ease-in-out infinite; }
+.option-wiggle-3 { animation: wiggle3 2.3s ease-in-out infinite; }
+.option-wiggle-4 { animation: wiggle4 2.6s ease-in-out infinite; }
+.option-wiggle-5 { animation: wiggle5 2.4s ease-in-out infinite; }
+.option-wiggle-6 { animation: wiggle6 2.7s ease-in-out infinite; }
+.option-wiggle-7 { animation: wiggle1 2.4s ease-in-out infinite; }
+.option-wiggle-8 { animation: wiggle2 2.9s ease-in-out infinite; }
+.option-wiggle-9 { animation: wiggle3 2.2s ease-in-out infinite; }
+.option-wiggle-10 { animation: wiggle4 2.5s ease-in-out infinite; }
+
+.option-wiggle-1 .option-inner { animation: wiggleInner1 1.8s ease-in-out infinite; }
+.option-wiggle-2 .option-inner { animation: wiggleInner2 2.1s ease-in-out infinite; }
+.option-wiggle-3 .option-inner { animation: wiggleInner3 1.9s ease-in-out infinite; }
+.option-wiggle-4 .option-inner { animation: wiggleInner4 2.2s ease-in-out infinite; }
+.option-wiggle-5 .option-inner { animation: wiggleInner5 2s ease-in-out infinite; }
+.option-wiggle-6 .option-inner { animation: wiggleInner6 2.3s ease-in-out infinite; }
+.option-wiggle-7 .option-inner { animation: wiggleInner1 2s ease-in-out infinite; }
+.option-wiggle-8 .option-inner { animation: wiggleInner2 2.2s ease-in-out infinite; }
+.option-wiggle-9 .option-inner { animation: wiggleInner3 1.7s ease-in-out infinite; }
+.option-wiggle-10 .option-inner { animation: wiggleInner4 2.1s ease-in-out infinite; }
+
+@keyframes wiggle1 {
+  0%, 100% { transform: translate(0, 0) rotate(-0.5deg); }
+  25% { transform: translate(1px, -1px) rotate(0.5deg); }
+  50% { transform: translate(-1px, 1px) rotate(-0.3deg); }
+  75% { transform: translate(0.5px, 0.5px) rotate(0.4deg); }
+}
+
+@keyframes wiggle2 {
+  0%, 100% { transform: translate(0, 0) rotate(0.3deg); }
+  33% { transform: translate(-1.5px, 0) rotate(-0.6deg); }
+  66% { transform: translate(1px, 1px) rotate(0.4deg); }
+}
+
+@keyframes wiggle3 {
+  0%, 100% { transform: translate(0, 0) skewX(0deg); }
+  20% { transform: translate(0.5px, -0.5px) skewX(0.3deg); }
+  40% { transform: translate(-0.5px, 0.5px) skewX(-0.2deg); }
+  60% { transform: translate(0, 0) skewX(0.2deg); }
+  80% { transform: translate(-0.5px, -0.5px) skewX(-0.3deg); }
+}
+
+@keyframes wiggle4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  30% { transform: translate(-1px, 1px) scale(1.002); }
+  60% { transform: translate(1px, -1px) scale(0.998); }
+}
+
+@keyframes wiggle5 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(1px, 1px) rotate(0.7deg); }
+  50% { transform: translate(-1.5px, 0) rotate(-0.5deg); }
+  75% { transform: translate(0.5px, -1px) rotate(0.3deg); }
+}
+
+@keyframes wiggle6 {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-0.5px, -1px); }
+  40% { transform: translate(1px, 0.5px); }
+  60% { transform: translate(-1px, 0); }
+  80% { transform: translate(0.5px, 1px); }
+}
+
+@keyframes wiggleInner1 {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(2px); }
+}
+
+@keyframes wiggleInner2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes wiggleInner3 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(-1px, -1px); }
+  66% { transform: translate(1px, 1px); }
+}
+
+@keyframes wiggleInner4 {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes wiggleInner5 {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  50% { transform: translateX(-2px) rotate(1deg); }
+}
+
+@keyframes wiggleInner6 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(1px, 0); }
+  75% { transform: translate(-1px, 0); }
+}
+
+@keyframes glitchOption {
+  0%, 95%, 100% { border-color: rgba(0, 245, 255, 0.25); }
+  96% { border-color: rgba(255, 0, 80, 0.3); }
+  97% { border-color: rgba(0, 255, 255, 0.4); }
+  98% { border-color: rgba(0, 245, 255, 0.25); }
+}
+
+.option.selected {
+  animation: none !important;
+}
+
+.option.selected .option-inner {
+  animation: none !important;
+}
+
+/* 옵션 컨테이너 전체 미세 글리치 */
+.glitch-options {
+  animation: glitchOptionsContainer 10s infinite;
+}
+
+@keyframes glitchOptionsContainer {
+  0%, 96%, 100% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 0.95;
+  }
+  98% {
+    opacity: 1;
+  }
+}
+
+/* 글리치 텍스트 효과 강화 (더 자주, 더 다양한 패턴) */
+@keyframes glitchTextShadow {
+  0%, 88%, 90%, 92%, 94%, 96%, 98%, 100% {
+    text-shadow: none;
+  }
+  89% {
+    text-shadow:
+      -2px 0 #ff0040,
+      2px 0 #00fff7;
+  }
+  91% {
+    text-shadow:
+      1px -1px #ff0040,
+      -1px 1px #00fff7;
+  }
+  93% {
+    text-shadow:
+      -1px 1px #ff0040,
+      1px -1px #00fff7;
+  }
+  95% {
+    text-shadow:
+      2px 1px #ff0040,
+      -2px -1px #00fff7;
+  }
+  97% {
+    text-shadow:
+      -3px 0 #ff0040,
+      3px 0 #00fff7;
+  }
+  99% {
+    text-shadow: none;
+  }
+}
+
+/* 가로 모드 대응 */
+@media (min-height: 500px) {
+  .screen {
+    padding-top: 2rem;
+  }
+}

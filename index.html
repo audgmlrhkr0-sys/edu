@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#050508">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>미술관 분석</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="cyber-grid glitch-grid"></div>
+  <div class="scan-line"></div>
+  <div class="glitch-screen" id="glitch-screen" aria-hidden="true"></div>
+  <div class="app-container">
+    <!-- 시작 화면 -->
+    <section id="start-screen" class="screen active">
+      <div class="hud-frame hud-start">
+        <div class="hud-corners"></div>
+        <div class="start-content">
+          <span class="label-cyber glitch-label">&gt; SYSTEM</span>
+          <h1 class="glitch-text" data-text="ART MUSEUM ANALYSIS">ART MUSEUM ANALYSIS</h1>
+          <p class="glitch-text-sm">분석 시스템을 통해 함께<br>미술관을 스캔합니다</p>
+          <button type="button" class="btn-start glitch-btn" aria-label="스캔"><span>SCAN</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 사용자 설정 화면 (치지직) -->
+    <section id="settings-screen" class="screen">
+      <div class="static-overlay" aria-hidden="true"></div>
+      <div class="static-noise" id="static-noise" aria-hidden="true"></div>
+      <div class="hud-frame hud-settings">
+        <div class="hud-corners"></div>
+        <div class="hud-header">
+          <span class="hud-tag">&gt; USER_CONFIG</span>
+          <span class="hud-status">SELECT INPUT</span>
+        </div>
+        <div class="settings-content">
+          <h2 class="settings-title glitch-text-sm">사용자 설정 모드</h2>
+          <p class="settings-desc glitch-label">아래 보기를 선택해 주세요</p>
+
+          <div class="settings-group hud-panel">
+          <span class="settings-label">성별</span>
+          <div class="settings-options" id="gender-options">
+            <button type="button" class="setting-option" data-category="gender" data-value="남">남</button>
+            <button type="button" class="setting-option" data-category="gender" data-value="녀">녀</button>
+          </div>
+        </div>
+
+          <div class="settings-group hud-panel">
+          <span class="settings-label">나이</span>
+          <div class="settings-options" id="age-options">
+            <button type="button" class="setting-option" data-category="age" data-value="어린이">어린이</button>
+            <button type="button" class="setting-option" data-category="age" data-value="청소년">청소년</button>
+            <button type="button" class="setting-option" data-category="age" data-value="청년">청년</button>
+            <button type="button" class="setting-option" data-category="age" data-value="어르신">어르신</button>
+          </div>
+        </div>
+
+          <div class="settings-group hud-panel">
+          <span class="settings-label">난이도</span>
+          <div class="settings-options" id="difficulty-options">
+            <button type="button" class="setting-option" data-category="difficulty" data-value="쉬움">쉬움</button>
+            <button type="button" class="setting-option" data-category="difficulty" data-value="보통">보통</button>
+            <button type="button" class="setting-option" data-category="difficulty" data-value="어려움">어려움</button>
+          </div>
+        </div>
+
+        <button type="button" class="btn-confirm glitch-btn" id="btn-confirm" aria-label="시작" disabled><span>EXECUTE</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 작품 선택 화면 -->
+    <section id="work-select-screen" class="screen">
+      <div class="hud-frame hud-work-select">
+        <div class="hud-corners"></div>
+        <div class="hud-header">
+          <span class="hud-tag">&gt; EXHIBITION</span>
+          <span class="hud-status">SELECT_WORK</span>
+        </div>
+        <div class="work-select-content">
+          <h2 class="work-select-title glitch-text-sm">작품을 고르세요</h2>
+          <div class="exhibition-categories" id="exhibition-categories">
+            <!-- 동적으로 생성 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 질문 화면 -->
+    <section id="question-screen" class="screen">
+      <div class="hud-frame hud-question">
+        <div class="hud-corners"></div>
+        <div class="hud-header hud-question-header">
+          <span class="hud-tag">&gt; QUERY_MODULE</span>
+          <span class="question-number glitch-label" id="question-number">Q_01 / 05</span>
+        </div>
+        <div class="progress-bar glitch-progress">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="question-block hud-panel">
+          <h2 class="question-text glitch-text-sm" id="question-text">질문이 여기에 표시됩니다</h2>
+          <div class="options glitch-options" id="options">
+            <!-- 보기가 동적으로 삽입됩니다 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 결과 화면 -->
+    <section id="result-screen" class="screen">
+      <div class="hud-frame hud-result">
+        <div class="hud-corners"></div>
+        <div class="hud-header">
+          <span class="hud-tag">&gt; OUTPUT</span>
+          <span class="hud-status">ANALYSIS_COMPLETE</span>
+        </div>
+        <div class="result-content hud-panel">
+          <h2 class="glitch-text-sm">분석 결과</h2>
+          <div class="result-type glitch-text-sm" id="result-type"></div>
+          <p class="result-description glitch-text-sm" id="result-description"></p>
+          <button type="button" class="btn-retry glitch-btn" aria-label="다시 하기"><span>RESCAN</span></button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
