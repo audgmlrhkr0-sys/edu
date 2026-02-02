@@ -631,6 +631,16 @@ body {
 .option-wiggle-8 { margin: 0.5rem 0 0 0.4rem; }
 .option-wiggle-9 { margin: 0 0.6rem 0.3rem 0; }
 .option-wiggle-10 { margin: 0.2rem 0 0 0.6rem; }
+.option-wiggle-11 { margin: 0.4rem 0.3rem 0 0; }
+.option-wiggle-12 { margin: 0 0 0.3rem 0.5rem; }
+.option-wiggle-13 { margin: 0.5rem 0.4rem 0 0; }
+.option-wiggle-14 { margin: 0.3rem 0 0 0.7rem; }
+.option-wiggle-15 { margin: 0.6rem 0.2rem 0 0; }
+.option-wiggle-16 { margin: 0.2rem 0 0 0.4rem; }
+.option-wiggle-17 { margin: 0 0.5rem 0.4rem 0; }
+.option-wiggle-18 { margin: 0.4rem 0 0 0.6rem; }
+.option-wiggle-19 { margin: 0.3rem 0.4rem 0 0; }
+.option-wiggle-20 { margin: 0.5rem 0 0 0.3rem; }
 
 .option::before {
   content: '';
@@ -1014,6 +1024,16 @@ body {
 .option-wiggle-8 { animation: wiggle2 2.9s ease-in-out infinite; }
 .option-wiggle-9 { animation: wiggle3 2.2s ease-in-out infinite; }
 .option-wiggle-10 { animation: wiggle4 2.5s ease-in-out infinite; }
+.option-wiggle-11 { animation: wiggle5 2.6s ease-in-out infinite; }
+.option-wiggle-12 { animation: wiggle6 2.3s ease-in-out infinite; }
+.option-wiggle-13 { animation: wiggle1 2.7s ease-in-out infinite; }
+.option-wiggle-14 { animation: wiggle2 2.4s ease-in-out infinite; }
+.option-wiggle-15 { animation: wiggle3 2.8s ease-in-out infinite; }
+.option-wiggle-16 { animation: wiggle4 2.2s ease-in-out infinite; }
+.option-wiggle-17 { animation: wiggle5 2.5s ease-in-out infinite; }
+.option-wiggle-18 { animation: wiggle6 2.6s ease-in-out infinite; }
+.option-wiggle-19 { animation: wiggle1 2.3s ease-in-out infinite; }
+.option-wiggle-20 { animation: wiggle2 2.7s ease-in-out infinite; }
 
 .option-wiggle-1 .option-inner { animation: wiggleInner1 1.8s ease-in-out infinite; }
 .option-wiggle-2 .option-inner { animation: wiggleInner2 2.1s ease-in-out infinite; }
@@ -1025,6 +1045,16 @@ body {
 .option-wiggle-8 .option-inner { animation: wiggleInner2 2.2s ease-in-out infinite; }
 .option-wiggle-9 .option-inner { animation: wiggleInner3 1.7s ease-in-out infinite; }
 .option-wiggle-10 .option-inner { animation: wiggleInner4 2.1s ease-in-out infinite; }
+.option-wiggle-11 .option-inner { animation: wiggleInner5 1.9s ease-in-out infinite; }
+.option-wiggle-12 .option-inner { animation: wiggleInner6 2s ease-in-out infinite; }
+.option-wiggle-13 .option-inner { animation: wiggleInner1 2.2s ease-in-out infinite; }
+.option-wiggle-14 .option-inner { animation: wiggleInner2 1.8s ease-in-out infinite; }
+.option-wiggle-15 .option-inner { animation: wiggleInner3 2.1s ease-in-out infinite; }
+.option-wiggle-16 .option-inner { animation: wiggleInner4 1.9s ease-in-out infinite; }
+.option-wiggle-17 .option-inner { animation: wiggleInner5 2.2s ease-in-out infinite; }
+.option-wiggle-18 .option-inner { animation: wiggleInner6 2s ease-in-out infinite; }
+.option-wiggle-19 .option-inner { animation: wiggleInner1 1.8s ease-in-out infinite; }
+.option-wiggle-20 .option-inner { animation: wiggleInner2 2.3s ease-in-out infinite; }
 
 @keyframes wiggle1 {
   0%, 100% { transform: translate(0, 0) rotate(-0.5deg); }

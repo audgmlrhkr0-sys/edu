@@ -1,12 +1,7 @@
-/**
- * 심리 테스트 - 모바일 터치 최적화
- */
-
 const quizData = {
   questions: [
     {
-      id: 1,
-      text: '미술관에서는 조용히 해야 한다. 당신의 기분은?',
+      text: '미술관에서는 조용히 해야 한다',
       options: [
         { text: '답답하다', value: 'A' },
         { text: '편안하다', value: 'B' },
@@ -14,20 +9,48 @@ const quizData = {
         { text: '좋다', value: 'D' },
         { text: '짜증난다', value: 'E' },
         { text: '행복하다', value: 'F' },
+        { text: '평온하다', value: 'A1' },
+        { text: '차분하다', value: 'A3' },
+        { text: '심심하다', value: 'A4' },
+        { text: '불편하다', value: 'A5' },
+        { text: '따분하다', value: 'A6' },
+        { text: '우울하다', value: 'A7' },
+        { text: '안정적이다', value: 'A8' },
+        { text: '신중하다', value: 'A9' },
+        { text: '지루하다', value: 'B1' },
+        { text: '숙연하다', value: 'B2' },
+        { text: '포근하다', value: 'B4' },
+        { text: '딱딱하다', value: 'B5' },
+        { text: '무겁다', value: 'B6' },
+        { text: '가벼다', value: 'B7' },
       ],
     },
     {
-      id: 2,
-      text: '미술관 안에서는 뛰지 말아야 한다. 당신의 기분은?',
+      text: '미술관 안에서는 뛰면 안된다',
       options: [
         { text: '우아하다', value: 'G' },
         { text: '갑갑하다', value: 'H' },
         { text: '지루하다', value: 'I' },
         { text: '재미없다', value: 'J' },
+        { text: '답답하다', value: 'C1' },
+        { text: '불편하다', value: 'C2' },
+        { text: '차분하다', value: 'C3' },
+        { text: '조심스럽다', value: 'C4' },
+        { text: '담담하다', value: 'C5' },
+        { text: '침착하다', value: 'C6' },
+        { text: '긴장된다', value: 'C7' },
+        { text: '어색하다', value: 'C8' },
+        { text: '느긋하다', value: 'C9' },
+        { text: '답답하다', value: 'D1' },
+        { text: '따분하다', value: 'D2' },
+        { text: '정적이다', value: 'D3' },
+        { text: '편안하다', value: 'D4' },
+        { text: '안정적이다', value: 'D5' },
+        { text: '심심하다', value: 'D6' },
+        { text: '억울하다', value: 'D7' },
       ],
     },
     {
-      id: 3,
       text: '<사과>를 보고 떠오르는 감정을 골라보세요',
       options: [
         { text: '강렬하다', value: 'K' },
@@ -68,45 +91,62 @@ const quizData = {
     R: { type: '화남', description: '사과에서 화가 느껴지시는군요. 강한 감정과 연상을 가진 타입일 수 있어요.' },
     S: { type: '두근거림', description: '사과를 보며 두근거림을 느끼시는군요. 설렘과 기대를 갖는 로맨틱한 타입이에요.' },
     T: { type: '맛있음', description: '사과가 맛있어 보이시는군요. 감각적이고 실용적인 감상을 하는 타입이에요.' },
+    A1: { type: '평온함', description: '미술관의 조용한 분위기가 평온하게 느껴지시는군요. 고요함 속에서 안정감을 느끼는 타입이에요.' },
+    A3: { type: '차분함', description: '조용한 환경에서 차분함을 느끼시는군요. 정돈된 분위기에서 내면을 들여다보는 타입이에요.' },
+    A4: { type: '심심함', description: '조용한 공간이 심심하게 느껴지시는군요. 활기차고 역동적인 문화 활동이 더 적합할 수 있어요.' },
+    A5: { type: '불편함', description: '조용히 해야 하는 상황이 불편하게 느껴지시는군요. 자유롭게 표현할 수 있는 공간이 더 맞을 거예요.' },
+    A6: { type: '따분함', description: '미술관의 정적인 분위기가 따분하게 느껴지시는군요. 변화와 자극이 있는 환경을 선호하는 타입이에요.' },
+    A7: { type: '우울함', description: '조용한 공간이 우울하게 느껴지시는군요. 밝고 활기찬 분위기가 기분 전환에 도움이 될 수 있어요.' },
+    A8: { type: '안정감', description: '조용한 분위기에서 안정감을 느끼시는군요. 예측 가능하고 정돈된 환경을 편안하게 여기는 타입이에요.' },
+    A9: { type: '신중함', description: '조용한 공간에서 신중함을 느끼시는군요. 사려 깊게 행동하고 배려하는 마음을 가진 타입이에요.' },
+    B1: { type: '지루함', description: '조용한 환경이 지루하게 느껴지시는군요. 흥미롭고 자극적인 경험을 찾아가는 것이 좋을 수 있어요.' },
+    B2: { type: '숙연함', description: '미술관의 분위기에서 숙연함을 느끼시는군요. 진지하고 깊이 있는 감상을 할 수 있는 타입이에요.' },
+    B4: { type: '포근함', description: '조용한 공간이 포근하게 느껴지시는군요. 편안하고 아늑한 분위기를 즐기는 따뜻한 타입이에요.' },
+    B5: { type: '딱딱함', description: '미술관의 분위기가 딱딱하게 느껴지시는군요. 좀 더 부드럽고 유연한 문화 공간이 맞을 수 있어요.' },
+    B6: { type: '무거움', description: '조용한 분위기가 무겁게 느껴지시는군요. 가볍고 활기찬 환경을 선호하는 타입이에요.' },
+    B7: { type: '가벼움', description: '조용한 공간이 가볍게 느껴지시는군요. 편안하고 부담 없는 분위기를 즐기는 타입이에요.' },
+    C1: { type: '답답함', description: '천천히 걸어야 하는 규칙이 답답하게 느껴지시는군요. 활동적이고 자유로운 움직임을 선호하는 타입이에요.' },
+    C2: { type: '불편함', description: '움직임이 제한되는 것이 불편하게 느껴지시는군요. 자유롭게 움직이며 탐험하는 것을 좋아하는 타입이에요.' },
+    C3: { type: '차분함', description: '천천히 걷는 것에서 차분함을 느끼시는군요. 여유롭고 침착하게 감상하는 것을 즐기는 타입이에요.' },
+    C4: { type: '조심스러움', description: '규칙을 지키며 조심스럽게 행동하시는군요. 예의를 중시하고 배려심이 깊은 타입이에요.' },
+    C5: { type: '담담함', description: '규칙에 대해 담담하게 받아들이시는군요. 상황에 자연스럽게 적응하는 유연한 타입이에요.' },
+    C6: { type: '침착함', description: '뛰지 않고 걷는 것이 침착하게 느껴지시는군요. 신중하고 안정적인 행동을 선호하는 타입이에요.' },
+    C7: { type: '긴장감', description: '규칙을 지켜야 한다는 것에 긴장되시는군요. 실수하지 않으려는 조심스러운 마음이 있는 타입이에요.' },
+    C8: { type: '어색함', description: '천천히 걸어야 하는 상황이 어색하게 느껴지시는군요. 자연스러운 행동이 제한되어 불편함을 느끼는 타입이에요.' },
+    C9: { type: '느긋함', description: '천천히 걷는 것이 느긋하게 느껴지시는군요. 서두르지 않고 여유롭게 즐기는 타입이에요.' },
+    D1: { type: '답답함', description: '뛰지 못하는 상황이 답답하게 느껴지시는군요. 에너지가 넘치고 활동적인 것을 선호하는 타입이에요.' },
+    D2: { type: '따분함', description: '느린 관람 속도가 따분하게 느껴지시는군요. 빠르고 다채로운 경험을 원하는 타입이에요.' },
+    D3: { type: '정적임', description: '정적인 환경을 그대로 받아들이시는군요. 고요하고 평온한 분위기를 이해하는 타입이에요.' },
+    D4: { type: '편안함', description: '천천히 걷는 것이 편안하게 느껴지시는군요. 급하지 않게 감상하는 것을 즐기는 타입이에요.' },
+    D5: { type: '안정감', description: '규칙이 있는 환경에서 안정감을 느끼시는군요. 질서 있는 공간을 선호하는 타입이에요.' },
+    D6: { type: '심심함', description: '뛰지 못하는 것이 심심하게 느껴지시는군요. 흥미진진하고 역동적인 활동을 좋아하는 타입이에요.' },
+    D7: { type: '억울함', description: '움직임이 제한되는 것이 억울하게 느껴지시는군요. 자유롭게 행동하고 싶은 욕구가 강한 타입이에요.' },
   },
 };
 
-// 상태
 let currentQuestionIndex = 0;
 let answers = [];
-
-// DOM 요소
-const startScreen = document.getElementById('start-screen');
-const settingsScreen = document.getElementById('settings-screen');
-const workSelectScreen = document.getElementById('work-select-screen');
-const questionScreen = document.getElementById('question-screen');
-const resultScreen = document.getElementById('result-screen');
-const btnStart = document.querySelector('.btn-start');
-const btnConfirm = document.getElementById('btn-confirm');
-const btnRetry = document.querySelector('.btn-retry');
-const progressFill = document.getElementById('progress-fill');
-const questionNumberEl = document.getElementById('question-number');
-const questionTextEl = document.getElementById('question-text');
-const optionsContainer = document.getElementById('options');
-const resultTypeEl = document.getElementById('result-type');
-const resultDescEl = document.getElementById('result-description');
-
-// 화면 전환
-const allScreens = [startScreen, settingsScreen, workSelectScreen, questionScreen, resultScreen];
-
-// 선택한 작품
 let selectedWork = null;
-
-function showScreen(screen) {
-  allScreens.forEach((el) => el?.classList.remove('active'));
-  screen?.classList.add('active');
-}
-
-// 사용자 설정
 let userSettings = { gender: null, age: null, difficulty: null };
 
+const $ = (id) => document.getElementById(id);
+const $$ = (selector) => document.querySelectorAll(selector);
+
+const screens = {
+  start: $('start-screen'),
+  settings: $('settings-screen'),
+  workSelect: $('work-select-screen'),
+  question: $('question-screen'),
+  result: $('result-screen')
+};
+
+const showScreen = (screen) => {
+  Object.values(screens).forEach(s => s?.classList.remove('active'));
+  screen?.classList.add('active');
+};
+
 function initStaticNoise() {
-  const container = document.getElementById('static-noise');
+  const container = $('static-noise');
   if (!container) return;
 
   const canvas = document.createElement('canvas');
@@ -114,7 +154,7 @@ function initStaticNoise() {
   canvas.height = 256;
   const ctx = canvas.getContext('2d');
 
-  function drawNoise() {
+  const drawNoise = () => {
     const imageData = ctx.createImageData(256, 256);
     for (let i = 0; i < imageData.data.length; i += 4) {
       const v = Math.random() * 255;
@@ -122,78 +162,61 @@ function initStaticNoise() {
       imageData.data[i + 3] = 80;
     }
     ctx.putImageData(imageData, 0, 0);
-  }
+    container.style.backgroundImage = `url(${canvas.toDataURL()})`;
+  };
 
   drawNoise();
-  container.style.backgroundImage = `url(${canvas.toDataURL()})`;
   container.style.backgroundSize = '100px 100px';
 
   const noiseInterval = setInterval(() => {
-    if (!settingsScreen.classList.contains('active')) {
+    if (!screens.settings.classList.contains('active')) {
       clearInterval(noiseInterval);
-      return;
+    } else {
+      drawNoise();
     }
-    drawNoise();
-    container.style.backgroundImage = `url(${canvas.toDataURL()})`;
   }, 80);
 }
 
 function setupSettingsScreen() {
-  const options = document.querySelectorAll('.setting-option');
-  options.forEach((btn) => {
+  $$('.setting-option').forEach(btn => {
     btn.addEventListener('click', () => {
-      const category = btn.dataset.category;
-      const value = btn.dataset.value;
-
-      document.querySelectorAll(`[data-category="${category}"]`).forEach((b) => b.classList.remove('selected'));
+      const { category, value } = btn.dataset;
+      $$(`[data-category="${category}"]`).forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       userSettings[category] = value;
-
-      const allSelected = userSettings.gender && userSettings.age && userSettings.difficulty;
-      btnConfirm.disabled = !allSelected;
+      $('btn-confirm').disabled = !(userSettings.gender && userSettings.age && userSettings.difficulty);
     });
   });
 
-  btnConfirm.addEventListener('click', () => {
-    showScreen(questionScreen);
+  $('btn-confirm').addEventListener('click', () => {
+    showScreen(screens.question);
     renderQuestion();
   });
 }
 
-// 작품 선택 화면
 function renderWorkSelect() {
-  const container = document.getElementById('exhibition-categories');
-  const rooms = quizData.exhibition;
-
-  container.innerHTML = Object.entries(rooms)
-    .map(
-      ([roomName, works]) => `
-      <div class="exhibition-category" data-room="${roomName}">
+  const container = $('exhibition-categories');
+  container.innerHTML = Object.entries(quizData.exhibition)
+    .map(([roomName, works]) => `
+      <div class="exhibition-category">
         <button type="button" class="category-toggle" aria-expanded="false">
           <span class="category-name">${roomName}</span>
           <span class="category-arrow">▼</span>
         </button>
         <div class="category-works" aria-hidden="true">
-          ${works
-            .map(
-              (work, idx) => `
+          ${works.map((work, idx) => `
             <button type="button" class="work-option option-wiggle option-wiggle-${(idx % 6) + 1}" data-work="${work}">${work}</button>
-          `
-            )
-            .join('')}
+          `).join('')}
         </div>
       </div>
-    `
-    )
-    .join('');
+    `).join('');
 
-  container.querySelectorAll('.category-toggle').forEach((btn) => {
+  container.querySelectorAll('.category-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
       const category = btn.closest('.exhibition-category');
-      const worksEl = category.querySelector('.category-works');
       const isOpen = category.classList.contains('open');
 
-      container.querySelectorAll('.exhibition-category').forEach((c) => {
+      container.querySelectorAll('.exhibition-category').forEach(c => {
         c.classList.remove('open');
         c.querySelector('.category-toggle').setAttribute('aria-expanded', 'false');
         c.querySelector('.category-works').setAttribute('aria-hidden', 'true');
@@ -202,71 +225,62 @@ function renderWorkSelect() {
       if (!isOpen) {
         category.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
-        worksEl.setAttribute('aria-hidden', 'false');
+        category.querySelector('.category-works').setAttribute('aria-hidden', 'false');
       }
     });
   });
 
-  container.querySelectorAll('.work-option').forEach((btn) => {
+  container.querySelectorAll('.work-option').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       selectedWork = btn.dataset.work;
-      container.querySelectorAll('.work-option').forEach((o) => o.classList.remove('selected'));
+      container.querySelectorAll('.work-option').forEach(o => o.classList.remove('selected'));
       btn.classList.add('selected');
       currentQuestionIndex = 2;
       renderQuestion();
-      showScreen(questionScreen);
+      showScreen(screens.question);
     });
   });
 }
 
-// 질문 렌더링
 function renderQuestion() {
   const question = quizData.questions[currentQuestionIndex];
   const total = quizData.questions.length;
 
-  progressFill.style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
-  questionNumberEl.textContent = `Q_${String(currentQuestionIndex + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
-  let questionText = question.text;
-  if (currentQuestionIndex === 2 && selectedWork) {
-    questionText = questionText.replace(/<[^>]+>/, `<${selectedWork}>`);
-  }
-  questionTextEl.textContent = questionText;
+  $('progress-fill').style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
+  $('question-number').textContent = `Q_${String(currentQuestionIndex + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+  $('question-text').textContent = currentQuestionIndex === 2 && selectedWork 
+    ? question.text.replace(/<[^>]+>/, `<${selectedWork}>`)
+    : question.text;
 
+  const optionsContainer = $('options');
   optionsContainer.innerHTML = question.options
-    .map(
-      (opt, idx) => `
-      <button type="button" class="option glitch-option option-wiggle option-wiggle-${idx + 1}" data-value="${opt.value}" data-index="${idx}">
+    .map((opt, idx) => `
+      <button type="button" class="option glitch-option option-wiggle option-wiggle-${(idx % 20) + 1}" data-value="${opt.value}">
         <span class="option-inner">${opt.text}</span>
       </button>
-    `
-    )
-    .join('');
+    `).join('');
 
-  optionsContainer.querySelectorAll('.option').forEach((btn) => {
+  optionsContainer.querySelectorAll('.option').forEach(btn => {
     btn.addEventListener('click', handleOptionClick);
-    btn.addEventListener('touchstart', handleOptionTouch, { passive: true });
+    btn.addEventListener('touchstart', () => {
+      optionsContainer.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      btn.classList.add('selected');
+    }, { passive: true });
   });
-}
-
-function handleOptionTouch(e) {
-  const btn = e.currentTarget;
-  optionsContainer.querySelectorAll('.option').forEach((o) => o.classList.remove('selected'));
-  btn.classList.add('selected');
 }
 
 function handleOptionClick(e) {
   const btn = e.currentTarget;
-  const value = btn.dataset.value;
-
-  optionsContainer.querySelectorAll('.option').forEach((o) => o.classList.remove('selected'));
+  const optionsContainer = $('options');
+  
+  optionsContainer.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
   btn.classList.add('selected');
-
-  answers[currentQuestionIndex] = value;
+  answers[currentQuestionIndex] = btn.dataset.value;
 
   setTimeout(() => {
     if (currentQuestionIndex === 1) {
-      showScreen(workSelectScreen);
+      showScreen(screens.workSelect);
       renderWorkSelect();
     } else if (currentQuestionIndex < quizData.questions.length - 1) {
       currentQuestionIndex++;
@@ -277,74 +291,49 @@ function handleOptionClick(e) {
   }, 280);
 }
 
-// 결과 계산 및 표시
 function showResult() {
-  const counts = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0, G: 0, H: 0, I: 0, J: 0, K: 0, L: 0, M: 0, N: 0, O: 0, P: 0, Q: 0, R: 0, S: 0, T: 0 };
-  answers.forEach((v) => {
-    if (counts[v] !== undefined) counts[v]++;
-  });
+  const counts = {};
+  answers.forEach(v => counts[v] = (counts[v] || 0) + 1);
 
   const maxCount = Math.max(...Object.values(counts));
   const dominant = Object.entries(counts).find(([, c]) => c === maxCount)?.[0] || answers[answers.length - 1] || 'A';
 
   const result = quizData.results[dominant];
-  resultTypeEl.textContent = result.type;
+  $('result-type').textContent = result.type;
+  
   let desc = result.description;
-  if (selectedWork) {
-    desc = desc.replace(/사과/g, selectedWork);
-  }
-  const descWithBreaks = desc.replace(/([.!?])\s+/g, '$1<br>');
-  resultDescEl.innerHTML = descWithBreaks;
-  showScreen(resultScreen);
+  if (selectedWork) desc = desc.replace(/사과/g, selectedWork);
+  
+  $('result-description').innerHTML = desc.replace(/([.!?])\s+/g, '$1<br>');
+  showScreen(screens.result);
 }
 
-// 초기화
-function init() {
+const resetSettings = () => {
   currentQuestionIndex = 0;
   answers = [];
   selectedWork = null;
   userSettings = { gender: null, age: null, difficulty: null };
-  showScreen(startScreen);
-}
-
-// 이벤트 바인딩
-btnStart.addEventListener('click', () => {
-  init();
-  userSettings = { gender: null, age: null, difficulty: null };
-  document.querySelectorAll('.setting-option').forEach((b) => b.classList.remove('selected'));
-  btnConfirm.disabled = true;
-  showScreen(settingsScreen);
+  $$('.setting-option').forEach(b => b.classList.remove('selected'));
+  $('btn-confirm').disabled = true;
+  showScreen(screens.settings);
   initStaticNoise();
-});
+};
 
-btnRetry.addEventListener('click', () => {
-  init();
-  selectedWork = null;
-  userSettings = { gender: null, age: null, difficulty: null };
-  document.querySelectorAll('.setting-option').forEach((b) => b.classList.remove('selected'));
-  btnConfirm.disabled = true;
-  showScreen(settingsScreen);
-  initStaticNoise();
-});
-
-// 전체 화면 글리치 (랜덤 트리거)
-function triggerScreenGlitch() {
-  const glitchScreen = document.getElementById('glitch-screen');
-  if (!glitchScreen) return;
-  glitchScreen.classList.add('active');
-  setTimeout(() => glitchScreen.classList.remove('active'), 150);
-}
-
-function scheduleGlitch() {
-  const delay = 2000 + Math.random() * 5000; // 2~7초 간격
+const scheduleGlitch = () => {
   setTimeout(() => {
-    triggerScreenGlitch();
+    const glitchScreen = $('glitch-screen');
+    if (glitchScreen) {
+      glitchScreen.classList.add('active');
+      setTimeout(() => glitchScreen.classList.remove('active'), 150);
+    }
     scheduleGlitch();
-  }, delay);
-}
+  }, 2000 + Math.random() * 5000);
+};
 
-// 앱 로드 시
 document.addEventListener('DOMContentLoaded', () => {
   setupSettingsScreen();
   scheduleGlitch();
+  
+  document.querySelector('.btn-start').addEventListener('click', resetSettings);
+  document.querySelector('.btn-retry').addEventListener('click', resetSettings);
 });
