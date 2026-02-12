@@ -286,7 +286,17 @@ function renderOthersResults(countByType, hasSupabase = true) {
   el.querySelectorAll('.sky-star').forEach(star => {
     star.addEventListener('mouseenter', showStarTooltip);
     star.addEventListener('mouseleave', hideStarTooltip);
+    star.addEventListener('click', (e) => { e.preventDefault(); showStarTooltip(e); });
+    star.addEventListener('touchstart', (e) => { showStarTooltip(e); }, { passive: true });
   });
+  if (!window._starTooltipOutsideHandler) {
+    window._starTooltipOutsideHandler = (e) => {
+      if (e.target.closest('.sky-star') || e.target.closest('.star-tooltip')) return;
+      hideStarTooltip();
+    };
+    document.addEventListener('click', window._starTooltipOutsideHandler);
+    document.addEventListener('touchstart', window._starTooltipOutsideHandler);
+  }
 }
 
 let starTooltip = null;
@@ -299,8 +309,12 @@ function showStarTooltip(e) {
   document.body.appendChild(starTooltip);
   const rect = el.getBoundingClientRect();
   const ttW = starTooltip.offsetWidth;
-  starTooltip.style.left = (rect.left + rect.width / 2 - ttW / 2) + 'px';
-  starTooltip.style.top = (rect.top - 34) + 'px';
+  let left = rect.left + rect.width / 2 - ttW / 2;
+  const top = rect.top - 34;
+  if (left < 8) left = 8;
+  if (left + ttW > window.innerWidth - 8) left = window.innerWidth - ttW - 8;
+  starTooltip.style.left = left + 'px';
+  starTooltip.style.top = top + 'px';
 }
 function hideStarTooltip() {
   if (starTooltip && starTooltip.parentNode) starTooltip.parentNode.removeChild(starTooltip);
