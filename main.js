@@ -118,7 +118,9 @@ const quizData = {
     '3전시실': ['K', 'L', 'M', 'N', 'O'],
   },
   workQuestions: [
+    { key: 'farPrep', text: '{work}에서 다섯 걸음 물러나, 작품의 전체 분위기를 느껴보세요.', usePrep: true },
     { key: 'far', text: '작품 {work}를 멀리서 볼 때', optionsKey: 'far', useSliders: true },
+    { key: 'nearPrep', text: '{work} 앞으로 다섯 걸음 다가가, 작품을 천천히 들여다보세요.', usePrep: true },
     { key: 'near', text: '작품 {work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
     { key: 'emotion', text: '작품 {work}를 보고 느끼는 감정', optionsKey: 'emotion' },
   ],
@@ -404,7 +406,7 @@ const TYPE_COLOR_MAP = {
   편안함: { color: '#22c55e', glow: '0 0 14px #22c55e', cls: 'star-green' },
   답답함: { color: '#3b82f6', glow: '0 0 14px #3b82f6', cls: 'star-blue' },
   조용함: { color: '#f8fafc', glow: '0 0 14px #f8fafc', cls: 'star-white' },
-  포근함: { color: '#ec4899', glow: '0 0 14px #ec4899', cls: 'star-pink' },
+  포근함: { color: '#c71585', glow: '0 0 14px #c71585', cls: 'star-pink' },
   불쾌함: { color: '#6b7280', glow: '0 0 14px #6b7280', cls: 'star-gray' },
   어색함: { color: '#a855f7', glow: '0 0 14px #a855f7', cls: 'star-purple' },
   당당함: { color: '#92400e', glow: '0 0 14px #92400e', cls: 'star-brown' },
@@ -420,6 +422,8 @@ const TYPE_COLOR_MAP = {
   압도적: { color: '#ef4444', glow: '0 0 14px #ef4444', cls: 'star-red' },
   섬세함: { color: '#c084fc', glow: '0 0 14px #c084fc', cls: 'star-violet' },
   거대함: { color: '#0ea5e9', glow: '0 0 14px #0ea5e9', cls: 'star-sky' },
+  숙연함: { color: '#1e3a5f', glow: '0 0 14px #1e3a5f', cls: 'star-navy' },
+  차분함: { color: '#14b8a6', glow: '0 0 14px #14b8a6', cls: 'star-teal' },
 };
 
 const FALLBACK_STYLE = { color: '#00f5ff', glow: '0 0 12px #00f5ff', cls: 'star-default' };
@@ -530,7 +534,7 @@ let selectedMode = null;   // 어린이 | 청소년 | 청년 | 중장년 | 뉴�
 
 const BASIC_QUESTIONS = 6;   // 1+2단계 질문 수
 const WORKS_TO_SELECT = 5;   // 3단계에서 선택할 작품 수
-const QUESTIONS_PER_WORK = 3; // 작품당 질문 수 (멀리, 가까이, 감정)
+const QUESTIONS_PER_WORK = 5; // 작품당 질문 수 (멀리준비, 멀리, 가까이준비, 가까이, 감정)
 
 const $ = (id) => document.getElementById(id);
 const $$ = (selector) => document.querySelectorAll(selector);
@@ -713,6 +717,19 @@ function renderQuestion() {
     $('question-text').textContent = text;
 
     const optionsContainer = $('options');
+
+    if (wq.usePrep) {
+      optionsContainer.innerHTML = `
+        <div class="work-prep">
+          <button type="button" class="btn-prep-ready glitch-btn" id="btn-prep-ready"><span>준비완료</span></button>
+        </div>
+      `;
+      $('btn-prep-ready')?.addEventListener('click', () => {
+        currentQuestionIndex++;
+        renderQuestion();
+      });
+      return;
+    }
 
     if (wq.useSliders) {
       const sliderConfig = wq.key === 'near' ? quizData.workNearSliders : quizData.workFarSliders;

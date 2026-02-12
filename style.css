@@ -1497,7 +1497,8 @@ body {
   margin-top: 0.15rem;
 }
 
-.btn-slider-next {
+.btn-slider-next,
+.btn-prep-ready {
   margin-top: 0.75rem;
   align-self: center;
   padding: 0.6rem 1.75rem;
@@ -1512,7 +1513,16 @@ body {
   transition: all 0.2s ease;
 }
 
-.btn-slider-next:hover {
+.work-prep {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+.btn-slider-next:hover,
+.btn-prep-ready:hover {
   background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(59, 130, 246, 0.15));
   border-color: rgba(59, 130, 246, 0.5);
   box-shadow: 0 0 12px rgba(59, 130, 246, 0.2);
