@@ -122,6 +122,8 @@ const quizData = {
     { key: 'far', text: '작품 {work}를 멀리서 볼 때', optionsKey: 'far', useSliders: true },
     { key: 'nearPrep', text: '{work} 앞으로 다섯 걸음 다가가, 작품을 천천히 들여다보세요.', usePrep: true },
     { key: 'near', text: '작품 {work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
+    { key: 'captionPrep', text: '작품 {work} 옆 캡션을 읽어주세요.', usePrep: true },
+    { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
     { key: 'emotion', text: '작품 {work}를 보고 느끼는 감정', optionsKey: 'emotion' },
   ],
   workFarSliders: [
@@ -161,6 +163,15 @@ const quizData = {
       { text: '행복하다', value: 'EM13' }, { text: '우울하다', value: 'EM14' }, { text: '신비롭다', value: 'EM15' },
       { text: '낯설다', value: 'EM16' }, { text: '친숙하다', value: 'EM17' }, { text: '아련하다', value: 'EM18' },
       { text: '생동감', value: 'EM19' }, { text: '고요하다', value: 'EM20' },
+    ],
+    captionEmotion: [
+      { text: '강렬하다', value: 'CP1' }, { text: '상큼하다', value: 'CP2' }, { text: '달달하다', value: 'CP3' },
+      { text: '두렵다', value: 'CP4' }, { text: '무섭다', value: 'CP5' }, { text: '귀엽다', value: 'CP6' },
+      { text: '슬프다', value: 'CP7' }, { text: '화난다', value: 'CP8' }, { text: '두근거린다', value: 'CP9' },
+      { text: '평온하다', value: 'CP10' }, { text: '답답하다', value: 'CP11' }, { text: '편안하다', value: 'CP12' },
+      { text: '행복하다', value: 'CP13' }, { text: '우울하다', value: 'CP14' }, { text: '신비롭다', value: 'CP15' },
+      { text: '낯설다', value: 'CP16' }, { text: '친숙하다', value: 'CP17' }, { text: '아련하다', value: 'CP18' },
+      { text: '생동감', value: 'CP19' }, { text: '고요하다', value: 'CP20' },
     ],
   },
   // 모드별 질문 (선택 사항). 예: questionsByMode: { '남': [...], '어린이': [...] }
@@ -347,6 +358,26 @@ const quizData = {
     EM18: { type: '두근거림', description: '작품에서 아련함을 느끼시는군요. 감성적인 타입이에요.' },
     EM19: { type: '강렬함', description: '작품에서 생동감을 느끼시는군요. 역동적인 감상을 선호하는 타입이에요.' },
     EM20: { type: '조용함', description: '작품에서 고요함을 느끼시는군요. 평온한 감상을 선호하는 타입이에요.' },
+    CP1: { type: '강렬함', description: '캡션을 읽은 후 작품에서 강렬함을 느끼시는군요. 설명이 작품 이해를 돕는 타입이에요.' },
+    CP2: { type: '두근거림', description: '캡션을 읽은 후 상큼한 감정을 느끼시는군요. 맥락이 감상을 풍부하게 하는 타입이에요.' },
+    CP3: { type: '포근함', description: '캡션을 읽은 후 달달한 감정을 느끼시는군요. 설명이 따뜻함을 더하는 타입이에요.' },
+    CP4: { type: '강렬함', description: '캡션을 읽은 후 두려움을 느끼시는군요. 맥락이 작품을 새롭게 보이게 하는 타입이에요.' },
+    CP5: { type: '강렬함', description: '캡션을 읽은 후 무서움을 느끼시는군요. 설명이 감상을 깊게 하는 타입이에요.' },
+    CP6: { type: '포근함', description: '캡션을 읽은 후 귀여움을 느끼시는군요. 배경 지식이 친밀감을 주는 타입이에요.' },
+    CP7: { type: '답답함', description: '캡션을 읽은 후 슬픔을 느끼시는군요. 설명이 감정을 깊게 하는 타입이에요.' },
+    CP8: { type: '짜증', description: '캡션을 읽은 후 화남을 느끼시는군요. 맥락이 강한 인상을 주는 타입이에요.' },
+    CP9: { type: '두근거림', description: '캡션을 읽은 후 두근거림을 느끼시는군요. 설명이 설렘을 더하는 타입이에요.' },
+    CP10: { type: '편안함', description: '캡션을 읽은 후 평온함을 느끼시는군요. 맥락이 편안한 감상을 주는 타입이에요.' },
+    CP11: { type: '답답함', description: '캡션을 읽은 후 답답함을 느끼시는군요. 설명이 오히려 부담을 주는 타입이에요.' },
+    CP12: { type: '편안함', description: '캡션을 읽은 후 편안함을 느끼시는군요. 이해가 편안한 감상을 주는 타입이에요.' },
+    CP13: { type: '행복', description: '캡션을 읽은 후 행복을 느끼시는군요. 맥락이 기쁨을 더하는 타입이에요.' },
+    CP14: { type: '답답함', description: '캡션을 읽은 후 우울함을 느끼시는군요. 설명이 감성을 깊게 하는 타입이에요.' },
+    CP15: { type: '두근거림', description: '캡션을 읽은 후 신비로움을 느끼시는군요. 맥락이 호기심을 더하는 타입이에요.' },
+    CP16: { type: '강렬함', description: '캡션을 읽은 후 낯섦을 느끼시는군요. 설명이 새로운 시각을 주는 타입이에요.' },
+    CP17: { type: '편안함', description: '캡션을 읽은 후 친숙함을 느끼시는군요. 배경 지식이 이해를 돕는 타입이에요.' },
+    CP18: { type: '두근거림', description: '캡션을 읽은 후 아련함을 느끼시는군요. 맥락이 감성을 깊게 하는 타입이에요.' },
+    CP19: { type: '강렬함', description: '캡션을 읽은 후 생동감을 느끼시는군요. 설명이 작품을 살아있게 하는 타입이에요.' },
+    CP20: { type: '조용함', description: '캡션을 읽은 후 고요함을 느끼시는군요. 맥락이 평온한 감상을 주는 타입이에요.' },
   },
 };
 
@@ -533,8 +564,8 @@ let selectedGender = null; // 남 | 녀
 let selectedMode = null;   // 어린이 | 청소년 | 청년 | 중장년 | 뉴비 | 중수 | 고수
 
 const BASIC_QUESTIONS = 6;   // 1+2단계 질문 수
-const WORKS_TO_SELECT = 5;   // 3단계에서 선택할 작품 수
-const QUESTIONS_PER_WORK = 5; // 작품당 질문 수 (멀리준비, 멀리, 가까이준비, 가까이, 감정)
+const WORKS_TO_SELECT = 3;   // 3단계에서 선택할 작품 수
+const QUESTIONS_PER_WORK = 7; // 작품당 질문 수 (멀리준비, 멀리, 가까이준비, 가까이, 캡션준비, 캡션감정, 감정)
 
 const $ = (id) => document.getElementById(id);
 const $$ = (selector) => document.querySelectorAll(selector);
@@ -634,7 +665,6 @@ function renderWorkSelect() {
   const confirmWrap = document.createElement('div');
   confirmWrap.className = 'work-select-confirm';
   confirmWrap.innerHTML = `
-    <p class="work-select-hint">감상할 작품 5개를 선택하세요</p>
     <button type="button" class="btn-confirm-works glitch-btn" id="btn-confirm-works" disabled><span>감상 시작</span></button>
   `;
   container.parentElement?.appendChild(confirmWrap);
@@ -826,6 +856,7 @@ function handleOptionClick(e) {
   const totalQuestions = BASIC_QUESTIONS + selectedWorks.length * QUESTIONS_PER_WORK;
 
   setTimeout(() => {
+    optionsContainer.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
     if (isStage3) {
       if (currentQuestionIndex < totalQuestions - 1) {
         currentQuestionIndex++;
@@ -942,6 +973,21 @@ const scheduleGlitch = () => {
   }, 2000 + Math.random() * 5000);
 };
 
+function handleQuestionBack() {
+  if (currentQuestionIndex === 0) {
+    showScreen(screens.settings);
+    return;
+  }
+  if (currentQuestionIndex === BASIC_QUESTIONS) {
+    currentQuestionIndex = BASIC_QUESTIONS - 1;
+    showScreen(screens.workSelect);
+    renderWorkSelect();
+    return;
+  }
+  currentQuestionIndex--;
+  renderQuestion();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   setupSettingsScreen();
   scheduleGlitch();
@@ -949,4 +995,5 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.btn-start').addEventListener('click', resetSettings);
   $('btn-repick')?.addEventListener('click', goToWorkReselect);
   document.querySelector('.btn-retry')?.addEventListener('click', resetSettings);
+  $('btn-question-back')?.addEventListener('click', handleQuestionBack);
 });
