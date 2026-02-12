@@ -1407,3 +1407,125 @@ body {
     padding-top: 2rem;
   }
 }
+
+/* 3단계 far/near 슬라이더 - 그라데이션 스타일 */
+.work-sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0.5rem 0;
+}
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.slider-label {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(226, 232, 240, 0.85);
+  letter-spacing: 0.02em;
+  min-width: 4ch;
+}
+
+.slider-label.slider-left { text-align: left; }
+.slider-label.slider-right { text-align: right; }
+
+.work-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.3), rgba(59, 130, 246, 0.3));
+  border-radius: 2px;
+  outline: none;
+}
+
+.work-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.35), rgba(59, 130, 246, 0.35));
+  border-radius: 2px;
+}
+
+.work-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -6px;
+  background: linear-gradient(135deg, #22c55e, #3b82f6);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.work-slider::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.4), 0 0 16px rgba(59, 130, 246, 0.3);
+  transform: scale(1.08);
+}
+
+.work-slider::-moz-range-track {
+  height: 4px;
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.35), rgba(59, 130, 246, 0.35));
+  border-radius: 2px;
+}
+
+.work-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #22c55e, #3b82f6);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.slider-value {
+  font-size: 0.75rem;
+  color: rgba(148, 163, 184, 0.9);
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-top: 0.15rem;
+}
+
+.btn-slider-next {
+  margin-top: 0.75rem;
+  align-self: center;
+  padding: 0.6rem 1.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(59, 130, 246, 0.08));
+  color: rgba(226, 232, 240, 0.95);
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+  transition: all 0.2s ease;
+}
+
+.btn-slider-next:hover {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(59, 130, 246, 0.15));
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.2);
+}
+
+@media (max-width: 480px) {
+  .work-sliders {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .slider-label {
+    font-size: 0.75rem;
+    min-width: 3.5ch;
+  }
+}

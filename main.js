@@ -1,7 +1,7 @@
 const quizData = {
   questions: [
     {
-      text: '미술관에서는 정숙해야 한다',
+      text: '미술관에서는 조용히 해야 한다',
       options: [
         { text: '답답하다', value: 'A' },
         { text: '편안하다', value: 'B' },
@@ -26,7 +26,7 @@ const quizData = {
       ],
     },
     {
-      text: '미술관에서는 천천히 걸어야 한다',
+      text: '미술관에서는 뛰면 안된다',
       options: [
         { text: '우아하다', value: 'G' },
         { text: '갑갑하다', value: 'H' },
@@ -51,7 +51,7 @@ const quizData = {
       ],
     },
     {
-      text: '미술관에서는 음식물 반입이 금지되어 있다',
+      text: '미술관 전시실에는 음식물 반입이 금지되어 있다.',
       options: [
         { text: '이해하다', value: 'U1' },
         { text: '당연하다', value: 'U2' },
@@ -76,7 +76,7 @@ const quizData = {
       ],
     },
     {
-      text: '미술관에서는 시선을 조절해야 한다',
+      text: '다른사람이 내가 원하는 작품을 보고 있다. 이때 나의 감정은?',
       options: [
         { text: '부담된다', value: 'V1' }, { text: '편하다', value: 'V2' }, { text: '신경쓰인다', value: 'V3' },
         { text: '당연하다', value: 'V4' }, { text: '불편하다', value: 'V5' }, { text: '편안하다', value: 'V6' },
@@ -88,7 +88,7 @@ const quizData = {
       ],
     },
     {
-      text: '미술관에서는 눈치를 봐야 한다',
+      text: '작품을 이해하려고 노력할 때 나의 감정은?',
       options: [
         { text: '피곤하다', value: 'W1' }, { text: '편하다', value: 'W2' }, { text: '스트레스', value: 'W3' },
         { text: '당연하다', value: 'W4' }, { text: '불편하다', value: 'W5' }, { text: '편안하다', value: 'W6' },
@@ -100,7 +100,7 @@ const quizData = {
       ],
     },
     {
-      text: '미술관에서는 드레스코드를 지켜야 한다',
+      text: '미술관에 갈 때 어떤 옷을 입을지 고민될 때 나의 감정은?',
       options: [
         { text: '부담된다', value: 'X1' }, { text: '편하다', value: 'X2' }, { text: '스트레스', value: 'X3' },
         { text: '당연하다', value: 'X4' }, { text: '불편하다', value: 'X5' }, { text: '편안하다', value: 'X6' },
@@ -118,9 +118,19 @@ const quizData = {
     '3전시실': ['K', 'L', 'M', 'N', 'O'],
   },
   workQuestions: [
-    { key: 'far', text: '작품 {work}를 멀리서 볼 때', optionsKey: 'far' },
-    { key: 'near', text: '작품 {work}를 가까이서 볼 때', optionsKey: 'near' },
+    { key: 'far', text: '작품 {work}를 멀리서 볼 때', optionsKey: 'far', useSliders: true },
+    { key: 'near', text: '작품 {work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
     { key: 'emotion', text: '작품 {work}를 보고 느끼는 감정', optionsKey: 'emotion' },
+  ],
+  workFarSliders: [
+    { left: '편안함', right: '답답함', defaultVal: 50 },
+    { left: '강렬함', right: '흐릿함', defaultVal: 50 },
+    { left: '웅장함', right: '현실적', defaultVal: 50 },
+  ],
+  workNearSliders: [
+    { left: '친근함', right: '긴장됨', defaultVal: 50 },
+    { left: '압도적', right: '편안함', defaultVal: 50 },
+    { left: '섬세함', right: '거대함', defaultVal: 50 },
   ],
   workOptions: {
     far: [
@@ -402,6 +412,14 @@ const TYPE_COLOR_MAP = {
   짜증: { color: '#f97316', glow: '0 0 14px #f97316', cls: 'star-orange' },
   강렬함: { color: '#dc2626', glow: '0 0 14px #dc2626', cls: 'star-red-dark' },
   두근거림: { color: '#f472b6', glow: '0 0 14px #f472b6', cls: 'star-pink-light' },
+  흐릿함: { color: '#94a3b8', glow: '0 0 14px #94a3b8', cls: 'star-slate' },
+  웅장함: { color: '#b45309', glow: '0 0 14px #b45309', cls: 'star-amber' },
+  현실적: { color: '#64748b', glow: '0 0 14px #64748b', cls: 'star-slate-dark' },
+  친근함: { color: '#4ade80', glow: '0 0 14px #4ade80', cls: 'star-mint' },
+  긴장됨: { color: '#f59e0b', glow: '0 0 14px #f59e0b', cls: 'star-amber-light' },
+  압도적: { color: '#ef4444', glow: '0 0 14px #ef4444', cls: 'star-red' },
+  섬세함: { color: '#c084fc', glow: '0 0 14px #c084fc', cls: 'star-violet' },
+  거대함: { color: '#0ea5e9', glow: '0 0 14px #0ea5e9', cls: 'star-sky' },
 };
 
 const FALLBACK_STYLE = { color: '#00f5ff', glow: '0 0 12px #00f5ff', cls: 'star-default' };
@@ -506,6 +524,7 @@ let currentQuestionIndex = 0;
 let answers = [];
 let selectedWork = null;
 let selectedWorks = [];   // 3단계: 선택한 작품 5개 (A~O 중)
+let workSliderAnswers = []; // 3단계 far: 작품별 [s1,s2,s3] 슬라이더 값 (0-100)
 let selectedGender = null; // 남 | 녀
 let selectedMode = null;   // 어린이 | 청소년 | 청년 | 중장년 | 뉴비 | 중수 | 고수
 
@@ -688,13 +707,54 @@ function renderQuestion() {
     const work = selectedWorks[workIdx];
     const wq = quizData.workQuestions[qInWork];
     const text = wq.text.replace('{work}', work);
-    const opts = quizData.workOptions[wq.optionsKey];
 
     $('progress-fill').style.width = `${((currentQuestionIndex + 1) / totalQuestions) * 100}%`;
     $('question-number').textContent = `Q_${String(currentQuestionIndex + 1).padStart(2, '0')} / ${String(totalQuestions).padStart(2, '0')}`;
     $('question-text').textContent = text;
 
     const optionsContainer = $('options');
+
+    if (wq.useSliders) {
+      const sliderConfig = wq.key === 'near' ? quizData.workNearSliders : quizData.workFarSliders;
+      const savedRaw = workSliderAnswers[workIdx];
+      let saved = null;
+      if (savedRaw && typeof savedRaw === 'object') {
+        if (Array.isArray(savedRaw) && wq.key === 'far') saved = savedRaw;
+        else if (!Array.isArray(savedRaw) && Array.isArray(savedRaw[wq.key])) saved = savedRaw[wq.key];
+      }
+      if (!saved || saved.length < 3) saved = sliderConfig.map(s => s.defaultVal);
+      optionsContainer.innerHTML = `
+        <div class="work-sliders">
+          ${sliderConfig.map((slider, idx) => `
+            <div class="slider-row">
+              <span class="slider-label slider-left">${slider.left}</span>
+              <input type="range" class="work-slider" min="0" max="100" value="${saved[idx]}" data-slider-idx="${idx}">
+              <span class="slider-label slider-right">${slider.right}</span>
+            </div>
+            <div class="slider-value" data-value-idx="${idx}">${saved[idx]}%</div>
+          `).join('')}
+          <button type="button" class="btn-slider-next glitch-btn" id="btn-slider-next"><span>다음</span></button>
+        </div>
+      `;
+      optionsContainer.querySelectorAll('.work-slider').forEach(input => {
+        const valueEl = optionsContainer.querySelector(`[data-value-idx="${input.dataset.sliderIdx}"]`);
+        input.addEventListener('input', () => { valueEl.textContent = input.value + '%'; });
+      });
+      $('btn-slider-next')?.addEventListener('click', () => {
+        const vals = [];
+        optionsContainer.querySelectorAll('.work-slider').forEach(inp => vals.push(parseInt(inp.value, 10)));
+        const prev = workSliderAnswers[workIdx];
+        const prevObj = prev && typeof prev === 'object'
+          ? (Array.isArray(prev) ? { far: prev } : prev)
+          : {};
+        workSliderAnswers[workIdx] = { ...prevObj, [wq.key]: vals };
+        currentQuestionIndex++;
+        renderQuestion();
+      });
+      return;
+    }
+
+    const opts = quizData.workOptions[wq.optionsKey];
     optionsContainer.innerHTML = opts
       .map((opt, idx) => `
         <button type="button" class="option glitch-option option-wiggle option-wiggle-${(idx % 20) + 1}" data-value="${opt.value}">
@@ -762,22 +822,46 @@ function handleOptionClick(e) {
         currentQuestionIndex++;
         renderQuestion();
       } else {
-        selectedWorks = [];
-        renderWorkSelect();
+  selectedWorks = [];
+  workSliderAnswers = [];
+  renderWorkSelect();
         showScreen(screens.workSelect);
       }
     }
   }, 280);
 }
 
+function sliderValuesToTypes() {
+  const types = [];
+  workSliderAnswers.forEach((obj) => {
+    if (!obj) return;
+    const o = Array.isArray(obj) ? { far: obj } : obj;
+    const far = o.far;
+    if (far && far.length >= 3) {
+      types.push(far[0] < 50 ? '편안함' : '답답함');
+      types.push(far[1] < 50 ? '강렬함' : '흐릿함');
+      types.push(far[2] < 50 ? '웅장함' : '현실적');
+    }
+    const near = o.near;
+    if (near && near.length >= 3) {
+      types.push(near[0] < 50 ? '친근함' : '긴장됨');
+      types.push(near[1] < 50 ? '압도적' : '편안함');
+      types.push(near[2] < 50 ? '섬세함' : '거대함');
+    }
+  });
+  return types;
+}
+
 function showResult() {
   const counts = {};
   answers.forEach(v => counts[v] = (counts[v] || 0) + 1);
+  sliderValuesToTypes().forEach(t => counts[t] = (counts[t] || 0) + 1);
 
-  const maxCount = Math.max(...Object.values(counts));
-  const dominant = Object.entries(counts).find(([, c]) => c === maxCount)?.[0] || answers[answers.length - 1] || 'A';
+  const allValues = [...answers, ...sliderValuesToTypes()].filter(Boolean);
+  const maxCount = Math.max(...Object.values(counts), 0);
+  const dominant = Object.entries(counts).find(([, c]) => c === maxCount)?.[0] || allValues[allValues.length - 1] || 'A';
 
-  const result = quizData.results[dominant];
+  const result = quizData.results[dominant] || { type: dominant, description: `${dominant} 유형으로 분석되었습니다.` };
   $('result-type').textContent = result.type;
   setResultStar(result.type);
   
@@ -811,6 +895,7 @@ const resetSettings = () => {
   answers = [];
   selectedWork = null;
   selectedWorks = [];
+  workSliderAnswers = [];
   selectedGender = null;
   selectedMode = null;
   $$('.setting-option').forEach(b => b.classList.remove('selected'));
@@ -823,6 +908,7 @@ const resetSettings = () => {
 
 function goToWorkReselect() {
   selectedWorks = [];
+  workSliderAnswers = [];
   answers.length = BASIC_QUESTIONS;
   renderWorkSelect();
   showScreen(screens.workSelect);
