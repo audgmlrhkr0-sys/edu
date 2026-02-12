@@ -1,7 +1,7 @@
 const quizData = {
   questions: [
     {
-      text: '미술관에서는 조용히 해야 한다',
+      text: '미술관에서는 정숙해야 한다',
       options: [
         { text: '답답하다', value: 'A' },
         { text: '편안하다', value: 'B' },
@@ -22,11 +22,11 @@ const quizData = {
         { text: '포근하다', value: 'B4' },
         { text: '딱딱하다', value: 'B5' },
         { text: '무겁다', value: 'B6' },
-        { text: '가벼다', value: 'B7' },
+        { text: '가볍다', value: 'B7' },
       ],
     },
     {
-      text: '미술관 안에서는 뛰면 안된다',
+      text: '미술관에서는 천천히 걸어야 한다',
       options: [
         { text: '우아하다', value: 'G' },
         { text: '갑갑하다', value: 'H' },
@@ -51,24 +51,105 @@ const quizData = {
       ],
     },
     {
-      text: '<사과>를 보고 떠오르는 감정을 골라보세요',
+      text: '미술관에서는 음식물 반입이 금지되어 있다',
       options: [
-        { text: '강렬하다', value: 'K' },
-        { text: '상큼하다', value: 'L' },
-        { text: '달달하다', value: 'M' },
-        { text: '두렵다', value: 'N' },
-        { text: '무섭다', value: 'O' },
-        { text: '귀엽다', value: 'P' },
-        { text: '슬프다', value: 'Q' },
-        { text: '화난다', value: 'R' },
-        { text: '두근거린다', value: 'S' },
-        { text: '맛있다', value: 'T' },
+        { text: '이해하다', value: 'U1' },
+        { text: '당연하다', value: 'U2' },
+        { text: '불편하다', value: 'U3' },
+        { text: '답답하다', value: 'U4' },
+        { text: '괜찮다', value: 'U5' },
+        { text: '편안하다', value: 'U6' },
+        { text: '당혹스럽다', value: 'U7' },
+        { text: '짜증난다', value: 'U8' },
+        { text: '차분하다', value: 'U9' },
+        { text: '불만이다', value: 'U10' },
+        { text: '이상하다', value: 'U11' },
+        { text: '딱하다', value: 'U12' },
+        { text: '좋다', value: 'U13' },
+        { text: '부담된다', value: 'U14' },
+        { text: '안심된다', value: 'U15' },
+        { text: '아쉽다', value: 'U16' },
+        { text: '타당하다', value: 'U17' },
+        { text: '억울하다', value: 'U18' },
+        { text: '수긍한다', value: 'U19' },
+        { text: '어색하다', value: 'U20' },
+      ],
+    },
+    {
+      text: '미술관에서는 시선을 조절해야 한다',
+      options: [
+        { text: '부담된다', value: 'V1' }, { text: '편하다', value: 'V2' }, { text: '신경쓰인다', value: 'V3' },
+        { text: '당연하다', value: 'V4' }, { text: '불편하다', value: 'V5' }, { text: '편안하다', value: 'V6' },
+        { text: '조심스럽다', value: 'V7' }, { text: '답답하다', value: 'V8' }, { text: '어색하다', value: 'V9' },
+        { text: '긴장된다', value: 'V10' }, { text: '차분하다', value: 'V11' }, { text: '짜증난다', value: 'V12' },
+        { text: '이해하다', value: 'V13' }, { text: '괜찮다', value: 'V14' }, { text: '딱딱하다', value: 'V15' },
+        { text: '불쾌하다', value: 'V16' }, { text: '자연스럽다', value: 'V17' }, { text: '의식된다', value: 'V18' },
+        { text: '관대하다', value: 'V19' }, { text: '민감하다', value: 'V20' },
+      ],
+    },
+    {
+      text: '미술관에서는 눈치를 봐야 한다',
+      options: [
+        { text: '피곤하다', value: 'W1' }, { text: '편하다', value: 'W2' }, { text: '스트레스', value: 'W3' },
+        { text: '당연하다', value: 'W4' }, { text: '불편하다', value: 'W5' }, { text: '편안하다', value: 'W6' },
+        { text: '민감하다', value: 'W7' }, { text: '답답하다', value: 'W8' }, { text: '재미있다', value: 'W9' },
+        { text: '긴장된다', value: 'W10' }, { text: '차분하다', value: 'W11' }, { text: '짜증난다', value: 'W12' },
+        { text: '이해하다', value: 'W13' }, { text: '괜찮다', value: 'W14' }, { text: '부담된다', value: 'W15' },
+        { text: '숙연하다', value: 'W16' }, { text: '자연스럽다', value: 'W17' }, { text: '조심스럽다', value: 'W18' },
+        { text: '예민하다', value: 'W19' }, { text: '관대하다', value: 'W20' },
+      ],
+    },
+    {
+      text: '미술관에서는 드레스코드를 지켜야 한다',
+      options: [
+        { text: '부담된다', value: 'X1' }, { text: '편하다', value: 'X2' }, { text: '스트레스', value: 'X3' },
+        { text: '당연하다', value: 'X4' }, { text: '불편하다', value: 'X5' }, { text: '편안하다', value: 'X6' },
+        { text: '우아하다', value: 'X7' }, { text: '답답하다', value: 'X8' }, { text: '좋다', value: 'X9' },
+        { text: '긴장된다', value: 'X10' }, { text: '차분하다', value: 'X11' }, { text: '짜증난다', value: 'X12' },
+        { text: '이해하다', value: 'X13' }, { text: '괜찮다', value: 'X14' }, { text: '자유롭다', value: 'X15' },
+        { text: '딱딱하다', value: 'X16' }, { text: '자연스럽다', value: 'X17' }, { text: '의식된다', value: 'X18' },
+        { text: '포멀하다', value: 'X19' }, { text: '캐주얼하다', value: 'X20' },
       ],
     },
   ],
   exhibition: {
-    '1전시실': ['사과', '파인애플', '감'],
-    '2전시실': ['한라봉', '딸기'],
+    '1전시실': ['A', 'B', 'C', 'D', 'E'],
+    '2전시실': ['F', 'G', 'H', 'I', 'J'],
+    '3전시실': ['K', 'L', 'M', 'N', 'O'],
+  },
+  workQuestions: [
+    { key: 'far', text: '작품 {work}를 멀리서 볼 때', optionsKey: 'far' },
+    { key: 'near', text: '작품 {work}를 가까이서 볼 때', optionsKey: 'near' },
+    { key: 'emotion', text: '작품 {work}를 보고 느끼는 감정', optionsKey: 'emotion' },
+  ],
+  workOptions: {
+    far: [
+      { text: '아련하다', value: 'FA1' }, { text: '멀다', value: 'FA2' }, { text: '선명하다', value: 'FA3' },
+      { text: '흐릿하다', value: 'FA4' }, { text: '평온하다', value: 'FA5' }, { text: '궁금하다', value: 'FA6' },
+      { text: '당당하다', value: 'FA7' }, { text: '조용하다', value: 'FA8' }, { text: '위엄있다', value: 'FA9' },
+      { text: '신비롭다', value: 'FA10' }, { text: '답답하다', value: 'FA11' }, { text: '편안하다', value: 'FA12' },
+      { text: '외롭다', value: 'FA13' }, { text: '모호하다', value: 'FA14' }, { text: '강렬하다', value: 'FA15' },
+      { text: '부드럽다', value: 'FA16' }, { text: '차갑다', value: 'FA17' }, { text: '따뜻하다', value: 'FA18' },
+      { text: '낯설다', value: 'FA19' }, { text: '친숙하다', value: 'FA20' },
+    ],
+    near: [
+      { text: '압도된다', value: 'CA1' }, { text: '선명하다', value: 'CA2' }, { text: '가깝다', value: 'CA3' },
+      { text: '섬뜩하다', value: 'CA4' }, { text: '친근하다', value: 'CA5' }, { text: '긴장된다', value: 'CA6' },
+      { text: '설렌다', value: 'CA7' }, { text: '두렵다', value: 'CA8' }, { text: '감동한다', value: 'CA9' },
+      { text: '호기심', value: 'CA10' }, { text: '답답하다', value: 'CA11' }, { text: '편안하다', value: 'CA12' },
+      { text: '신비롭다', value: 'CA13' }, { text: '당당하다', value: 'CA14' }, { text: '강렬하다', value: 'CA15' },
+      { text: '부드럽다', value: 'CA16' }, { text: '섬세하다', value: 'CA17' }, { text: '거대하다', value: 'CA18' },
+      { text: '작다', value: 'CA19' }, { text: '압박감', value: 'CA20' },
+    ],
+    emotion: [
+      { text: '강렬하다', value: 'EM1' }, { text: '상큼하다', value: 'EM2' }, { text: '달달하다', value: 'EM3' },
+      { text: '두렵다', value: 'EM4' }, { text: '무섭다', value: 'EM5' }, { text: '귀엽다', value: 'EM6' },
+      { text: '슬프다', value: 'EM7' }, { text: '화난다', value: 'EM8' }, { text: '두근거린다', value: 'EM9' },
+      { text: '평온하다', value: 'EM10' }, { text: '답답하다', value: 'EM11' }, { text: '편안하다', value: 'EM12' },
+      { text: '행복하다', value: 'EM13' }, { text: '우울하다', value: 'EM14' }, { text: '신비롭다', value: 'EM15' },
+      { text: '낯설다', value: 'EM16' }, { text: '친숙하다', value: 'EM17' }, { text: '아련하다', value: 'EM18' },
+      { text: '생동감', value: 'EM19' }, { text: '고요하다', value: 'EM20' },
+    ],
   },
   // 모드별 질문 (선택 사항). 예: questionsByMode: { '남': [...], '어린이': [...] }
   // 없으면 기본 questions 사용
@@ -77,53 +158,183 @@ const quizData = {
     A: { type: '답답함', description: '미술관의 조용한 분위기가 답답하게 느껴지는군요. 열린 공간과 자유로움이 더 맞을 수 있어요.' },
     B: { type: '편안함', description: '미술관의 조용한 분위기가 편안하게 느껴지시는군요. 차분한 감상이 잘 맞는 타입이에요.' },
     C: { type: '조용함', description: '조용한 환경이 자연스럽게 느껴지시는군요. 미술관의 분위기와 잘 어울려요.' },
-    D: { type: '좋음', description: '미술관 분위기를 긍정적으로 느끼고 계시네요. 미술 감상에 적합한 마음가짐이에요.' },
+    D: { type: '행복', description: '미술관 분위기를 긍정적으로 느끼고 계시네요. 미술 감상에 적합한 마음가짐이에요.' },
     E: { type: '짜증', description: '조용히 해야 하는 상황이 불편하게 느껴지시는군요. 더 활기찬 문화 공간이 맞을 수 있어요.' },
     F: { type: '행복', description: '미술관에서 행복을 느끼고 계시네요. 예술과의 만남이 기쁨이 되는 타입이에요.' },
-    G: { type: '우아함', description: '차분한 관람 매너가 우아하게 느껴지시는군요. 예의 바른 문화 공간을 선호하는 타입이에요.' },
-    H: { type: '갑갑함', description: '움직임이 제한되는 것이 갑갑하게 느껴지시는군요. 자유로운 활동이 더 맞을 수 있어요.' },
-    I: { type: '지루함', description: '천천히 걷고 조용히 감상하는 것이 지루하게 느껴지시는군요. 역동적인 경험이 좋을 수 있어요.' },
-    J: { type: '재미없음', description: '규칙적인 관람이 재미없게 느껴지시는군요. 좀 더 자유로운 문화 공간을 찾아보세요.' },
-    K: { type: '강렬함', description: '사과에서 강렬한 인상을 받으시는군요. 선명하고 두드러지는 것을 선호하는 타입이에요.' },
-    L: { type: '상큼함', description: '사과의 상큼함이 느껴지시는군요. 시원하고 청량한 느낌을 좋아하는 타입이에요.' },
-    M: { type: '달달함', description: '사과에서 달콤함을 느끼시는군요. 부드럽고 달콤한 것을 선호하는 타입이에요.' },
-    N: { type: '두려움', description: '사과가 두렵게 느껴지시는군요. 무언가에 대한 신중한 경계심이 있는 타입일 수 있어요.' },
-    O: { type: '무서움', description: '사과가 무섭게 느껴지시는군요. 독특한 감각과 연상을 가진 타입이에요.' },
-    P: { type: '귀여움', description: '사과가 귀엽게 느껴지시는군요. 사랑스럽고 친근한 것을 좋아하는 타입이에요.' },
-    Q: { type: '슬픔', description: '사과에서 슬픔이 떠오르시는군요. 감성적이고 깊은 연상을 하는 타입이에요.' },
-    R: { type: '화남', description: '사과에서 화가 느껴지시는군요. 강한 감정과 연상을 가진 타입일 수 있어요.' },
-    S: { type: '두근거림', description: '사과를 보며 두근거림을 느끼시는군요. 설렘과 기대를 갖는 로맨틱한 타입이에요.' },
-    T: { type: '맛있음', description: '사과가 맛있어 보이시는군요. 감각적이고 실용적인 감상을 하는 타입이에요.' },
-    A1: { type: '평온함', description: '미술관의 조용한 분위기가 평온하게 느껴지시는군요. 고요함 속에서 안정감을 느끼는 타입이에요.' },
-    A3: { type: '차분함', description: '조용한 환경에서 차분함을 느끼시는군요. 정돈된 분위기에서 내면을 들여다보는 타입이에요.' },
-    A4: { type: '심심함', description: '조용한 공간이 심심하게 느껴지시는군요. 활기차고 역동적인 문화 활동이 더 적합할 수 있어요.' },
-    A5: { type: '불편함', description: '조용히 해야 하는 상황이 불편하게 느껴지시는군요. 자유롭게 표현할 수 있는 공간이 더 맞을 거예요.' },
-    A6: { type: '따분함', description: '미술관의 정적인 분위기가 따분하게 느껴지시는군요. 변화와 자극이 있는 환경을 선호하는 타입이에요.' },
-    A7: { type: '우울함', description: '조용한 공간이 우울하게 느껴지시는군요. 밝고 활기찬 분위기가 기분 전환에 도움이 될 수 있어요.' },
-    A8: { type: '안정감', description: '조용한 분위기에서 안정감을 느끼시는군요. 예측 가능하고 정돈된 환경을 편안하게 여기는 타입이에요.' },
-    A9: { type: '신중함', description: '조용한 공간에서 신중함을 느끼시는군요. 사려 깊게 행동하고 배려하는 마음을 가진 타입이에요.' },
-    B1: { type: '지루함', description: '조용한 환경이 지루하게 느껴지시는군요. 흥미롭고 자극적인 경험을 찾아가는 것이 좋을 수 있어요.' },
-    B2: { type: '숙연함', description: '미술관의 분위기에서 숙연함을 느끼시는군요. 진지하고 깊이 있는 감상을 할 수 있는 타입이에요.' },
+    G: { type: '당당함', description: '차분한 관람 매너가 우아하게 느껴지시는군요. 예의 바른 문화 공간을 선호하는 타입이에요.' },
+    H: { type: '답답함', description: '움직임이 제한되는 것이 갑갑하게 느껴지시는군요. 자유로운 활동이 더 맞을 수 있어요.' },
+    I: { type: '짜증', description: '천천히 걷고 조용히 감상하는 것이 지루하게 느껴지시는군요. 역동적인 경험이 좋을 수 있어요.' },
+    J: { type: '짜증', description: '규칙적인 관람이 재미없게 느껴지시는군요. 좀 더 자유로운 문화 공간을 찾아보세요.' },
+    U1: { type: '편안함', description: '음식물 반입 금지 규칙을 이해하고 받아들이시는군요. 규칙의 필요성을 인정하는 타입이에요.' },
+    U2: { type: '편안함', description: '당연한 규칙으로 받아들이시는군요. 예의와 질서를 중시하는 타입이에요.' },
+    U3: { type: '불쾌함', description: '음식물 반입 금지가 불편하게 느껴지시는군요. 자유로운 관람을 선호하는 타입이에요.' },
+    U4: { type: '답답함', description: '규칙이 답답하게 느껴지시는군요. 여유로운 관람을 원하는 타입이에요.' },
+    U5: { type: '편안함', description: '규칙을 괜찮게 받아들이시는군요. 유연하게 적응하는 타입이에요.' },
+    U6: { type: '편안함', description: '규칙이 있는 환경이 편안하게 느껴지시는군요. 정돈된 공간을 선호하는 타입이에요.' },
+    U7: { type: '어색함', description: '규칙에 당혹스러움을 느끼시는군요. 새로운 환경에 신중하게 적응하는 타입이에요.' },
+    U8: { type: '짜증', description: '규칙이 짜증나게 느껴지시는군요. 자유로운 문화 공간이 더 맞을 수 있어요.' },
+    U9: { type: '편안함', description: '규칙에 차분하게 반응하시는군요. 침착하게 받아들이는 타입이에요.' },
+    U10: { type: '짜증', description: '규칙에 불만이 있으시군요. 더 유연한 관람 환경을 원하는 타입이에요.' },
+    U11: { type: '어색함', description: '규칙이 이상하게 느껴지시는군요. 미술관 관람에 대해 새로 생각해보는 계기가 될 수 있어요.' },
+    U12: { type: '답답함', description: '규칙이 딱하다고 느끼시는군요. 조금 더 여유를 원하는 타입이에요.' },
+    U13: { type: '행복', description: '규칙을 긍정적으로 받아들이시는군요. 질서 있는 관람을 선호하는 타입이에요.' },
+    U14: { type: '답답함', description: '규칙이 부담되시는군요. 편하게 즐기고 싶은 마음이 있는 타입이에요.' },
+    U15: { type: '편안함', description: '규칙이 있어서 안심되시는군요. 안전하고 정돈된 환경을 선호하는 타입이에요.' },
+    U16: { type: '답답함', description: '규칙이 아쉽게 느껴지시는군요. 간식 없이 관람하는 것이 어려운 타입이에요.' },
+    U17: { type: '편안함', description: '규칙이 타당하다고 받아들이시는군요. 합리적이고 이성적인 타입이에요.' },
+    U18: { type: '짜증', description: '규칙이 억울하게 느껴지시는군요. 조금 더 자유로웠으면 하는 타입이에요.' },
+    U19: { type: '편안함', description: '규칙에 수긍하시는군요. 상황을 이해하고 받아들이는 성숙한 타입이에요.' },
+    U20: { type: '어색함', description: '규칙이 어색하게 느껴지시는군요. 자연스러운 관람을 선호하는 타입이에요.' },
+    A1: { type: '편안함', description: '미술관의 조용한 분위기가 평온하게 느껴지시는군요. 고요함 속에서 안정감을 느끼는 타입이에요.' },
+    A3: { type: '편안함', description: '조용한 환경에서 차분함을 느끼시는군요. 정돈된 분위기에서 내면을 들여다보는 타입이에요.' },
+    A4: { type: '짜증', description: '조용한 공간이 심심하게 느껴지시는군요. 활기차고 역동적인 문화 활동이 더 적합할 수 있어요.' },
+    A5: { type: '불쾌함', description: '조용히 해야 하는 상황이 불편하게 느껴지시는군요. 자유롭게 표현할 수 있는 공간이 더 맞을 거예요.' },
+    A6: { type: '짜증', description: '미술관의 정적인 분위기가 따분하게 느껴지시는군요. 변화와 자극이 있는 환경을 선호하는 타입이에요.' },
+    A7: { type: '답답함', description: '조용한 공간이 우울하게 느껴지시는군요. 밝고 활기찬 분위기가 기분 전환에 도움이 될 수 있어요.' },
+    A8: { type: '편안함', description: '조용한 분위기에서 안정감을 느끼시는군요. 예측 가능하고 정돈된 환경을 편안하게 여기는 타입이에요.' },
+    A9: { type: '조용함', description: '조용한 공간에서 신중함을 느끼시는군요. 사려 깊게 행동하고 배려하는 마음을 가진 타입이에요.' },
+    B1: { type: '짜증', description: '조용한 환경이 지루하게 느껴지시는군요. 흥미롭고 자극적인 경험을 찾아가는 것이 좋을 수 있어요.' },
+    B2: { type: '조용함', description: '미술관의 분위기에서 숙연함을 느끼시는군요. 진지하고 깊이 있는 감상을 할 수 있는 타입이에요.' },
     B4: { type: '포근함', description: '조용한 공간이 포근하게 느껴지시는군요. 편안하고 아늑한 분위기를 즐기는 따뜻한 타입이에요.' },
-    B5: { type: '딱딱함', description: '미술관의 분위기가 딱딱하게 느껴지시는군요. 좀 더 부드럽고 유연한 문화 공간이 맞을 수 있어요.' },
-    B6: { type: '무거움', description: '조용한 분위기가 무겁게 느껴지시는군요. 가볍고 활기찬 환경을 선호하는 타입이에요.' },
-    B7: { type: '가벼움', description: '조용한 공간이 가볍게 느껴지시는군요. 편안하고 부담 없는 분위기를 즐기는 타입이에요.' },
+    B5: { type: '불쾌함', description: '미술관의 분위기가 딱딱하게 느껴지시는군요. 좀 더 부드럽고 유연한 문화 공간이 맞을 수 있어요.' },
+    B6: { type: '답답함', description: '조용한 분위기가 무겁게 느껴지시는군요. 가볍고 활기찬 환경을 선호하는 타입이에요.' },
+    B7: { type: '편안함', description: '조용한 공간이 가볍게 느껴지시는군요. 편안하고 부담 없는 분위기를 즐기는 타입이에요.' },
     C1: { type: '답답함', description: '천천히 걸어야 하는 규칙이 답답하게 느껴지시는군요. 활동적이고 자유로운 움직임을 선호하는 타입이에요.' },
-    C2: { type: '불편함', description: '움직임이 제한되는 것이 불편하게 느껴지시는군요. 자유롭게 움직이며 탐험하는 것을 좋아하는 타입이에요.' },
-    C3: { type: '차분함', description: '천천히 걷는 것에서 차분함을 느끼시는군요. 여유롭고 침착하게 감상하는 것을 즐기는 타입이에요.' },
-    C4: { type: '조심스러움', description: '규칙을 지키며 조심스럽게 행동하시는군요. 예의를 중시하고 배려심이 깊은 타입이에요.' },
-    C5: { type: '담담함', description: '규칙에 대해 담담하게 받아들이시는군요. 상황에 자연스럽게 적응하는 유연한 타입이에요.' },
-    C6: { type: '침착함', description: '뛰지 않고 걷는 것이 침착하게 느껴지시는군요. 신중하고 안정적인 행동을 선호하는 타입이에요.' },
-    C7: { type: '긴장감', description: '규칙을 지켜야 한다는 것에 긴장되시는군요. 실수하지 않으려는 조심스러운 마음이 있는 타입이에요.' },
+    C2: { type: '불쾌함', description: '움직임이 제한되는 것이 불편하게 느껴지시는군요. 자유롭게 움직이며 탐험하는 것을 좋아하는 타입이에요.' },
+    C3: { type: '편안함', description: '천천히 걷는 것에서 차분함을 느끼시는군요. 여유롭고 침착하게 감상하는 것을 즐기는 타입이에요.' },
+    C4: { type: '조용함', description: '규칙을 지키며 조심스럽게 행동하시는군요. 예의를 중시하고 배려심이 깊은 타입이에요.' },
+    C5: { type: '편안함', description: '규칙에 대해 담담하게 받아들이시는군요. 상황에 자연스럽게 적응하는 유연한 타입이에요.' },
+    C6: { type: '편안함', description: '뛰지 않고 걷는 것이 침착하게 느껴지시는군요. 신중하고 안정적인 행동을 선호하는 타입이에요.' },
+    C7: { type: '강렬함', description: '규칙을 지켜야 한다는 것에 긴장되시는군요. 실수하지 않으려는 조심스러운 마음이 있는 타입이에요.' },
     C8: { type: '어색함', description: '천천히 걸어야 하는 상황이 어색하게 느껴지시는군요. 자연스러운 행동이 제한되어 불편함을 느끼는 타입이에요.' },
-    C9: { type: '느긋함', description: '천천히 걷는 것이 느긋하게 느껴지시는군요. 서두르지 않고 여유롭게 즐기는 타입이에요.' },
+    C9: { type: '편안함', description: '천천히 걷는 것이 느긋하게 느껴지시는군요. 서두르지 않고 여유롭게 즐기는 타입이에요.' },
     D1: { type: '답답함', description: '뛰지 못하는 상황이 답답하게 느껴지시는군요. 에너지가 넘치고 활동적인 것을 선호하는 타입이에요.' },
-    D2: { type: '따분함', description: '느린 관람 속도가 따분하게 느껴지시는군요. 빠르고 다채로운 경험을 원하는 타입이에요.' },
-    D3: { type: '정적임', description: '정적인 환경을 그대로 받아들이시는군요. 고요하고 평온한 분위기를 이해하는 타입이에요.' },
+    D2: { type: '짜증', description: '느린 관람 속도가 따분하게 느껴지시는군요. 빠르고 다채로운 경험을 원하는 타입이에요.' },
+    D3: { type: '조용함', description: '정적인 환경을 그대로 받아들이시는군요. 고요하고 평온한 분위기를 이해하는 타입이에요.' },
     D4: { type: '편안함', description: '천천히 걷는 것이 편안하게 느껴지시는군요. 급하지 않게 감상하는 것을 즐기는 타입이에요.' },
-    D5: { type: '안정감', description: '규칙이 있는 환경에서 안정감을 느끼시는군요. 질서 있는 공간을 선호하는 타입이에요.' },
-    D6: { type: '심심함', description: '뛰지 못하는 것이 심심하게 느껴지시는군요. 흥미진진하고 역동적인 활동을 좋아하는 타입이에요.' },
-    D7: { type: '억울함', description: '움직임이 제한되는 것이 억울하게 느껴지시는군요. 자유롭게 행동하고 싶은 욕구가 강한 타입이에요.' },
+    D5: { type: '편안함', description: '규칙이 있는 환경에서 안정감을 느끼시는군요. 질서 있는 공간을 선호하는 타입이에요.' },
+    D6: { type: '짜증', description: '뛰지 못하는 것이 심심하게 느껴지시는군요. 흥미진진하고 역동적인 활동을 좋아하는 타입이에요.' },
+    D7: { type: '짜증', description: '움직임이 제한되는 것이 억울하게 느껴지시는군요. 자유롭게 행동하고 싶은 욕구가 강한 타입이에요.' },
+    V1: { type: '답답함', description: '시선 조절이 부담되시는군요. 자유로운 관람을 선호하는 타입이에요.' },
+    V2: { type: '편안함', description: '시선 조절이 편하게 느껴지시는군요. 자연스러운 관람 스타일을 가진 타입이에요.' },
+    V3: { type: '어색함', description: '시선에 신경 쓰이시는군요. 다른 사람을 의식하는 섬세한 타입이에요.' },
+    V4: { type: '편안함', description: '시선 조절을 당연하게 받아들이시는군요. 예의를 아는 타입이에요.' },
+    V5: { type: '불쾌함', description: '시선 규칙이 불편하게 느껴지시는군요. 자유로움을 선호하는 타입이에요.' },
+    V6: { type: '편안함', description: '시선 조절이 편안하게 느껴지시는군요. 문화 공간을 이해하는 타입이에요.' },
+    V7: { type: '조용함', description: '시선을 조심스럽게 관리하시는군요. 배려심이 깊은 타입이에요.' },
+    V8: { type: '답답함', description: '시선 규칙이 답답하게 느껴지시는군요. 여유로운 관람을 원하는 타입이에요.' },
+    V9: { type: '어색함', description: '시선 규칙이 어색하게 느껴지시는군요. 자연스러움을 선호하는 타입이에요.' },
+    V10: { type: '강렬함', description: '시선에 긴장되시는군요. 주변을 의식하는 타입이에요.' },
+    V11: { type: '편안함', description: '시선 조절에 차분하게 반응하시는군요. 침착한 타입이에요.' },
+    V12: { type: '짜증', description: '시선 규칙이 짜증나시는군요. 자유로운 공간을 선호하는 타입이에요.' },
+    V13: { type: '편안함', description: '시선 규칙을 이해하고 받아들이시는군요. 현명한 타입이에요.' },
+    V14: { type: '편안함', description: '시선 조절을 괜찮게 받아들이시는군요. 유연한 타입이에요.' },
+    V15: { type: '불쾌함', description: '시선 규칙이 딱딱하게 느껴지시는군요. 유연한 공간을 선호하는 타입이에요.' },
+    V16: { type: '불쾌함', description: '시선 규칙이 불쾌하게 느껴지시는군요. 자유로움을 중시하는 타입이에요.' },
+    V17: { type: '편안함', description: '시선 조절이 자연스럽게 느껴지시는군요. 문화 공간에 잘 적응하는 타입이에요.' },
+    V18: { type: '어색함', description: '시선을 의식하시는군요. 주변을 살피는 타입이에요.' },
+    V19: { type: '편안함', description: '시선 규칙에 관대하게 반응하시는군요. 너그러운 타입이에요.' },
+    V20: { type: '어색함', description: '시선에 민감하게 반응하시는군요. 섬세한 타입이에요.' },
+    W1: { type: '답답함', description: '눈치 보기가 피곤하게 느껴지시는군요. 편한 관람을 선호하는 타입이에요.' },
+    W2: { type: '편안함', description: '눈치 보기가 편하게 느껴지시는군요. 상황을 읽는 타입이에요.' },
+    W3: { type: '짜증', description: '눈치에 스트레스를 받으시는군요. 자유로운 공간을 선호하는 타입이에요.' },
+    W4: { type: '편안함', description: '눈치를 당연하게 받아들이시는군요. 사회성을 갖춘 타입이에요.' },
+    W5: { type: '불쾌함', description: '눈치 규칙이 불편하게 느껴지시는군요. 자유로움을 선호하는 타입이에요.' },
+    W6: { type: '편안함', description: '눈치 보기가 편안하게 느껴지시는군요. 분위기를 읽는 타입이에요.' },
+    W7: { type: '어색함', description: '눈치에 민감하게 반응하시는군요. 섬세한 타입이에요.' },
+    W8: { type: '답답함', description: '눈치가 답답하게 느껴지시는군요. 편한 관람을 원하는 타입이에요.' },
+    W9: { type: '행복', description: '눈치 보기가 재미있게 느껴지시는군요. 사회적 관람을 즐기는 타입이에요.' },
+    W10: { type: '강렬함', description: '눈치에 긴장되시는군요. 주변을 의식하는 타입이에요.' },
+    W11: { type: '편안함', description: '눈치에 차분하게 반응하시는군요. 침착한 타입이에요.' },
+    W12: { type: '짜증', description: '눈치가 짜증나시는군요. 자유로운 공간을 선호하는 타입이에요.' },
+    W13: { type: '편안함', description: '눈치의 필요성을 이해하시는군요. 현명한 타입이에요.' },
+    W14: { type: '편안함', description: '눈치를 괜찮게 받아들이시는군요. 유연한 타입이에요.' },
+    W15: { type: '답답함', description: '눈치가 부담되시는군요. 편한 관람을 선호하는 타입이에요.' },
+    W16: { type: '조용함', description: '눈치에서 숙연함을 느끼시는군요. 진지한 타입이에요.' },
+    W17: { type: '편안함', description: '눈치 보기가 자연스럽게 느껴지시는군요. 사회성이 있는 타입이에요.' },
+    W18: { type: '조용함', description: '눈치를 조심스럽게 보시는군요. 배려심이 깊은 타입이에요.' },
+    W19: { type: '어색함', description: '눈치에 예민하게 반응하시는군요. 섬세한 타입이에요.' },
+    W20: { type: '편안함', description: '눈치에 관대하게 반응하시는군요. 너그러운 타입이에요.' },
+    X1: { type: '답답함', description: '드레스코드가 부담되시는군요. 캐주얼한 관람을 선호하는 타입이에요.' },
+    X2: { type: '편안함', description: '드레스코드가 편하게 느껴지시는군요. 적절한 복장을 아는 타입이에요.' },
+    X3: { type: '짜증', description: '드레스코드에 스트레스를 받으시는군요. 자유로운 차림을 선호하는 타입이에요.' },
+    X4: { type: '편안함', description: '드레스코드를 당연하게 받아들이시는군요. 예의를 아는 타입이에요.' },
+    X5: { type: '불쾌함', description: '드레스코드가 불편하게 느껴지시는군요. 자유로운 차림을 선호하는 타입이에요.' },
+    X6: { type: '편안함', description: '드레스코드가 편안하게 느껴지시는군요. 적절한 복장을 즐기는 타입이에요.' },
+    X7: { type: '당당함', description: '드레스코드가 우아하게 느껴지시는군요. 품격 있는 관람을 선호하는 타입이에요.' },
+    X8: { type: '답답함', description: '드레스코드가 답답하게 느껴지시는군요. 편한 차림을 선호하는 타입이에요.' },
+    X9: { type: '행복', description: '드레스코드를 긍정적으로 받아들이시는군요. 문화 공간을 존중하는 타입이에요.' },
+    X10: { type: '강렬함', description: '드레스코드에 긴장되시는군요. 적절한 복장을 고민하는 타입이에요.' },
+    X11: { type: '편안함', description: '드레스코드에 차분하게 반응하시는군요. 침착한 타입이에요.' },
+    X12: { type: '짜증', description: '드레스코드가 짜증나시는군요. 자유로운 차림을 선호하는 타입이에요.' },
+    X13: { type: '편안함', description: '드레스코드의 필요성을 이해하시는군요. 현명한 타입이에요.' },
+    X14: { type: '편안함', description: '드레스코드를 괜찮게 받아들이시는군요. 유연한 타입이에요.' },
+    X15: { type: '편안함', description: '드레스코드보다 자유로움을 선호하시는군요. 캐주얼한 타입이에요.' },
+    X16: { type: '불쾌함', description: '드레스코드가 딱딱하게 느껴지시는군요. 유연한 공간을 선호하는 타입이에요.' },
+    X17: { type: '편안함', description: '드레스코드가 자연스럽게 느껴지시는군요. 적절한 복장을 아는 타입이에요.' },
+    X18: { type: '어색함', description: '드레스코드를 의식하시는군요. 복장에 신경 쓰는 타입이에요.' },
+    X19: { type: '당당함', description: '포멀한 드레스코드를 선호하시는군요. 격식을 갖추는 타입이에요.' },
+    X20: { type: '편안함', description: '캐주얼한 드레스코드를 선호하시는군요. 편한 차림을 좋아하는 타입이에요.' },
+    FA1: { type: '두근거림', description: '멀리서 보는 작품이 아련하게 느껴지시는군요. 감성적인 감상 타입이에요.' },
+    FA2: { type: '조용함', description: '멀리서 보는 작품이 멀게 느껴지시는군요. 거리를 두고 감상하는 타입이에요.' },
+    FA3: { type: '당당함', description: '멀리서도 선명하게 보이시는군요. 시각적 인지가 좋은 타입이에요.' },
+    FA4: { type: '어색함', description: '멀리서 보는 작품이 흐릿하게 느껴지시는군요. 가까이서 감상하는 타입이에요.' },
+    FA5: { type: '편안함', description: '멀리서 보는 작품에서 평온함을 느끼시는군요. 고요한 감상을 선호하는 타입이에요.' },
+    FA6: { type: '두근거림', description: '멀리서 보며 궁금함을 느끼시는군요. 호기심이 많은 타입이에요.' },
+    FA7: { type: '당당함', description: '멀리서 보는 작품이 당당하게 느껴지시는군요. 위엄을 느끼는 타입이에요.' },
+    FA8: { type: '조용함', description: '멀리서 보는 작품이 조용하게 느껴지시는군요. 고요한 감상을 선호하는 타입이에요.' },
+    FA9: { type: '당당함', description: '멀리서 보는 작품에서 위엄을 느끼시는군요. 거장적 감상을 하는 타입이에요.' },
+    FA10: { type: '두근거림', description: '멀리서 보는 작품이 신비롭게 느껴지시는군요. 상상력이 풍부한 타입이에요.' },
+    FA11: { type: '답답함', description: '멀리서 보는 작품이 답답하게 느껴지시는군요. 가까이서 감상하는 타입이에요.' },
+    FA12: { type: '편안함', description: '멀리서 보는 작품이 편안하게 느껴지시는군요. 여유로운 감상을 선호하는 타입이에요.' },
+    FA13: { type: '답답함', description: '멀리서 보는 작품이 외롭게 느껴지시는군요. 감성적인 타입이에요.' },
+    FA14: { type: '어색함', description: '멀리서 보는 작품이 모호하게 느껴지시는군요. 명확함을 선호하는 타입이에요.' },
+    FA15: { type: '강렬함', description: '멀리서도 강렬하게 느껴지시는군요. 강한 인상을 받는 타입이에요.' },
+    FA16: { type: '포근함', description: '멀리서 보는 작품이 부드럽게 느껴지시는군요. 은은한 감상을 선호하는 타입이에요.' },
+    FA17: { type: '불쾌함', description: '멀리서 보는 작품이 차갑게 느껴지시는군요. 냉정한 감상을 하는 타입이에요.' },
+    FA18: { type: '포근함', description: '멀리서 보는 작품이 따뜻하게 느껴지시는군요. 온기 있는 감상을 하는 타입이에요.' },
+    FA19: { type: '강렬함', description: '멀리서 보는 작품이 낯설게 느껴지시는군요. 새로운 것을 탐구하는 타입이에요.' },
+    FA20: { type: '편안함', description: '멀리서 보는 작품이 친숙하게 느껴지시는군요. 익숙한 감상을 선호하는 타입이에요.' },
+    CA1: { type: '강렬함', description: '가까이서 보는 작품에 압도되시는군요. 강한 인상을 받는 타입이에요.' },
+    CA2: { type: '당당함', description: '가까이서 보는 작품이 선명하게 느껴지시는군요. 디테일을 즐기는 타입이에요.' },
+    CA3: { type: '포근함', description: '가까이서 보는 작품이 가깝게 느껴지시는군요. 친밀한 감상을 선호하는 타입이에요.' },
+    CA4: { type: '강렬함', description: '가까이서 보는 작품이 섬뜩하게 느껴지시는군요. 독특한 감각을 가진 타입이에요.' },
+    CA5: { type: '포근함', description: '가까이서 보는 작품이 친근하게 느껴지시는군요. 작품과 교감하는 타입이에요.' },
+    CA6: { type: '강렬함', description: '가까이서 보는 작품에 긴장되시는군요. 집중하는 타입이에요.' },
+    CA7: { type: '두근거림', description: '가까이서 보는 작품에 설레시는군요. 기대감이 있는 타입이에요.' },
+    CA8: { type: '강렬함', description: '가까이서 보는 작품이 두렵게 느껴지시는군요. 신중한 타입이에요.' },
+    CA9: { type: '행복', description: '가까이서 보는 작품에 감동하시는군요. 감성적인 타입이에요.' },
+    CA10: { type: '두근거림', description: '가까이서 보며 호기심을 느끼시는군요. 탐구하는 타입이에요.' },
+    CA11: { type: '답답함', description: '가까이서 보는 작품이 답답하게 느껴지시는군요. 거리를 두는 타입이에요.' },
+    CA12: { type: '편안함', description: '가까이서 보는 작품이 편안하게 느껴지시는군요. 친밀한 감상을 선호하는 타입이에요.' },
+    CA13: { type: '두근거림', description: '가까이서 보는 작품이 신비롭게 느껴지시는군요. 상상력이 풍부한 타입이에요.' },
+    CA14: { type: '당당함', description: '가까이서 보는 작품이 당당하게 느껴지시는군요. 위엄을 느끼는 타입이에요.' },
+    CA15: { type: '강렬함', description: '가까이서 보는 작품이 강렬하게 느껴지시는군요. 강한 인상을 받는 타입이에요.' },
+    CA16: { type: '포근함', description: '가까이서 보는 작품이 부드럽게 느껴지시는군요. 은은한 감상을 선호하는 타입이에요.' },
+    CA17: { type: '조용함', description: '가까이서 보는 작품의 섬세함을 느끼시는군요. 디테일을 즐기는 타입이에요.' },
+    CA18: { type: '강렬함', description: '가까이서 보는 작품이 거대하게 느껴지시는군요. 스케일에 압도되는 타입이에요.' },
+    CA19: { type: '조용함', description: '가까이서 보는 작품이 작게 느껴지시는군요. 섬세한 것을 선호하는 타입이에요.' },
+    CA20: { type: '답답함', description: '가까이서 보는 작품에 압박감을 느끼시는군요. 거리를 두는 타입이에요.' },
+    EM1: { type: '강렬함', description: '작품에서 강렬한 감정을 느끼시는군요. 선명한 인상을 받는 타입이에요.' },
+    EM2: { type: '두근거림', description: '작품에서 상큼한 감정을 느끼시는군요. 시원한 인상을 받는 타입이에요.' },
+    EM3: { type: '포근함', description: '작품에서 달달한 감정을 느끼시는군요. 부드러운 인상을 받는 타입이에요.' },
+    EM4: { type: '강렬함', description: '작품에서 두려움을 느끼시는군요. 신중한 감상을 하는 타입이에요.' },
+    EM5: { type: '강렬함', description: '작품에서 무서움을 느끼시는군요. 독특한 감각을 가진 타입이에요.' },
+    EM6: { type: '포근함', description: '작품에서 귀여움을 느끼시는군요. 사랑스러운 것을 좋아하는 타입이에요.' },
+    EM7: { type: '답답함', description: '작품에서 슬픔을 느끼시는군요. 감성적인 타입이에요.' },
+    EM8: { type: '짜증', description: '작품에서 화남을 느끼시는군요. 강한 감정을 가진 타입이에요.' },
+    EM9: { type: '두근거림', description: '작품을 보며 두근거림을 느끼시는군요. 로맨틱한 타입이에요.' },
+    EM10: { type: '편안함', description: '작품에서 평온함을 느끼시는군요. 고요한 감상을 선호하는 타입이에요.' },
+    EM11: { type: '답답함', description: '작품에서 답답함을 느끼시는군요. 열린 감상을 선호하는 타입이에요.' },
+    EM12: { type: '편안함', description: '작품에서 편안함을 느끼시는군요. 편안한 감상을 선호하는 타입이에요.' },
+    EM13: { type: '행복', description: '작품에서 행복을 느끼시는군요. 긍정적인 감상을 하는 타입이에요.' },
+    EM14: { type: '답답함', description: '작품에서 우울함을 느끼시는군요. 감성적인 타입이에요.' },
+    EM15: { type: '두근거림', description: '작품에서 신비로움을 느끼시는군요. 상상력이 풍부한 타입이에요.' },
+    EM16: { type: '강렬함', description: '작품에서 낯섦을 느끼시는군요. 새로운 것을 탐구하는 타입이에요.' },
+    EM17: { type: '편안함', description: '작품에서 친숙함을 느끼시는군요. 익숙한 감상을 선호하는 타입이에요.' },
+    EM18: { type: '두근거림', description: '작품에서 아련함을 느끼시는군요. 감성적인 타입이에요.' },
+    EM19: { type: '강렬함', description: '작품에서 생동감을 느끼시는군요. 역동적인 감상을 선호하는 타입이에요.' },
+    EM20: { type: '조용함', description: '작품에서 고요함을 느끼시는군요. 평온한 감상을 선호하는 타입이에요.' },
   },
 };
 
@@ -178,49 +389,19 @@ async function loadSimilarResults() {
   return data || [];
 }
 
-// 유형별 고정 색상 - 서로 다른 색상 계열 사용 (조용함:초록, 포근함:핑크, 답답함:파랑)
+// 유형별 고정 색상 - 11가지 유형만, 다양한 색감
 const TYPE_COLOR_MAP = {
-  조용함: { color: '#22c55e', glow: '0 0 14px #22c55e', cls: 'star-green' },           // 초록
-  포근함: { color: '#ec4899', glow: '0 0 14px #ec4899', cls: 'star-pink' },           // 핑크
-  답답함: { color: '#3b82f6', glow: '0 0 14px #3b82f6', cls: 'star-blue' },           // 파랑
-  편안함: { color: '#f59e0b', glow: '0 0 14px #f59e0b', cls: 'star-amber' },          // 앰버
-  좋음: { color: '#eab308', glow: '0 0 14px #eab308', cls: 'star-yellow' },           // 노랑
-  짜증: { color: '#ef4444', glow: '0 0 14px #ef4444', cls: 'star-red' },              // 빨강
-  행복: { color: '#f97316', glow: '0 0 14px #f97316', cls: 'star-orange' },           // 주황
-  우아함: { color: '#a855f7', glow: '0 0 14px #a855f7', cls: 'star-purple' },         // 보라
-  갑갑함: { color: '#d946ef', glow: '0 0 14px #d946ef', cls: 'star-fuchsia' },        // 푸시아
-  지루함: { color: '#92400e', glow: '0 0 14px #92400e', cls: 'star-brown' },           // 갈색
-  재미없음: { color: '#78716c', glow: '0 0 14px #78716c', cls: 'star-stone' },         // 스톤
-  강렬함: { color: '#dc2626', glow: '0 0 14px #dc2626', cls: 'star-red-dark' },        // 다크레드
-  상큼함: { color: '#06b6d4', glow: '0 0 14px #06b6d4', cls: 'star-cyan' },           // 시안
-  달달함: { color: '#f43f5e', glow: '0 0 14px #f43f5e', cls: 'star-rose' },           // 로즈
-  두려움: { color: '#4f46e5', glow: '0 0 14px #4f46e5', cls: 'star-indigo' },          // 인디고
-  무서움: { color: '#7c2d12', glow: '0 0 14px #7c2d12', cls: 'star-amber-dark' },      // 다크앰버
-  귀여움: { color: '#fb7185', glow: '0 0 14px #fb7185', cls: 'star-coral' },           // 코랄
-  슬픔: { color: '#0ea5e9', glow: '0 0 14px #0ea5e9', cls: 'star-sky' },              // 스카이
-  화남: { color: '#b91c1c', glow: '0 0 14px #b91c1c', cls: 'star-crimson' },          // 크림슨
-  두근거림: { color: '#be185d', glow: '0 0 14px #be185d', cls: 'star-pink-dark' },     // 다크핑크
-  맛있음: { color: '#fbbf24', glow: '0 0 14px #fbbf24', cls: 'star-gold' },           // 골드
-  평온함: { color: '#84cc16', glow: '0 0 14px #84cc16', cls: 'star-lime' },           // 라임
-  차분함: { color: '#14b8a6', glow: '0 0 14px #14b8a6', cls: 'star-teal' },           // 틸
-  심심함: { color: '#64748b', glow: '0 0 14px #64748b', cls: 'star-slate' },           // 슬레이트
-  불편함: { color: '#ea580c', glow: '0 0 14px #ea580c', cls: 'star-orange-dark' },     // 다크오렌지
-  따분함: { color: '#57534e', glow: '0 0 14px #57534e', cls: 'star-stone-dark' },      // 스톤다크
-  우울함: { color: '#475569', glow: '0 0 14px #475569', cls: 'star-slate-dark' },      // 슬레이트다크
-  안정감: { color: '#65a30d', glow: '0 0 14px #65a30d', cls: 'star-olive' },           // 올리브
-  신중함: { color: '#0891b2', glow: '0 0 14px #0891b2', cls: 'star-cyan-dark' },       // 다크시안
-  숙연함: { color: '#6d28d9', glow: '0 0 14px #6d28d9', cls: 'star-violet' },          // 바이올렛
-  딱딱함: { color: '#a16207', glow: '0 0 14px #a16207', cls: 'star-amber-brown' },     // 앰버브라운
-  무거움: { color: '#1e293b', glow: '0 0 14px #334155', cls: 'star-slate-deep' },      // 다크슬레이트
-  가벼움: { color: '#67e8f9', glow: '0 0 14px #67e8f9', cls: 'star-cyan-light' },      // 라이트시안
-  조심스러움: { color: '#8b5cf6', glow: '0 0 14px #8b5cf6', cls: 'star-violet-light' }, // 바이올렛라이트
-  담담함: { color: '#0d9488', glow: '0 0 14px #0d9488', cls: 'star-teal-dark' },       // 다크틸
-  침착함: { color: '#6366f1', glow: '0 0 14px #6366f1', cls: 'star-indigo-light' },    // 인디고라이트
-  긴장감: { color: '#c026d3', glow: '0 0 14px #c026d3', cls: 'star-fuchsia-dark' },    // 다크푸시아
-  어색함: { color: '#9333ea', glow: '0 0 14px #9333ea', cls: 'star-purple-dark' },     // 다크보라
-  느긋함: { color: '#2dd4bf', glow: '0 0 14px #2dd4bf', cls: 'star-teal-light' },      // 라이트틸
-  정적임: { color: '#71717a', glow: '0 0 14px #71717a', cls: 'star-zinc' },            // 징크
-  억울함: { color: '#e11d48', glow: '0 0 14px #e11d48', cls: 'star-rose-dark' },       // 다크로즈
+  편안함: { color: '#22c55e', glow: '0 0 14px #22c55e', cls: 'star-green' },
+  답답함: { color: '#3b82f6', glow: '0 0 14px #3b82f6', cls: 'star-blue' },
+  조용함: { color: '#f8fafc', glow: '0 0 14px #f8fafc', cls: 'star-white' },
+  포근함: { color: '#ec4899', glow: '0 0 14px #ec4899', cls: 'star-pink' },
+  불쾌함: { color: '#6b7280', glow: '0 0 14px #6b7280', cls: 'star-gray' },
+  어색함: { color: '#a855f7', glow: '0 0 14px #a855f7', cls: 'star-purple' },
+  당당함: { color: '#92400e', glow: '0 0 14px #92400e', cls: 'star-brown' },
+  행복: { color: '#eab308', glow: '0 0 14px #eab308', cls: 'star-yellow' },
+  짜증: { color: '#f97316', glow: '0 0 14px #f97316', cls: 'star-orange' },
+  강렬함: { color: '#dc2626', glow: '0 0 14px #dc2626', cls: 'star-red-dark' },
+  두근거림: { color: '#f472b6', glow: '0 0 14px #f472b6', cls: 'star-pink-light' },
 };
 
 const FALLBACK_STYLE = { color: '#00f5ff', glow: '0 0 12px #00f5ff', cls: 'star-default' };
@@ -252,7 +433,7 @@ function renderOthersResults(countByType, hasSupabase = true) {
   const entries = Object.entries(countByType).sort((a, b) => b[1] - a[1]);
   if (entries.length === 0) {
     el.innerHTML = hasSupabase
-      ? '<p class="others-results-empty">아직 같은 성별·모드의 다른 사용자 결과가 없습니다.</p>'
+      ? '<p class="others-results-empty">아직 나와 같은 설정의 별들이 없습니다.</p>'
       : '<p class="others-results-empty">통계 기능을 사용하려면 Supabase URL과 키를 설정해 주세요.</p>';
     return;
   }
@@ -268,7 +449,7 @@ function renderOthersResults(countByType, hasSupabase = true) {
     [stars[i], stars[j]] = [stars[j], stars[i]];
   }
   el.innerHTML = `
-    <p class="others-results-title">같은 성별·모드의 별들</p>
+    <p class="others-results-title">나와 같은 설정의 별들</p>
     <div class="star-sky">
       ${stars.map((s) => {
         const left = (2 + Math.random() * 88).toFixed(1);
@@ -324,8 +505,13 @@ function hideStarTooltip() {
 let currentQuestionIndex = 0;
 let answers = [];
 let selectedWork = null;
+let selectedWorks = [];   // 3단계: 선택한 작품 5개 (A~O 중)
 let selectedGender = null; // 남 | 녀
-let selectedMode = null;   // 어린이 | 청소년 | 청년 | 어르신 | 쉬움 | 보통 | 어려움
+let selectedMode = null;   // 어린이 | 청소년 | 청년 | 중장년 | 뉴비 | 중수 | 고수
+
+const BASIC_QUESTIONS = 6;   // 1+2단계 질문 수
+const WORKS_TO_SELECT = 5;   // 3단계에서 선택할 작품 수
+const QUESTIONS_PER_WORK = 3; // 작품당 질문 수 (멀리, 가까이, 감정)
 
 const $ = (id) => document.getElementById(id);
 const $$ = (selector) => document.querySelectorAll(selector);
@@ -402,6 +588,9 @@ function setupSettingsScreen() {
 
 function renderWorkSelect() {
   const container = $('exhibition-categories');
+  const existingConfirm = container.parentElement?.querySelector('.work-select-confirm');
+  if (existingConfirm) existingConfirm.remove();
+
   container.innerHTML = Object.entries(quizData.exhibition)
     .map(([roomName, works]) => `
       <div class="exhibition-category">
@@ -410,12 +599,22 @@ function renderWorkSelect() {
           <span class="category-arrow">▼</span>
         </button>
         <div class="category-works" aria-hidden="true">
-          ${works.map((work, idx) => `
-            <button type="button" class="work-option option-wiggle option-wiggle-${(idx % 6) + 1}" data-work="${work}">${work}</button>
-          `).join('')}
+          ${works.map((work, idx) => {
+            const isSelected = selectedWorks.includes(work);
+            return `
+            <button type="button" class="work-option option-wiggle option-wiggle-${(idx % 6) + 1} ${isSelected ? 'selected' : ''}" data-work="${work}">${work}</button>
+          `}).join('')}
         </div>
       </div>
     `).join('');
+
+  const confirmWrap = document.createElement('div');
+  confirmWrap.className = 'work-select-confirm';
+  confirmWrap.innerHTML = `
+    <p class="work-select-hint">감상할 작품 5개를 선택하세요</p>
+    <button type="button" class="btn-confirm-works glitch-btn" id="btn-confirm-works" disabled><span>감상 시작</span></button>
+  `;
+  container.parentElement?.appendChild(confirmWrap);
 
   container.querySelectorAll('.category-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -436,29 +635,90 @@ function renderWorkSelect() {
     });
   });
 
+  function updateConfirmButton() {
+    const btn = $('btn-confirm-works');
+    if (btn) btn.disabled = selectedWorks.length !== WORKS_TO_SELECT;
+  }
+
   container.querySelectorAll('.work-option').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      selectedWork = btn.dataset.work;
-      container.querySelectorAll('.work-option').forEach(o => o.classList.remove('selected'));
-      btn.classList.add('selected');
-      currentQuestionIndex = 2;
-      renderQuestion();
-      showScreen(screens.question);
+      const work = btn.dataset.work;
+      const idx = selectedWorks.indexOf(work);
+      if (idx >= 0) {
+        selectedWorks.splice(idx, 1);
+        btn.classList.remove('selected');
+      } else if (selectedWorks.length < WORKS_TO_SELECT) {
+        selectedWorks.push(work);
+        btn.classList.add('selected');
+      }
+      updateConfirmButton();
     });
+  });
+
+  $('btn-confirm-works')?.addEventListener('click', () => {
+    if (selectedWorks.length !== WORKS_TO_SELECT) return;
+    currentQuestionIndex = BASIC_QUESTIONS; // 6부터 3단계 질문 시작
+    showScreen(screens.question);
+    renderQuestion();
   });
 }
 
 function renderQuestion() {
+  const isStage3 = currentQuestionIndex >= BASIC_QUESTIONS && selectedWorks.length > 0;
+  const totalQuestions = BASIC_QUESTIONS + selectedWorks.length * QUESTIONS_PER_WORK;
+
+  const stageBadge = $('stage-badge');
+  if (stageBadge) {
+    if (isStage3) {
+      stageBadge.textContent = '3단계 · 작품 감상';
+      stageBadge.className = 'stage-badge stage-3';
+    } else if (currentQuestionIndex < 3) {
+      stageBadge.textContent = '1단계 · 기본 규칙';
+      stageBadge.className = 'stage-badge stage-1';
+    } else {
+      stageBadge.textContent = '2단계 · 암묵적 규칙';
+      stageBadge.className = 'stage-badge stage-2';
+    }
+  }
+
+  if (isStage3) {
+    const workIdx = Math.floor((currentQuestionIndex - BASIC_QUESTIONS) / QUESTIONS_PER_WORK);
+    const qInWork = (currentQuestionIndex - BASIC_QUESTIONS) % QUESTIONS_PER_WORK;
+    const work = selectedWorks[workIdx];
+    const wq = quizData.workQuestions[qInWork];
+    const text = wq.text.replace('{work}', work);
+    const opts = quizData.workOptions[wq.optionsKey];
+
+    $('progress-fill').style.width = `${((currentQuestionIndex + 1) / totalQuestions) * 100}%`;
+    $('question-number').textContent = `Q_${String(currentQuestionIndex + 1).padStart(2, '0')} / ${String(totalQuestions).padStart(2, '0')}`;
+    $('question-text').textContent = text;
+
+    const optionsContainer = $('options');
+    optionsContainer.innerHTML = opts
+      .map((opt, idx) => `
+        <button type="button" class="option glitch-option option-wiggle option-wiggle-${(idx % 20) + 1}" data-value="${opt.value}">
+          <span class="option-inner">${opt.text}</span>
+        </button>
+      `).join('');
+
+    optionsContainer.querySelectorAll('.option').forEach(btn => {
+      btn.addEventListener('click', handleOptionClick);
+      btn.addEventListener('touchstart', () => {
+        optionsContainer.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+        btn.classList.add('selected');
+      }, { passive: true });
+    });
+    return;
+  }
+
   const questions = (selectedMode && quizData.questionsByMode?.[selectedMode]) || quizData.questions;
   const question = questions[currentQuestionIndex];
   const total = questions.length;
 
   $('progress-fill').style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
   $('question-number').textContent = `Q_${String(currentQuestionIndex + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
-  $('question-text').textContent = currentQuestionIndex === 2 && selectedWork 
-    ? question.text.replace(/<[^>]+>/, `<${selectedWork}>`)
-    : question.text;
+  $('question-text').textContent = question.text;
 
   const optionsContainer = $('options');
   optionsContainer.innerHTML = question.options
@@ -485,16 +745,27 @@ function handleOptionClick(e) {
   btn.classList.add('selected');
   answers[currentQuestionIndex] = btn.dataset.value;
 
-  const questions = (selectedMode && quizData.questionsByMode?.[selectedMode]) || quizData.questions;
+  const isStage3 = currentQuestionIndex >= BASIC_QUESTIONS && selectedWorks.length > 0;
+  const totalQuestions = BASIC_QUESTIONS + selectedWorks.length * QUESTIONS_PER_WORK;
+
   setTimeout(() => {
-    if (currentQuestionIndex === 1) {
-      showScreen(screens.workSelect);
-      renderWorkSelect();
-    } else if (currentQuestionIndex < questions.length - 1) {
-      currentQuestionIndex++;
-      renderQuestion();
+    if (isStage3) {
+      if (currentQuestionIndex < totalQuestions - 1) {
+        currentQuestionIndex++;
+        renderQuestion();
+      } else {
+        showResult();
+      }
     } else {
-      showResult();
+      const questions = (selectedMode && quizData.questionsByMode?.[selectedMode]) || quizData.questions;
+      if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        renderQuestion();
+      } else {
+        selectedWorks = [];
+        renderWorkSelect();
+        showScreen(screens.workSelect);
+      }
     }
   }, 280);
 }
@@ -510,8 +781,7 @@ function showResult() {
   $('result-type').textContent = result.type;
   setResultStar(result.type);
   
-  let desc = result.description;
-  if (selectedWork) desc = desc.replace(/사과/g, selectedWork);
+  const desc = result.description;
   
   $('result-description').innerHTML = desc.replace(/([.!?])\s+/g, '$1<br>');
   showScreen(screens.result);
@@ -540,13 +810,23 @@ const resetSettings = () => {
   currentQuestionIndex = 0;
   answers = [];
   selectedWork = null;
+  selectedWorks = [];
   selectedGender = null;
   selectedMode = null;
   $$('.setting-option').forEach(b => b.classList.remove('selected'));
+  $$('.setting-gender').forEach(b => b.classList.remove('selected'));
+  $$('.setting-mode').forEach(b => b.classList.remove('selected'));
   $('btn-confirm').disabled = true;
   showScreen(screens.settings);
   initStaticNoise();
 };
+
+function goToWorkReselect() {
+  selectedWorks = [];
+  answers.length = BASIC_QUESTIONS;
+  renderWorkSelect();
+  showScreen(screens.workSelect);
+}
 
 const scheduleGlitch = () => {
   setTimeout(() => {
@@ -564,5 +844,6 @@ document.addEventListener('DOMContentLoaded', () => {
   scheduleGlitch();
   
   document.querySelector('.btn-start').addEventListener('click', resetSettings);
-  document.querySelector('.btn-retry').addEventListener('click', resetSettings);
+  $('btn-repick')?.addEventListener('click', goToWorkReselect);
+  document.querySelector('.btn-retry')?.addEventListener('click', resetSettings);
 });
