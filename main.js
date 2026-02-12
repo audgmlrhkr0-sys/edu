@@ -178,14 +178,73 @@ async function loadSimilarResults() {
   return data || [];
 }
 
-const CHART_COLORS = [
-  'linear-gradient(90deg, #00f5ff 0%, rgba(0, 245, 255, 0.5) 100%)',
-  'linear-gradient(90deg, #ff00aa 0%, rgba(255, 0, 170, 0.5) 100%)',
-  'linear-gradient(90deg, #00c8d4 0%, rgba(0, 200, 212, 0.5) 100%)',
-  'linear-gradient(90deg, #ff6b9d 0%, rgba(255, 107, 157, 0.5) 100%)',
-  'linear-gradient(90deg, #7dd3fc 0%, rgba(125, 211, 252, 0.5) 100%)',
-  'linear-gradient(90deg, #c084fc 0%, rgba(192, 132, 252, 0.5) 100%)',
-];
+// 유형별 고정 색상 - 서로 다른 색상 계열 사용 (조용함:초록, 포근함:핑크, 답답함:파랑)
+const TYPE_COLOR_MAP = {
+  조용함: { color: '#22c55e', glow: '0 0 14px #22c55e', cls: 'star-green' },           // 초록
+  포근함: { color: '#ec4899', glow: '0 0 14px #ec4899', cls: 'star-pink' },           // 핑크
+  답답함: { color: '#3b82f6', glow: '0 0 14px #3b82f6', cls: 'star-blue' },           // 파랑
+  편안함: { color: '#f59e0b', glow: '0 0 14px #f59e0b', cls: 'star-amber' },          // 앰버
+  좋음: { color: '#eab308', glow: '0 0 14px #eab308', cls: 'star-yellow' },           // 노랑
+  짜증: { color: '#ef4444', glow: '0 0 14px #ef4444', cls: 'star-red' },              // 빨강
+  행복: { color: '#f97316', glow: '0 0 14px #f97316', cls: 'star-orange' },           // 주황
+  우아함: { color: '#a855f7', glow: '0 0 14px #a855f7', cls: 'star-purple' },         // 보라
+  갑갑함: { color: '#d946ef', glow: '0 0 14px #d946ef', cls: 'star-fuchsia' },        // 푸시아
+  지루함: { color: '#92400e', glow: '0 0 14px #92400e', cls: 'star-brown' },           // 갈색
+  재미없음: { color: '#78716c', glow: '0 0 14px #78716c', cls: 'star-stone' },         // 스톤
+  강렬함: { color: '#dc2626', glow: '0 0 14px #dc2626', cls: 'star-red-dark' },        // 다크레드
+  상큼함: { color: '#06b6d4', glow: '0 0 14px #06b6d4', cls: 'star-cyan' },           // 시안
+  달달함: { color: '#f43f5e', glow: '0 0 14px #f43f5e', cls: 'star-rose' },           // 로즈
+  두려움: { color: '#4f46e5', glow: '0 0 14px #4f46e5', cls: 'star-indigo' },          // 인디고
+  무서움: { color: '#7c2d12', glow: '0 0 14px #7c2d12', cls: 'star-amber-dark' },      // 다크앰버
+  귀여움: { color: '#fb7185', glow: '0 0 14px #fb7185', cls: 'star-coral' },           // 코랄
+  슬픔: { color: '#0ea5e9', glow: '0 0 14px #0ea5e9', cls: 'star-sky' },              // 스카이
+  화남: { color: '#b91c1c', glow: '0 0 14px #b91c1c', cls: 'star-crimson' },          // 크림슨
+  두근거림: { color: '#be185d', glow: '0 0 14px #be185d', cls: 'star-pink-dark' },     // 다크핑크
+  맛있음: { color: '#fbbf24', glow: '0 0 14px #fbbf24', cls: 'star-gold' },           // 골드
+  평온함: { color: '#84cc16', glow: '0 0 14px #84cc16', cls: 'star-lime' },           // 라임
+  차분함: { color: '#14b8a6', glow: '0 0 14px #14b8a6', cls: 'star-teal' },           // 틸
+  심심함: { color: '#64748b', glow: '0 0 14px #64748b', cls: 'star-slate' },           // 슬레이트
+  불편함: { color: '#ea580c', glow: '0 0 14px #ea580c', cls: 'star-orange-dark' },     // 다크오렌지
+  따분함: { color: '#57534e', glow: '0 0 14px #57534e', cls: 'star-stone-dark' },      // 스톤다크
+  우울함: { color: '#475569', glow: '0 0 14px #475569', cls: 'star-slate-dark' },      // 슬레이트다크
+  안정감: { color: '#65a30d', glow: '0 0 14px #65a30d', cls: 'star-olive' },           // 올리브
+  신중함: { color: '#0891b2', glow: '0 0 14px #0891b2', cls: 'star-cyan-dark' },       // 다크시안
+  숙연함: { color: '#6d28d9', glow: '0 0 14px #6d28d9', cls: 'star-violet' },          // 바이올렛
+  딱딱함: { color: '#a16207', glow: '0 0 14px #a16207', cls: 'star-amber-brown' },     // 앰버브라운
+  무거움: { color: '#1e293b', glow: '0 0 14px #334155', cls: 'star-slate-deep' },      // 다크슬레이트
+  가벼움: { color: '#67e8f9', glow: '0 0 14px #67e8f9', cls: 'star-cyan-light' },      // 라이트시안
+  조심스러움: { color: '#8b5cf6', glow: '0 0 14px #8b5cf6', cls: 'star-violet-light' }, // 바이올렛라이트
+  담담함: { color: '#0d9488', glow: '0 0 14px #0d9488', cls: 'star-teal-dark' },       // 다크틸
+  침착함: { color: '#6366f1', glow: '0 0 14px #6366f1', cls: 'star-indigo-light' },    // 인디고라이트
+  긴장감: { color: '#c026d3', glow: '0 0 14px #c026d3', cls: 'star-fuchsia-dark' },    // 다크푸시아
+  어색함: { color: '#9333ea', glow: '0 0 14px #9333ea', cls: 'star-purple-dark' },     // 다크보라
+  느긋함: { color: '#2dd4bf', glow: '0 0 14px #2dd4bf', cls: 'star-teal-light' },      // 라이트틸
+  정적임: { color: '#71717a', glow: '0 0 14px #71717a', cls: 'star-zinc' },            // 징크
+  억울함: { color: '#e11d48', glow: '0 0 14px #e11d48', cls: 'star-rose-dark' },       // 다크로즈
+};
+
+const FALLBACK_STYLE = { color: '#00f5ff', glow: '0 0 12px #00f5ff', cls: 'star-default' };
+
+function getStyleForType(type) {
+  return TYPE_COLOR_MAP[type] || FALLBACK_STYLE;
+}
+
+function setResultStar(resultType, isMyResult = true) {
+  const starEl = $('result-star');
+  const textEl = $('result-type');
+  if (!starEl || !textEl) return;
+  const style = getStyleForType(resultType);
+  starEl.textContent = '★';
+  starEl.className = 'result-star ' + style.cls + (isMyResult ? ' result-star-mine' : '');
+  starEl.style.color = style.color;
+  starEl.style.textShadow = style.glow;
+  textEl.style.color = style.color;
+  textEl.style.webkitTextFillColor = style.color;
+  textEl.style.background = 'none';
+  textEl.style.backgroundClip = 'unset';
+  textEl.style.webkitBackgroundClip = 'unset';
+  textEl.style.textShadow = style.glow;
+}
 
 function renderOthersResults(countByType, hasSupabase = true) {
   const el = $('others-results');
@@ -197,25 +256,55 @@ function renderOthersResults(countByType, hasSupabase = true) {
       : '<p class="others-results-empty">통계 기능을 사용하려면 Supabase URL과 키를 설정해 주세요.</p>';
     return;
   }
-  const maxCount = Math.max(...entries.map(([, c]) => c));
+  const stars = [];
+  entries.forEach(([type, count]) => {
+    const style = getStyleForType(type);
+    for (let k = 0; k < count; k++) {
+      stars.push({ type, count, color: style.color, glow: style.glow, cls: style.cls });
+    }
+  });
+  for (let i = stars.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [stars[i], stars[j]] = [stars[j], stars[i]];
+  }
   el.innerHTML = `
-    <p class="others-results-title">같은 성별·모드에서 나온 결과</p>
-    <div class="chart-bars">
-      ${entries.map(([type, count], i) => {
-        const pct = maxCount > 0 ? (count / maxCount) * 100 : 0;
-        const color = CHART_COLORS[i % CHART_COLORS.length];
+    <p class="others-results-title">같은 성별·모드의 별들</p>
+    <div class="star-sky">
+      ${stars.map((s) => {
+        const left = (2 + Math.random() * 88).toFixed(1);
+        const top = (2 + Math.random() * 88).toFixed(1);
         return `
-          <div class="chart-row">
-            <span class="chart-label">${type}</span>
-            <div class="chart-bar-wrap">
-              <div class="chart-bar" style="width: ${pct}%; background: ${color};"></div>
-              <span class="chart-value">${count}명</span>
-            </div>
-          </div>
-        `;
+        <span class="sky-star ${s.cls}" 
+          style="color:${s.color};text-shadow:${s.glow};left:${left}%;top:${top}%;"
+          data-type="${s.type}"
+          data-count="${s.count}"
+          title="${s.type} · ${s.count}명">★</span>
+      `;
       }).join('')}
     </div>
   `;
+  el.querySelectorAll('.sky-star').forEach(star => {
+    star.addEventListener('mouseenter', showStarTooltip);
+    star.addEventListener('mouseleave', hideStarTooltip);
+  });
+}
+
+let starTooltip = null;
+function showStarTooltip(e) {
+  const el = e.currentTarget;
+  hideStarTooltip();
+  starTooltip = document.createElement('div');
+  starTooltip.className = 'star-tooltip';
+  starTooltip.textContent = `${el.dataset.type} · ${el.dataset.count}명`;
+  document.body.appendChild(starTooltip);
+  const rect = el.getBoundingClientRect();
+  const ttW = starTooltip.offsetWidth;
+  starTooltip.style.left = (rect.left + rect.width / 2 - ttW / 2) + 'px';
+  starTooltip.style.top = (rect.top - 34) + 'px';
+}
+function hideStarTooltip() {
+  if (starTooltip && starTooltip.parentNode) starTooltip.parentNode.removeChild(starTooltip);
+  starTooltip = null;
 }
 
 let currentQuestionIndex = 0;
@@ -405,6 +494,7 @@ function showResult() {
 
   const result = quizData.results[dominant];
   $('result-type').textContent = result.type;
+  setResultStar(result.type);
   
   let desc = result.description;
   if (selectedWork) desc = desc.replace(/사과/g, selectedWork);
