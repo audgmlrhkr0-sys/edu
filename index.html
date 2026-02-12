@@ -41,37 +41,30 @@
           <span class="hud-status">SELECT INPUT</span>
         </div>
         <div class="settings-content">
-          <h2 class="settings-title glitch-text-sm">사용자 설정 모드</h2>
-          <p class="settings-desc glitch-label">아래 보기를 선택해 주세요</p>
+          <h2 class="settings-title glitch-text-sm">사용자 설정</h2>
 
           <div class="settings-group hud-panel">
-          <span class="settings-label">성별</span>
-          <div class="settings-options" id="gender-options">
-            <button type="button" class="setting-option" data-category="gender" data-value="남">남</button>
-            <button type="button" class="setting-option" data-category="gender" data-value="녀">녀</button>
+            <span class="settings-label">성별</span>
+            <div class="settings-options" id="gender-options">
+              <button type="button" class="setting-option setting-gender" data-category="gender" data-value="남">남</button>
+              <button type="button" class="setting-option setting-gender" data-category="gender" data-value="녀">녀</button>
+            </div>
           </div>
-        </div>
 
           <div class="settings-group hud-panel">
-          <span class="settings-label">나이</span>
-          <div class="settings-options" id="age-options">
-            <button type="button" class="setting-option" data-category="age" data-value="어린이">어린이</button>
-            <button type="button" class="setting-option" data-category="age" data-value="청소년">청소년</button>
-            <button type="button" class="setting-option" data-category="age" data-value="청년">청년</button>
-            <button type="button" class="setting-option" data-category="age" data-value="어르신">어르신</button>
+            <span class="settings-label">모드 (하나만 선택)</span>
+            <div class="settings-options" id="mode-options">
+              <button type="button" class="setting-option setting-mode" data-category="mode" data-value="어린이">어린이</button>
+              <button type="button" class="setting-option setting-mode" data-category="mode" data-value="청소년">청소년</button>
+              <button type="button" class="setting-option setting-mode" data-category="mode" data-value="청년">청년</button>
+              <button type="button" class="setting-option setting-mode" data-category="mode" data-value="어르신">어르신</button>
+              <button type="button" class="setting-option setting-mode" data-category="mode" data-value="쉬움">쉬움</button>
+              <button type="button" class="setting-option setting-mode" data-category="mode" data-value="보통">보통</button>
+              <button type="button" class="setting-option setting-mode" data-category="mode" data-value="어려움">어려움</button>
+            </div>
           </div>
-        </div>
 
-          <div class="settings-group hud-panel">
-          <span class="settings-label">난이도</span>
-          <div class="settings-options" id="difficulty-options">
-            <button type="button" class="setting-option" data-category="difficulty" data-value="쉬움">쉬움</button>
-            <button type="button" class="setting-option" data-category="difficulty" data-value="보통">보통</button>
-            <button type="button" class="setting-option" data-category="difficulty" data-value="어려움">어려움</button>
-          </div>
-        </div>
-
-        <button type="button" class="btn-confirm glitch-btn" id="btn-confirm" aria-label="시작" disabled><span>EXECUTE</span></button>
+          <button type="button" class="btn-confirm glitch-btn" id="btn-confirm" aria-label="시작" disabled><span>EXECUTE</span></button>
         </div>
       </div>
     </section>
@@ -125,11 +118,14 @@
           <h2 class="glitch-text-sm">분석 결과</h2>
           <div class="result-type glitch-text-sm" id="result-type"></div>
           <p class="result-description glitch-text-sm" id="result-description"></p>
+          <div id="others-results" class="others-results glitch-text-sm"></div>
           <button type="button" class="btn-retry glitch-btn" aria-label="다시 하기"><span>RESCAN</span></button>
         </div>
       </div>
     </section>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

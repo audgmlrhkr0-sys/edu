@@ -722,6 +722,72 @@ body {
   text-align: center;
 }
 
+.others-results {
+  font-size: 0.85rem;
+  color: var(--cyber-dim);
+  margin: 0 auto 1.5rem;
+  max-width: 340px;
+  width: 100%;
+  text-align: left;
+}
+
+.others-results-empty {
+  margin: 0.5rem 0;
+  font-size: 0.8rem;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.others-results-title {
+  margin: 0 0 1rem;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--cyber-cyan);
+  text-align: center;
+}
+
+.chart-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.chart-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.chart-label {
+  min-width: 4.5em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--cyber-text);
+}
+
+.chart-bar-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 1.5rem;
+}
+
+.chart-bar {
+  height: 1.25rem;
+  min-width: 4px;
+  border-radius: 2px;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 8px rgba(0, 245, 255, 0.3);
+}
+
+.chart-value {
+  font-size: 0.75rem;
+  color: var(--cyber-cyan);
+  min-width: 2.5em;
+}
+
 /* ===== 글리치 효과 (고장난 모니터) ===== */
 
 /* 전체 화면 글리치 오버레이 */

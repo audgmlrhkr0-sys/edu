@@ -70,6 +70,9 @@ const quizData = {
     '1전시실': ['사과', '파인애플', '감'],
     '2전시실': ['한라봉', '딸기'],
   },
+  // 모드별 질문 (선택 사항). 예: questionsByMode: { '남': [...], '어린이': [...] }
+  // 없으면 기본 questions 사용
+  questionsByMode: {},
   results: {
     A: { type: '답답함', description: '미술관의 조용한 분위기가 답답하게 느껴지는군요. 열린 공간과 자유로움이 더 맞을 수 있어요.' },
     B: { type: '편안함', description: '미술관의 조용한 분위기가 편안하게 느껴지시는군요. 차분한 감상이 잘 맞는 타입이에요.' },
@@ -124,10 +127,102 @@ const quizData = {
   },
 };
 
+// Supabase: config.js 또는 아래 직접 입력. config.js의 SUPABASE_ANON_KEY에 키를 넣으세요.
+const SUPABASE_KEY_FALLBACK = ''; // config.js에 안 넣었으면 여기에 anon key 붙여넣기
+function getSupabaseClient() {
+  const url = (window.SUPABASE_URL || '').trim();
+  const key = (window.SUPABASE_ANON_KEY || SUPABASE_KEY_FALLBACK || '').trim();
+  if (!url || !key) return null;
+  try {
+    const s = window.supabase;
+    if (s && typeof s.createClient === 'function') return s.createClient(url, key);
+    if (s && typeof s === 'function') return s(url, key);
+    if (typeof createClient === 'function') return createClient(url, key);
+  } catch (e) {
+    console.error('Supabase 클라이언트 생성 실패:', e);
+  }
+  if (!url || !key) {
+    console.warn('Supabase: config.js의 SUPABASE_ANON_KEY 또는 main.js의 SUPABASE_KEY_FALLBACK에 anon key를 입력하세요.');
+  }
+  return null;
+}
+let _supabaseClient = null;
+const supabaseClient = () => {
+  if (!_supabaseClient) _supabaseClient = getSupabaseClient();
+  return _supabaseClient;
+};
+
+async function saveResultToSupabase(resultType) {
+  const client = supabaseClient();
+  if (!client || !selectedGender || !selectedMode) return;
+  const { error } = await client.from('test_results').insert({
+    gender: selectedGender,
+    mode: selectedMode,
+    result_type: resultType,
+  });
+  if (error) console.error('Supabase 저장 실패:', error);
+}
+
+async function loadSimilarResults() {
+  const client = supabaseClient();
+  if (!client || !selectedGender || !selectedMode) return [];
+  const { data, error } = await client
+    .from('test_results')
+    .select('result_type')
+    .eq('gender', selectedGender)
+    .eq('mode', selectedMode);
+  if (error) {
+    console.error('Supabase 조회 실패:', error);
+    return [];
+  }
+  return data || [];
+}
+
+const CHART_COLORS = [
+  'linear-gradient(90deg, #00f5ff 0%, rgba(0, 245, 255, 0.5) 100%)',
+  'linear-gradient(90deg, #ff00aa 0%, rgba(255, 0, 170, 0.5) 100%)',
+  'linear-gradient(90deg, #00c8d4 0%, rgba(0, 200, 212, 0.5) 100%)',
+  'linear-gradient(90deg, #ff6b9d 0%, rgba(255, 107, 157, 0.5) 100%)',
+  'linear-gradient(90deg, #7dd3fc 0%, rgba(125, 211, 252, 0.5) 100%)',
+  'linear-gradient(90deg, #c084fc 0%, rgba(192, 132, 252, 0.5) 100%)',
+];
+
+function renderOthersResults(countByType, hasSupabase = true) {
+  const el = $('others-results');
+  if (!el) return;
+  const entries = Object.entries(countByType).sort((a, b) => b[1] - a[1]);
+  if (entries.length === 0) {
+    el.innerHTML = hasSupabase
+      ? '<p class="others-results-empty">아직 같은 성별·모드의 다른 사용자 결과가 없습니다.</p>'
+      : '<p class="others-results-empty">통계 기능을 사용하려면 Supabase URL과 키를 설정해 주세요.</p>';
+    return;
+  }
+  const maxCount = Math.max(...entries.map(([, c]) => c));
+  el.innerHTML = `
+    <p class="others-results-title">같은 성별·모드에서 나온 결과</p>
+    <div class="chart-bars">
+      ${entries.map(([type, count], i) => {
+        const pct = maxCount > 0 ? (count / maxCount) * 100 : 0;
+        const color = CHART_COLORS[i % CHART_COLORS.length];
+        return `
+          <div class="chart-row">
+            <span class="chart-label">${type}</span>
+            <div class="chart-bar-wrap">
+              <div class="chart-bar" style="width: ${pct}%; background: ${color};"></div>
+              <span class="chart-value">${count}명</span>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
+
 let currentQuestionIndex = 0;
 let answers = [];
 let selectedWork = null;
-let userSettings = { gender: null, age: null, difficulty: null };
+let selectedGender = null; // 남 | 녀
+let selectedMode = null;   // 어린이 | 청소년 | 청년 | 어르신 | 쉬움 | 보통 | 어려움
 
 const $ = (id) => document.getElementById(id);
 const $$ = (selector) => document.querySelectorAll(selector);
@@ -178,13 +273,21 @@ function initStaticNoise() {
 }
 
 function setupSettingsScreen() {
-  $$('.setting-option').forEach(btn => {
+  $$('.setting-gender').forEach(btn => {
     btn.addEventListener('click', () => {
-      const { category, value } = btn.dataset;
-      $$(`[data-category="${category}"]`).forEach(b => b.classList.remove('selected'));
+      $$('.setting-gender').forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
-      userSettings[category] = value;
-      $('btn-confirm').disabled = !(userSettings.gender && userSettings.age && userSettings.difficulty);
+      selectedGender = btn.dataset.value;
+      $('btn-confirm').disabled = !(selectedGender && selectedMode);
+    });
+  });
+
+  $$('.setting-mode').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('.setting-mode').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedMode = btn.dataset.value;
+      $('btn-confirm').disabled = !(selectedGender && selectedMode);
     });
   });
 
@@ -244,8 +347,9 @@ function renderWorkSelect() {
 }
 
 function renderQuestion() {
-  const question = quizData.questions[currentQuestionIndex];
-  const total = quizData.questions.length;
+  const questions = (selectedMode && quizData.questionsByMode?.[selectedMode]) || quizData.questions;
+  const question = questions[currentQuestionIndex];
+  const total = questions.length;
 
   $('progress-fill').style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
   $('question-number').textContent = `Q_${String(currentQuestionIndex + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
@@ -278,11 +382,12 @@ function handleOptionClick(e) {
   btn.classList.add('selected');
   answers[currentQuestionIndex] = btn.dataset.value;
 
+  const questions = (selectedMode && quizData.questionsByMode?.[selectedMode]) || quizData.questions;
   setTimeout(() => {
     if (currentQuestionIndex === 1) {
       showScreen(screens.workSelect);
       renderWorkSelect();
-    } else if (currentQuestionIndex < quizData.questions.length - 1) {
+    } else if (currentQuestionIndex < questions.length - 1) {
       currentQuestionIndex++;
       renderQuestion();
     } else {
@@ -306,13 +411,33 @@ function showResult() {
   
   $('result-description').innerHTML = desc.replace(/([.!?])\s+/g, '$1<br>');
   showScreen(screens.result);
+
+  const othersEl = $('others-results');
+  if (othersEl) othersEl.innerHTML = '';
+
+  const hasSupabase = !!supabaseClient();
+  saveResultToSupabase(result.type)
+    .then(() => loadSimilarResults())
+    .then((rows) => {
+      const countByType = {};
+      (rows || []).forEach((row) => {
+        const t = row.result_type || '';
+        if (t) countByType[t] = (countByType[t] || 0) + 1;
+      });
+      renderOthersResults(countByType, hasSupabase);
+    })
+    .catch((err) => {
+      console.error('통계 로드 실패:', err);
+      renderOthersResults({}, hasSupabase);
+    });
 }
 
 const resetSettings = () => {
   currentQuestionIndex = 0;
   answers = [];
   selectedWork = null;
-  userSettings = { gender: null, age: null, difficulty: null };
+  selectedGender = null;
+  selectedMode = null;
   $$('.setting-option').forEach(b => b.classList.remove('selected'));
   $('btn-confirm').disabled = true;
   showScreen(screens.settings);
