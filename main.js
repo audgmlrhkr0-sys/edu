@@ -856,7 +856,7 @@ function handleOptionClick(e) {
   const totalQuestions = BASIC_QUESTIONS + selectedWorks.length * QUESTIONS_PER_WORK;
 
   setTimeout(() => {
-    optionsContainer.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    optionsContainer.innerHTML = '';
     if (isStage3) {
       if (currentQuestionIndex < totalQuestions - 1) {
         currentQuestionIndex++;
