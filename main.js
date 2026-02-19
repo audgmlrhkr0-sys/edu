@@ -347,36 +347,16 @@ const quizData = {
       { text: '작다', value: 'CA19' }, { text: '압박감', value: 'CA20' },
     ],
     emotion: [
-      { text: '공감되다', value: 'EM1' },
-      { text: '몰입되다', value: 'EM2' },
-      { text: '와닿다', value: 'EM3' },
-      { text: '여운이 있다', value: 'EM4' },
-      { text: '잔잔하다', value: 'EM5' },
-      { text: '편안하다', value: 'EM6' },
-      { text: '따뜻하다', value: 'EM7' },
-      { text: '끌리다', value: 'EM8' },
-      { text: '고요하다', value: 'EM9' },
-      { text: '깊다', value: 'EM10' },
-      { text: '스며들다', value: 'EM11' },
-      { text: '인상 깊다', value: 'EM12' },
-      { text: '흥미롭다', value: 'EM13' },
-      { text: '의미 있다', value: 'EM14' },
-      { text: '좋다', value: 'EM15' },
-      { text: '쓸쓸하다', value: 'EM16' },
-      { text: '불안하다', value: 'EM17' },
-      { text: '낯설다', value: 'EM18' },
-      { text: '막막하다', value: 'EM19' },
-      { text: '복잡하다', value: 'EM20' },
-      { text: '답답하다', value: 'EM21' },
-      { text: '서글프다', value: 'EM22' },
-      { text: '공허하다', value: 'EM23' },
-      { text: '어렵다', value: 'EM24' },
-      { text: '무겁다', value: 'EM25' },
-      { text: '이상하다', value: 'EM26' },
-      { text: '묘하다', value: 'EM27' },
-      { text: '어색하다', value: 'EM28' },
-      { text: '거리감이 있다', value: 'EM29' },
-      { text: '울컥하다', value: 'EM30' },
+      { text: '😊', value: 'EM1' },
+      { text: '😍', value: 'EM2' },
+      { text: '🤩', value: 'EM3' },
+      { text: '🧐', value: 'EM4' },
+      { text: '😎', value: 'EM5' },
+      { text: '😢', value: 'EM6' },
+      { text: '🫨', value: 'EM7' },
+      { text: '😴', value: 'EM8' },
+      { text: '😵‍💫', value: 'EM9' },
+      { text: '🤔', value: 'EM10' },
     ],
     captionEmotion: [
       { text: '이해된다', value: 'CP1' },
@@ -682,36 +662,16 @@ const quizData = {
     CA18: { type: '강렬함', description: '가까이서 보는 작품이 거대하게 느껴지시는군요. 스케일에 압도되는 타입이에요.' },
     CA19: { type: '조용함', description: '가까이서 보는 작품이 작게 느껴지시는군요. 섬세한 것을 선호하는 타입이에요.' },
     CA20: { type: '답답함', description: '가까이서 보는 작품에 압박감을 느끼시는군요. 거리를 두는 타입이에요.' },
-    EM1: { type: '편안함', description: '작품에 공감되시는군요. 작품과 감정적으로 이어지는 타입이에요.' },
-    EM2: { type: '편안함', description: '작품에 몰입되시는군요. 깊이 감상하는 것을 좋아하는 타입이에요.' },
-    EM3: { type: '편안함', description: '작품이 와닿으시는군요. 메시지나 느낌이 직설적으로 전해지는 타입이에요.' },
-    EM4: { type: '편안함', description: '작품에 여운이 남으시는군요. 본 뒤에도 오래 가는 인상을 받는 타입이에요.' },
-    EM5: { type: '편안함', description: '작품이 잔잔하게 느껴지시는군요. 고요하고 담담한 감상을 선호하는 타입이에요.' },
-    EM6: { type: '편안함', description: '작품이 편안하게 느껴지시는군요. 부담 없이 감상하는 타입이에요.' },
-    EM7: { type: '포근함', description: '작품이 따뜻하게 느껴지시는군요. 온기 있는 감상을 하는 타입이에요.' },
-    EM8: { type: '편안함', description: '작품에 끌리시는군요. 자연스럽게 시선이 가는 타입이에요.' },
-    EM9: { type: '조용함', description: '작품이 고요하게 느껴지시는군요. 평온한 감상을 선호하는 타입이에요.' },
-    EM10: { type: '편안함', description: '작품이 깊게 느껴지시는군요. 표면 너머의 의미를 찾는 타입이에요.' },
-    EM11: { type: '편안함', description: '작품에 스며들게 되시는군요. 작품과 하나 되는 감상을 하는 타입이에요.' },
-    EM12: { type: '편안함', description: '작품이 인상 깊게 느껴지시는군요. 오래 기억에 남는 감상을 하는 타입이에요.' },
-    EM13: { type: '행복', description: '작품이 흥미롭게 느껴지시는군요. 탐구하고 싶은 마음이 있는 타입이에요.' },
-    EM14: { type: '편안함', description: '작품이 의미 있게 느껴지시는군요. 내용이나 맥락을 소중히 여기는 타입이에요.' },
-    EM15: { type: '행복', description: '작품이 좋게 느껴지시는군요. 긍정적인 감상을 하는 타입이에요.' },
-    EM16: { type: '답답함', description: '작품이 쓸쓸하게 느껴지시는군요. 감성적으로 여운이 남는 타입이에요.' },
-    EM17: { type: '강렬함', description: '작품이 불안하게 느껴지시는군요. 불편한 감정을 받아들이는 타입이에요.' },
-    EM18: { type: '어색함', description: '작품이 낯설게 느껴지시는군요. 새로운 것을 받아들이는 데 시간이 걸리는 타입이에요.' },
-    EM19: { type: '답답함', description: '작품이 막막하게 느껴지시는군요. 어디서부터 감상해야 할지 모르겠는 타입이에요.' },
-    EM20: { type: '답답함', description: '작품이 복잡하게 느껴지시는군요. 정리가 되지 않아 불편한 타입이에요.' },
-    EM21: { type: '답답함', description: '작품이 답답하게 느껴지시는군요. 열린 감상을 선호하는 타입이에요.' },
-    EM22: { type: '답답함', description: '작품이 서글프게 느껴지시는군요. 슬픔이나 그리움이 전해지는 타입이에요.' },
-    EM23: { type: '답답함', description: '작품이 공허하게 느껴지시는군요. 비어 있는 느낌을 받는 타입이에요.' },
-    EM24: { type: '답답함', description: '작품이 어렵게 느껴지시는군요. 이해하기 부담되는 타입이에요.' },
-    EM25: { type: '답답함', description: '작품이 무겁게 느껴지시는군요. 짊어지기 힘든 인상을 받는 타입이에요.' },
-    EM26: { type: '어색함', description: '작품이 이상하게 느껴지시는군요. 낯선 감각을 받아들이는 타입이에요.' },
-    EM27: { type: '어색함', description: '작품이 묘하게 느껴지시는군요. 말로 하기 어려운 인상을 받는 타입이에요.' },
-    EM28: { type: '어색함', description: '작품이 어색하게 느껴지시는군요. 거리감이 있는 타입이에요.' },
-    EM29: { type: '어색함', description: '작품과 거리감이 느껴지시는군요. 쉽게 다가가지 못하는 타입이에요.' },
-    EM30: { type: '답답함', description: '작품을 보며 울컥하시는군요. 감정이 밀려오는 감성적인 타입이에요.' },
+    EM1: { type: '행복', description: '작품이 좋게 느껴지시는군요. 긍정적으로 감상하는 타입이에요.' },
+    EM2: { type: '행복', description: '작품에 반하시는군요. 마음이 끌리는 감상을 하는 타입이에요.' },
+    EM3: { type: '행복', description: '작품에 감탄하시는군요. 반짝이는 인상을 받는 타입이에요.' },
+    EM4: { type: '편안함', description: '작품을 관찰하고 탐구하게 되시는군요. 꼼꼼히 보는 타입이에요.' },
+    EM5: { type: '편안함', description: '작품이 쿨하고 여유롭게 느껴지시는군요. 담담히 감상하는 타입이에요.' },
+    EM6: { type: '답답함', description: '작품이 슬프거나 쓸쓸하게 느껴지시는군요. 감성적으로 여운이 남는 타입이에요.' },
+    EM7: { type: '강렬함', description: '작품이 흔들리거나 당황스럽게 느껴지시는군요. 강한 인상을 받는 타입이에요.' },
+    EM8: { type: '답답함', description: '작품이 지루하거나 졸리게 느껴지시는군요. 집중이 잘 안 되는 타입이에요.' },
+    EM9: { type: '답답함', description: '작품이 어지럽거나 혼란스럽게 느껴지시는군요. 정리가 안 되는 타입이에요.' },
+    EM10: { type: '편안함', description: '작품을 깊이 생각하게 되시는군요. 의미를 찾아보는 타입이에요.' },
     CP1: { type: '편안함', description: '캡션을 읽은 후 이해가 되시는군요. 설명이 작품 감상을 돕는 타입이에요.' },
     CP2: { type: '편안함', description: '캡션을 읽은 후 분석적으로 바라보시는군요. 맥락을 꼼꼼히 읽는 타입이에요.' },
     CP3: { type: '편안함', description: '캡션을 읽은 후 비판적으로 보시는군요. 설명과 작품을 견주어 생각하는 타입이에요.' },
@@ -1174,6 +1134,41 @@ function renderQuestion() {
         workSliderAnswers[workIdx] = { ...prevObj, [wq.key]: vals };
         currentQuestionIndex++;
         renderQuestion();
+      });
+      return;
+    }
+
+    if (wq.optionsKey === 'emotion') {
+      const emotionOpts = quizData.workOptions.emotion;
+      optionsContainer.innerHTML = `
+        <div class="emotion-swipe-wrap" id="emotion-swipe-wrap">
+          <div class="emotion-swipe-track">
+            ${emotionOpts.map((opt, idx) => `
+              <button type="button" class="emotion-swipe-item" data-value="${opt.value}" data-idx="${idx}">
+                <span class="emotion-emoji">${opt.text}</span>
+              </button>
+            `).join('')}
+          </div>
+        </div>
+        <p class="emotion-swipe-hint">좌우로 넘기고 이모지를 탭해 선택하세요</p>
+      `;
+      optionsContainer.querySelectorAll('.emotion-swipe-item').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const value = btn.dataset.value;
+          optionsContainer.querySelectorAll('.emotion-swipe-item').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          answers[currentQuestionIndex] = value;
+          const totalQuestions = BASIC_QUESTIONS + selectedWorks.length * QUESTIONS_PER_WORK;
+          setTimeout(() => {
+            optionsContainer.innerHTML = '';
+            if (currentQuestionIndex < totalQuestions - 1) {
+              currentQuestionIndex++;
+              renderQuestion();
+            } else {
+              showResult();
+            }
+          }, 280);
+        });
       });
       return;
     }
