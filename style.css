@@ -1536,68 +1536,61 @@ body {
   transition: all 0.2s ease;
 }
 
-/* 3단계 감정 이모지 스와이프 */
-.emotion-swipe-wrap {
+/* 3단계 감정 이모지 스와이프 - 한 장씩, 양옆 살짝 보이기 + 화살표 */
+.emotion-swipe-outer {
+  position: relative;
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  padding: 0.5rem 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0;
 }
 
-.emotion-swipe-wrap::-webkit-scrollbar {
-  height: 6px;
+.emotion-swipe-arrow {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: rgba(148, 163, 184, 0.7);
+  pointer-events: none;
+  user-select: none;
 }
 
-.emotion-swipe-wrap::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 3px;
-}
-
-.emotion-swipe-wrap::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.4);
-  border-radius: 3px;
+.emotion-swipe-viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  touch-action: pan-y pinch-zoom;
+  cursor: pointer;
 }
 
 .emotion-swipe-track {
   display: flex;
-  gap: 0.5rem;
-  padding: 0 0.5rem;
-  min-width: min-content;
+  transition: transform 0.25s ease-out;
 }
 
-.emotion-swipe-item {
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-  min-width: 100px;
-  height: 120px;
+.emotion-swipe-slide {
+  flex: 0 0 85%;
+  width: 85%;
+  min-width: 85%;
+  height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  border-radius: 16px;
+  box-sizing: border-box;
 }
 
-.emotion-swipe-item:hover {
-  transform: scale(1.05);
-  border-color: rgba(59, 130, 246, 0.4);
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.15);
-}
-
-.emotion-swipe-item.selected {
-  border-color: rgba(34, 197, 94, 0.6);
-  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
-}
-
-.emotion-emoji {
-  font-size: 3.5rem;
+.emotion-swipe-slide .emotion-emoji {
+  font-size: 5rem;
   line-height: 1;
   display: block;
 }
@@ -1606,17 +1599,21 @@ body {
   font-size: 0.8rem;
   color: rgba(148, 163, 184, 0.8);
   text-align: center;
-  margin: 0.25rem 0 0;
+  margin: 0.5rem 0 0;
 }
 
 @media (max-width: 480px) {
-  .emotion-swipe-item {
-    min-width: 88px;
-    height: 100px;
+  .emotion-swipe-slide {
+    height: 140px;
   }
 
-  .emotion-emoji {
-    font-size: 2.75rem;
+  .emotion-swipe-slide .emotion-emoji {
+    font-size: 4rem;
+  }
+
+  .emotion-swipe-arrow {
+    width: 24px;
+    font-size: 1.25rem;
   }
 }
 

@@ -1140,35 +1140,95 @@ function renderQuestion() {
 
     if (wq.optionsKey === 'emotion') {
       const emotionOpts = quizData.workOptions.emotion;
+      const slideWidthPercent = 85;
       optionsContainer.innerHTML = `
-        <div class="emotion-swipe-wrap" id="emotion-swipe-wrap">
-          <div class="emotion-swipe-track">
-            ${emotionOpts.map((opt, idx) => `
-              <button type="button" class="emotion-swipe-item" data-value="${opt.value}" data-idx="${idx}">
-                <span class="emotion-emoji">${opt.text}</span>
-              </button>
-            `).join('')}
+        <div class="emotion-swipe-outer">
+          <span class="emotion-swipe-arrow emotion-swipe-arrow--left" aria-hidden="true">←</span>
+          <div class="emotion-swipe-viewport" id="emotion-swipe-viewport">
+            <div class="emotion-swipe-track" id="emotion-swipe-track">
+              ${emotionOpts.map((opt) => `
+                <div class="emotion-swipe-slide" data-value="${opt.value}">
+                  <span class="emotion-emoji">${opt.text}</span>
+                </div>
+              `).join('')}
+            </div>
           </div>
+          <span class="emotion-swipe-arrow emotion-swipe-arrow--right" aria-hidden="true">→</span>
         </div>
-        <p class="emotion-swipe-hint">좌우로 넘기고 이모지를 탭해 선택하세요</p>
+        <p class="emotion-swipe-hint">좌우로 스와이프해 이모지를 바꾸고, 탭하면 선택됩니다</p>
       `;
-      optionsContainer.querySelectorAll('.emotion-swipe-item').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const value = btn.dataset.value;
-          optionsContainer.querySelectorAll('.emotion-swipe-item').forEach(b => b.classList.remove('selected'));
-          btn.classList.add('selected');
-          answers[currentQuestionIndex] = value;
-          const totalQuestions = BASIC_QUESTIONS + selectedWorks.length * QUESTIONS_PER_WORK;
-          setTimeout(() => {
-            optionsContainer.innerHTML = '';
-            if (currentQuestionIndex < totalQuestions - 1) {
-              currentQuestionIndex++;
-              renderQuestion();
-            } else {
-              showResult();
-            }
-          }, 280);
-        });
+      const viewport = $('emotion-swipe-viewport');
+      const track = $('emotion-swipe-track');
+      let emotionIndex = 0;
+      const totalEmotions = emotionOpts.length;
+
+      if (track) track.style.width = `${totalEmotions * slideWidthPercent}%`;
+
+      function updateTrack() {
+        if (!track) return;
+        const offsetPercent = (100 - slideWidthPercent) / 2 - emotionIndex * slideWidthPercent;
+        track.style.transform = `translateX(${offsetPercent}%)`;
+      }
+
+      let touchStartX = 0;
+      let didSwipe = false;
+      const SWIPE_THRESH = 40;
+
+      viewport.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        didSwipe = false;
+      }, { passive: true });
+      viewport.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const delta = touchStartX - touchEndX;
+        if (Math.abs(delta) > SWIPE_THRESH) {
+          didSwipe = true;
+          if (delta > 0) {
+            emotionIndex = (emotionIndex + 1) % totalEmotions;
+          } else {
+            emotionIndex = (emotionIndex - 1 + totalEmotions) % totalEmotions;
+          }
+          updateTrack();
+        }
+      }, { passive: true });
+
+      viewport.addEventListener('mousedown', (e) => {
+        touchStartX = e.clientX;
+        didSwipe = false;
+      });
+      viewport.addEventListener('mouseup', (e) => {
+        const delta = touchStartX - e.clientX;
+        if (Math.abs(delta) > SWIPE_THRESH) {
+          didSwipe = true;
+          if (delta > 0) {
+            emotionIndex = (emotionIndex + 1) % totalEmotions;
+          } else {
+            emotionIndex = (emotionIndex - 1 + totalEmotions) % totalEmotions;
+          }
+          updateTrack();
+        }
+      });
+
+      function selectCurrent() {
+        const value = emotionOpts[emotionIndex].value;
+        answers[currentQuestionIndex] = value;
+        const totalQuestions = BASIC_QUESTIONS + selectedWorks.length * QUESTIONS_PER_WORK;
+        optionsContainer.innerHTML = '';
+        if (currentQuestionIndex < totalQuestions - 1) {
+          currentQuestionIndex++;
+          renderQuestion();
+        } else {
+          showResult();
+        }
+      }
+
+      viewport.addEventListener('click', (e) => {
+        if (!e.target.closest('.emotion-swipe-viewport')) return;
+        if (didSwipe) {
+          didSwipe = false;
+          return;
+        }
+        selectCurrent();
       });
       return;
     }
