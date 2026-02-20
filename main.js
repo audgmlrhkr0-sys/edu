@@ -1140,10 +1140,10 @@ function renderQuestion() {
 
     if (wq.optionsKey === 'emotion') {
       const emotionOpts = quizData.workOptions.emotion;
-      const slideWidthPercent = 85;
+      const slideWidthPercent = 52;
       optionsContainer.innerHTML = `
         <div class="emotion-swipe-outer">
-          <span class="emotion-swipe-arrow emotion-swipe-arrow--left" aria-hidden="true">←</span>
+          <button type="button" class="emotion-swipe-arrow emotion-swipe-arrow--left" aria-label="이전">←</button>
           <div class="emotion-swipe-viewport" id="emotion-swipe-viewport">
             <div class="emotion-swipe-track" id="emotion-swipe-track">
               ${emotionOpts.map((opt) => `
@@ -1153,60 +1153,105 @@ function renderQuestion() {
               `).join('')}
             </div>
           </div>
-          <span class="emotion-swipe-arrow emotion-swipe-arrow--right" aria-hidden="true">→</span>
+          <button type="button" class="emotion-swipe-arrow emotion-swipe-arrow--right" aria-label="다음">→</button>
         </div>
-        <p class="emotion-swipe-hint">좌우로 스와이프해 이모지를 바꾸고, 탭하면 선택됩니다</p>
+        <p class="emotion-swipe-hint">화살표를 누르거나 드래그해 넘기고, 이모지를 탭하면 선택됩니다</p>
       `;
       const viewport = $('emotion-swipe-viewport');
       const track = $('emotion-swipe-track');
+      const arrowLeft = optionsContainer.querySelector('.emotion-swipe-arrow--left');
+      const arrowRight = optionsContainer.querySelector('.emotion-swipe-arrow--right');
       let emotionIndex = 0;
       const totalEmotions = emotionOpts.length;
 
       if (track) track.style.width = `${totalEmotions * slideWidthPercent}%`;
 
-      function updateTrack() {
+      const centerOffsetTrack = 5000 / (totalEmotions * slideWidthPercent) - 5;
+
+      function updateTrack(noTransition) {
         if (!track) return;
-        const offsetPercent = (100 - slideWidthPercent) / 2 - emotionIndex * slideWidthPercent;
+        if (noTransition) track.style.transition = 'none';
+        else track.style.transition = '';
+        const offsetPercent = centerOffsetTrack - emotionIndex * (100 / totalEmotions);
         track.style.transform = `translateX(${offsetPercent}%)`;
       }
 
-      let touchStartX = 0;
       let didSwipe = false;
-      const SWIPE_THRESH = 40;
+      let dragStartX = 0;
+      let dragStartIndex = 0;
+      let dragBasePercent = 0;
+
+      function goPrev() {
+        emotionIndex = (emotionIndex - 1 + totalEmotions) % totalEmotions;
+        updateTrack();
+        didSwipe = true;
+      }
+      function goNext() {
+        emotionIndex = (emotionIndex + 1) % totalEmotions;
+        updateTrack();
+        didSwipe = true;
+      }
+
+      arrowLeft.addEventListener('click', (e) => { e.stopPropagation(); goPrev(); });
+      arrowRight.addEventListener('click', (e) => { e.stopPropagation(); goNext(); });
 
       viewport.addEventListener('touchstart', (e) => {
-        touchStartX = e.touches[0].clientX;
+        dragStartX = e.touches[0].clientX;
+        dragStartIndex = emotionIndex;
+        dragBasePercent = centerOffsetTrack - emotionIndex * (100 / totalEmotions);
         didSwipe = false;
       }, { passive: true });
+      const dragFactor = 10000 / (totalEmotions * slideWidthPercent);
+
+      viewport.addEventListener('touchmove', (e) => {
+        const viewW = viewport.offsetWidth;
+        if (!viewW) return;
+        const deltaX = e.touches[0].clientX - dragStartX;
+        if (Math.abs(deltaX) > 5) e.preventDefault();
+        const deltaTrackPercent = (deltaX / viewW) * dragFactor;
+        const currentPercent = dragBasePercent + deltaTrackPercent;
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${currentPercent}%)`;
+      }, { passive: false });
       viewport.addEventListener('touchend', (e) => {
-        const touchEndX = e.changedTouches[0].clientX;
-        const delta = touchStartX - touchEndX;
-        if (Math.abs(delta) > SWIPE_THRESH) {
-          didSwipe = true;
-          if (delta > 0) {
-            emotionIndex = (emotionIndex + 1) % totalEmotions;
-          } else {
-            emotionIndex = (emotionIndex - 1 + totalEmotions) % totalEmotions;
-          }
-          updateTrack();
-        }
+        const viewW = viewport.offsetWidth;
+        const deltaX = e.changedTouches[0].clientX - dragStartX;
+        const deltaTrackPercent = viewW ? (deltaX / viewW) * dragFactor : 0;
+        const endPercent = dragBasePercent + deltaTrackPercent;
+        const rawIndex = Math.round((endPercent + 50 / slideWidthPercent) * totalEmotions / 100);
+        const newIndex = Math.max(0, Math.min(totalEmotions - 1, rawIndex));
+        if (newIndex !== dragStartIndex) didSwipe = true;
+        emotionIndex = newIndex;
+        updateTrack();
       }, { passive: true });
 
       viewport.addEventListener('mousedown', (e) => {
-        touchStartX = e.clientX;
+        dragStartX = e.clientX;
+        dragStartIndex = emotionIndex;
+        dragBasePercent = centerOffsetTrack - emotionIndex * (100 / totalEmotions);
         didSwipe = false;
       });
+      viewport.addEventListener('mousemove', (e) => {
+        if (e.buttons !== 1) return;
+        const viewW = viewport.offsetWidth;
+        if (!viewW) return;
+        const deltaX = e.clientX - dragStartX;
+        const deltaTrackPercent = (deltaX / viewW) * dragFactor;
+        const currentPercent = dragBasePercent + deltaTrackPercent;
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${currentPercent}%)`;
+      });
       viewport.addEventListener('mouseup', (e) => {
-        const delta = touchStartX - e.clientX;
-        if (Math.abs(delta) > SWIPE_THRESH) {
-          didSwipe = true;
-          if (delta > 0) {
-            emotionIndex = (emotionIndex + 1) % totalEmotions;
-          } else {
-            emotionIndex = (emotionIndex - 1 + totalEmotions) % totalEmotions;
-          }
-          updateTrack();
-        }
+        const viewW = viewport.offsetWidth;
+        if (!viewW) { updateTrack(); return; }
+        const deltaX = e.clientX - dragStartX;
+        const deltaTrackPercent = (deltaX / viewW) * dragFactor;
+        const endPercent = dragBasePercent + deltaTrackPercent;
+        const rawIndex = Math.round((endPercent + 50 / slideWidthPercent) * totalEmotions / 100);
+        const newIndex = Math.max(0, Math.min(totalEmotions - 1, rawIndex));
+        if (newIndex !== dragStartIndex) didSwipe = true;
+        emotionIndex = newIndex;
+        updateTrack();
       });
 
       function selectCurrent() {

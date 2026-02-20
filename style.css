@@ -1550,16 +1550,29 @@ body {
 
 .emotion-swipe-arrow {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 300;
-  color: rgba(148, 163, 184, 0.7);
-  pointer-events: none;
+  color: rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  cursor: pointer;
   user-select: none;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.emotion-swipe-arrow:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.emotion-swipe-arrow:active {
+  transform: scale(0.95);
 }
 
 .emotion-swipe-viewport {
@@ -1576,9 +1589,9 @@ body {
 }
 
 .emotion-swipe-slide {
-  flex: 0 0 85%;
-  width: 85%;
-  min-width: 85%;
+  flex: 0 0 10%;
+  width: 10%;
+  min-width: 10%;
   height: 160px;
   display: flex;
   align-items: center;
@@ -1612,7 +1625,8 @@ body {
   }
 
   .emotion-swipe-arrow {
-    width: 24px;
+    width: 36px;
+    height: 36px;
     font-size: 1.25rem;
   }
 }
