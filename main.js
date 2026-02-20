@@ -1195,62 +1195,53 @@ function renderQuestion() {
       arrowLeft.addEventListener('click', (e) => { e.stopPropagation(); goPrev(); });
       arrowRight.addEventListener('click', (e) => { e.stopPropagation(); goNext(); });
 
-      viewport.addEventListener('touchstart', (e) => {
-        dragStartX = e.touches[0].clientX;
-        dragStartIndex = emotionIndex;
-        dragBasePercent = centerOffsetTrack - emotionIndex * (100 / totalEmotions);
-        didSwipe = false;
-      }, { passive: true });
       const dragFactor = 10000 / (totalEmotions * slideWidthPercent);
 
-      viewport.addEventListener('touchmove', (e) => {
-        const viewW = viewport.offsetWidth;
-        if (!viewW) return;
-        const deltaX = e.touches[0].clientX - dragStartX;
-        if (Math.abs(deltaX) > 5) e.preventDefault();
-        const deltaTrackPercent = (deltaX / viewW) * dragFactor;
-        const currentPercent = dragBasePercent + deltaTrackPercent;
-        track.style.transition = 'none';
-        track.style.transform = `translateX(${currentPercent}%)`;
-      }, { passive: false });
-      viewport.addEventListener('touchend', (e) => {
-        const viewW = viewport.offsetWidth;
-        const deltaX = e.changedTouches[0].clientX - dragStartX;
-        const deltaTrackPercent = viewW ? (deltaX / viewW) * dragFactor : 0;
-        const endPercent = dragBasePercent + deltaTrackPercent;
-        const rawIndex = Math.round((endPercent + 50 / slideWidthPercent) * totalEmotions / 100);
-        const newIndex = Math.max(0, Math.min(totalEmotions - 1, rawIndex));
-        if (newIndex !== dragStartIndex) didSwipe = true;
-        emotionIndex = newIndex;
-        updateTrack();
-      }, { passive: true });
-
-      viewport.addEventListener('mousedown', (e) => {
+      viewport.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0 && e.pointerType !== 'touch') return;
+        e.preventDefault();
         dragStartX = e.clientX;
         dragStartIndex = emotionIndex;
         dragBasePercent = centerOffsetTrack - emotionIndex * (100 / totalEmotions);
         didSwipe = false;
+        viewport.setPointerCapture(e.pointerId);
       });
-      viewport.addEventListener('mousemove', (e) => {
-        if (e.buttons !== 1) return;
+
+      viewport.addEventListener('pointermove', (e) => {
+        if (e.buttons === 0 && e.pointerType === 'mouse') return;
+        if (!viewport.hasPointerCapture(e.pointerId)) return;
         const viewW = viewport.offsetWidth;
         if (!viewW) return;
+        e.preventDefault();
         const deltaX = e.clientX - dragStartX;
         const deltaTrackPercent = (deltaX / viewW) * dragFactor;
         const currentPercent = dragBasePercent + deltaTrackPercent;
         track.style.transition = 'none';
         track.style.transform = `translateX(${currentPercent}%)`;
       });
-      viewport.addEventListener('mouseup', (e) => {
+
+      const TAP_THRESH = 10;
+
+      viewport.addEventListener('pointerup', (e) => {
+        if (!viewport.hasPointerCapture(e.pointerId)) return;
+        viewport.releasePointerCapture(e.pointerId);
+        const deltaX = e.clientX - dragStartX;
+        if (Math.abs(deltaX) < TAP_THRESH) {
+          selectCurrent();
+          return;
+        }
         const viewW = viewport.offsetWidth;
         if (!viewW) { updateTrack(); return; }
-        const deltaX = e.clientX - dragStartX;
         const deltaTrackPercent = (deltaX / viewW) * dragFactor;
         const endPercent = dragBasePercent + deltaTrackPercent;
-        const rawIndex = Math.round((endPercent + 50 / slideWidthPercent) * totalEmotions / 100);
+        const rawIndex = Math.round((centerOffsetTrack - endPercent) * totalEmotions / 100);
         const newIndex = Math.max(0, Math.min(totalEmotions - 1, rawIndex));
-        if (newIndex !== dragStartIndex) didSwipe = true;
         emotionIndex = newIndex;
+        updateTrack();
+      });
+
+      viewport.addEventListener('pointercancel', (e) => {
+        viewport.releasePointerCapture(e.pointerId);
         updateTrack();
       });
 
@@ -1267,14 +1258,6 @@ function renderQuestion() {
         }
       }
 
-      viewport.addEventListener('click', (e) => {
-        if (!e.target.closest('.emotion-swipe-viewport')) return;
-        if (didSwipe) {
-          didSwipe = false;
-          return;
-        }
-        selectCurrent();
-      });
       return;
     }
 

@@ -1579,8 +1579,14 @@ body {
   flex: 1;
   min-width: 0;
   overflow: hidden;
-  touch-action: pan-y pinch-zoom;
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
   cursor: pointer;
+}
+.emotion-swipe-viewport * {
+  pointer-events: none;
 }
 
 .emotion-swipe-track {
