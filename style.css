@@ -730,6 +730,59 @@ body {
   align-content: flex-start;
 }
 
+.option-part-footer {
+  width: 100%;
+  margin-top: 0.75rem;
+  text-align: right;
+  flex-basis: 100%;
+}
+
+.btn-option-change {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0.35rem 0;
+  color: rgba(226, 232, 240, 0.95);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-shuffle-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.btn-shuffle-num {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+}
+
+.btn-option-change:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(59, 130, 246, 0.5);
+  transform: scale(1.05);
+}
+
+.btn-option-change:active {
+  transform: scale(0.98);
+}
+
+.btn-shuffle-icon .icon-shuffle {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  display: block;
+}
+
 .option {
   display: inline-flex;
   width: auto;
