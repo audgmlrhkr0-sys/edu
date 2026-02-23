@@ -448,8 +448,17 @@ const quizData = {
       { key: 'nearPrep', text: '{work} 앞으로 다섯 걸음 다가가서, 작품을 천천히 관찰해 보자.', usePrep: true },
       { key: 'near', text: '{work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
       { key: 'captionPrep', text: '{work} 작품 옆 설명글을 읽어 보자.', usePrep: true },
-      { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
+      { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때, 어떤 감정인지 골라 보자.', optionsKey: 'captionEmotion' },
       { key: 'emotion', text: '{work}를 보고 떠오르는 나의 표정을 선택해 보자.', optionsKey: 'emotion' },
+    ],
+    청년: [
+      { key: 'farPrep', text: '{work}에서 다섯 걸음 물러나, 작품의 전체 분위기를 느껴보세요.', usePrep: true },
+      { key: 'far', text: '작품 {work}를 멀리서 볼 때', optionsKey: 'far', useSliders: true },
+      { key: 'nearPrep', text: '{work} 앞으로 다섯 걸음 다가가, 작품을 천천히 들여다보세요.', usePrep: true },
+      { key: 'near', text: '작품 {work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
+      { key: 'captionPrep', text: '작품 {work} 옆 캡션을 읽어주세요.', usePrep: true },
+      { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
+      { key: 'emotion', text: '{work}를 보고 느끼는 감정은?', optionsKey: 'emotion' },
     ],
   },
   results: {
@@ -765,11 +774,11 @@ const quizData = {
 
 quizData.questionsByMode.어린이 = [
   { text: '미술관에서 쉿! 조용히 할 때, 나는 어떤 생각이 드나요?', options: quizData.questions[0].options },
-  { text: '미술관에서 사뿐사뿐! 걸어야 할 때, 나는 어떤 생각이 드나요?', options: quizData.questions[1].options },
+  { text: '미술관에서 사뿐사뿐 걸어야 할 때, 나는 어떤 생각이 드나요?', options: quizData.questions[1].options },
   { text: '미술관 전시실에는 과자나 음료를 가지고 들어갈 수 없어요. 이때 나는 어떤 생각이 드나요?', options: quizData.questions[2].options },
-  { text: '이런, 다른 사람이 내가 원하는 작품을 보고 있어요. 이때 나는 어떤 생각이 드나요?', options: quizData.questions[3].options },
+  { text: '이런! 다른 사람이 내가 원하는 작품을 보고 있어요. 이때 나는 어떤 생각이 드나요?', options: quizData.questions[3].options },
   { text: '작품을 이해하려고 노력할 때 나는 어떤 생각이 드나요?', options: quizData.questions[4].options },
-  { text: '오늘은 미술관에 가는 날! 어떤 옷을 입고 갈지 고민될 때 나는 어떤 생각이 드나요?', options: quizData.questions[5].options },
+  { text: '오늘은 미술관에 가는 날! 입고 갈 옷을 고를 때 나는 어떤 생각이 드나요?', options: quizData.questions[5].options },
 ];
 
 quizData.questionsByMode.청년 = [
@@ -778,12 +787,12 @@ quizData.questionsByMode.청년 = [
   { text: '전시장 내 음식물 반입은 금지되어 있다.', options: quizData.questions[2].options },
   { text: '다른 관람객이 내가 원하는 작품을 보고 있다. 이때 나의 감정은?', options: quizData.questions[3].options },
   { text: '작품을 이해하려고 노력할 때 나의 감정은?', options: quizData.questions[4].options },
-  { text: '미술관 방문용 코디를 고민할 때 나의 감정은?', options: quizData.questions[5].options },
+  { text: '미술관 룩을 고민할 때 나의 감정은?', options: quizData.questions[5].options },
 ];
 
 quizData.questionsByMode.청소년 = [
   { text: '미술관에서는 조용히 해야 한다. 이때 내 기분은?', options: quizData.questions[0].options },
-  { text: '미술관에서는 뛰거나 장난치면 안된다. 이때 내 기분은?', options: quizData.questions[1].options },
+  { text: '미술관에서는 뛰거나 장난치면 안 된다. 이때 내 기분은?', options: quizData.questions[1].options },
   { text: '전시장 안에는 음식을 못 들고 들어간다. 이때 내 기분은?', options: quizData.questions[2].options },
   { text: '다른 사람이 내가 보고 싶은 작품 보고 있다. 이때 내 기분은?', options: quizData.questions[3].options },
   { text: '작품 이해하려고 할 때, 내 기분은?', options: quizData.questions[4].options },
@@ -801,9 +810,9 @@ quizData.questionsByMode.중장년 = [
 
 quizData.questionsByMode.뉴비 = [
   { text: '미술관에서는 조용히 해야 한대… 이때 나의 감정은?', options: quizData.questions[0].options },
-  { text: '미술관에서는 뛰면 안된대… 이때 나의 감정은?', options: quizData.questions[1].options },
+  { text: '미술관에서는 뛰면 안 된대… 이때 나의 감정은?', options: quizData.questions[1].options },
   { text: '전시실 내에는 먹을 거 못 들고 들어간대... 이때 나의 감정은?', options: quizData.questions[2].options },
-  { text: '아… 내가 보려던 작품 누가 보고 있다… 이때 나의 감정은?', options: quizData.questions[3].options },
+  { text: '아… 내가 보려던 작품을 누가 보고 있네… 이때 나의 감정은?', options: quizData.questions[3].options },
   { text: '이 작품… 어떻게 봐야 하는 거지... 이때 나의 감정은?', options: quizData.questions[4].options },
   { text: '미술관 가는데 뭐 입어야 하지… 이때 나의 감정은?', options: quizData.questions[5].options },
 ];
@@ -960,7 +969,7 @@ function setResultStar(resultType, isMyResult = true) {
   const textEl = $('result-type');
   if (!starEl || !textEl) return;
   const style = getStyleForType(resultType);
-  starEl.textContent = TYPE_EMOJI[resultType] || '★';
+  starEl.textContent = '★';
   starEl.className = 'result-star ' + style.cls + (isMyResult ? ' result-star-mine' : '');
   starEl.style.color = style.color;
   starEl.style.textShadow = style.glow;
@@ -999,13 +1008,12 @@ function renderOthersResults(countByType, hasSupabase = true) {
       ${stars.map((s) => {
         const left = (2 + Math.random() * 88).toFixed(1);
         const top = (2 + Math.random() * 88).toFixed(1);
-        const emoji = TYPE_EMOJI[s.type] || '★';
         return `
         <span class="sky-star ${s.cls}" 
           style="color:${s.color};text-shadow:${s.glow};left:${left}%;top:${top}%;"
           data-type="${s.type}"
           data-count="${s.count}"
-          title="${emoji} ${s.type} · ${s.count}명">${emoji}</span>
+          title="${s.type} · ${s.count}명">★</span>
       `;
       }).join('')}
     </div>
@@ -1032,8 +1040,7 @@ function showStarTooltip(e) {
   hideStarTooltip();
   starTooltip = document.createElement('div');
   starTooltip.className = 'star-tooltip';
-  const emoji = TYPE_EMOJI[el.dataset.type] || '';
-  starTooltip.textContent = `${emoji} ${el.dataset.type} · ${el.dataset.count}명`.trim();
+  starTooltip.textContent = `${el.dataset.type} · ${el.dataset.count}명`;
   document.body.appendChild(starTooltip);
   const rect = el.getBoundingClientRect();
   const ttW = starTooltip.offsetWidth;
@@ -1659,7 +1666,7 @@ function showResult() {
     type: dominantType,
     description,
   };
-  $('result-type').textContent = (TYPE_EMOJI[result.type] || '') + ' ' + result.type;
+  $('result-type').textContent = result.type;
   setResultStar(result.type);
   $('result-description').textContent = result.description;
   showScreen(screens.result);
