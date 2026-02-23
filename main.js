@@ -442,6 +442,15 @@ const quizData = {
       { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
       { key: 'emotion', text: '{work}를 보고 떠오르는 감정을 선택해 보자.', optionsKey: 'emotion' },
     ],
+    청소년: [
+      { key: 'farPrep', text: '{work}에서 다섯 걸음 뒤로 걸어가, 작품의 전체적인 분위기를 보자.', usePrep: true },
+      { key: 'far', text: '{work}를 멀리서 볼 때', optionsKey: 'far', useSliders: true },
+      { key: 'nearPrep', text: '{work} 앞으로 다섯 걸음 다가가서, 작품을 천천히 관찰해 보자.', usePrep: true },
+      { key: 'near', text: '{work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
+      { key: 'captionPrep', text: '{work} 작품 옆 설명글을 읽어 보자.', usePrep: true },
+      { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
+      { key: 'emotion', text: '{work}를 보고 떠오르는 나의 표정을 선택해 보자.', optionsKey: 'emotion' },
+    ],
   },
   results: {
     A: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
@@ -770,6 +779,15 @@ quizData.questionsByMode.청년 = [
   { text: '다른 관람객이 내가 원하는 작품을 보고 있다. 이때 나의 감정은?', options: quizData.questions[3].options },
   { text: '작품을 이해하려고 노력할 때 나의 감정은?', options: quizData.questions[4].options },
   { text: '미술관 방문용 코디를 고민할 때 나의 감정은?', options: quizData.questions[5].options },
+];
+
+quizData.questionsByMode.청소년 = [
+  { text: '미술관에서는 조용히 해야 한다. 이때 내 기분은?', options: quizData.questions[0].options },
+  { text: '미술관에서는 뛰거나 장난치면 안된다. 이때 내 기분은?', options: quizData.questions[1].options },
+  { text: '전시장 안에는 음식을 못 들고 들어간다. 이때 내 기분은?', options: quizData.questions[2].options },
+  { text: '다른 사람이 내가 보고 싶은 작품 보고 있다. 이때 내 기분은?', options: quizData.questions[3].options },
+  { text: '작품 이해하려고 할 때, 내 기분은?', options: quizData.questions[4].options },
+  { text: '미술관에 입고 갈 옷이 고민될 때, 내 기분은?', options: quizData.questions[5].options },
 ];
 
 quizData.questionsByMode.중장년 = [
