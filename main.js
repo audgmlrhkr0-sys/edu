@@ -393,9 +393,20 @@ const quizData = {
       { text: '눈치보다', value: 'CP30' },
     ],
   },
-  // 모드별 질문 (선택 사항). 예: questionsByMode: { '남': [...], '어린이': [...] }
+  // 모드별 질문 (선택 사항). 예: questionsByMode: { '어린이': [...] }
   // 없으면 기본 questions 사용
   questionsByMode: {},
+  workQuestionsByMode: {
+    어린이: [
+      { key: 'farPrep', text: '{work}에서 크게 다섯 걸음 뒤로 가서, 작품을 바라보아요.', usePrep: true },
+      { key: 'far', text: '{work}를 멀리서 볼 때', optionsKey: 'far', useSliders: true },
+      { key: 'nearPrep', text: '{work} 앞으로 크게 다섯 걸음 다가가서, 작품을 천천히 바라보아요.', usePrep: true },
+      { key: 'near', text: '{work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
+      { key: 'captionPrep', text: '{work} 작품 옆 설명글을 읽어주세요.', usePrep: true },
+      { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
+      { key: 'emotion', text: '{work}를 보고 어떤 표정이 떠오르나요?', optionsKey: 'emotion' },
+    ],
+  },
   results: {
     A: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     B: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
@@ -707,6 +718,15 @@ const quizData = {
   },
 };
 
+quizData.questionsByMode.어린이 = [
+  { text: '미술관에서 쉿! 조용히 할 때, 나는 어떤 생각이 드나요?', options: quizData.questions[0].options },
+  { text: '미술관에서 사뿐사뿐! 걸어야 할 때, 나는 어떤 생각이 드나요?', options: quizData.questions[1].options },
+  { text: '미술관 전시실에는 과자나 음료를 가지고 들어갈 수 없어요. 이때 나는 어떤 생각이 드나요?', options: quizData.questions[2].options },
+  { text: '이런, 다른 사람이 내가 원하는 작품을 보고 있어요. 이때 나는 어떤 생각이 드나요?', options: quizData.questions[3].options },
+  { text: '작품을 이해하려고 노력할 때 나는 어떤 생각이 드나요?', options: quizData.questions[4].options },
+  { text: '오늘은 미술관에 가는 날! 어떤 옷을 입고 갈지 고민될 때 나는 어떤 생각이 드나요?', options: quizData.questions[5].options },
+];
+
 // Supabase: config.js 또는 아래 직접 입력. config.js의 SUPABASE_ANON_KEY에 키를 넣으세요.
 const SUPABASE_KEY_FALLBACK = ''; // config.js에 안 넣었으면 여기에 anon key 붙여넣기
 function getSupabaseClient() {
@@ -771,8 +791,17 @@ const TYPE_DESCRIPTIONS = {
   두근거림: '작품 앞에서 감정이 살짝 출렁이는 감성 반응형',
 };
 const TYPE_EMOJI = {
-  편안함: '🙂‍↕️', 답답함: '😢', 조용함: '😴', 행복: '😍', 짜증: '😡',
-  당당함: '😎', 불쾌함: '🫨', 강렬함: '😵‍💫', 어색함: '🤔', 포근함: '🧐', 두근거림: '🤩',
+  편안함: '\u{1F642}\u200D\u2195\uFE0F',   // 🙂‍↕️
+  답답함: '\u{1F622}',                     // 😢
+  조용함: '\u{1F634}',                     // 😴
+  행복: '\u{1F60D}',                       // 😍
+  짜증: '\u{1F620}',                      // 😠 (화남, 넓은 지원)
+  당당함: '\u{1F60E}',                     // 😎
+  불쾌함: '\u{1FAE8}',                    // 🫨
+  강렬함: '\u{1F635}\u200D\u{1F4AB}',    // 😵‍💫
+  어색함: '\u{1F914}',                    // 🤔
+  포근함: '\u{1F9D0}',                    // 🧐
+  두근거림: '\u{1F929}',                   // 🤩
 };
 // 슬라이더 좌/우 라벨 → 11개 유형 매핑 (슬라이더도 최종 결과에 반영)
 const SLIDER_LABEL_TO_TYPE = {
@@ -1116,7 +1145,8 @@ function renderQuestion() {
     const qInWork = (currentQuestionIndex - BASIC_QUESTIONS) % QUESTIONS_PER_WORK;
     const work = selectedWorks[workIdx];
     const workLabel = quizData.workLabels?.[work] || work;
-    const wq = quizData.workQuestions[qInWork];
+    const workQuestions = (selectedMode && quizData.workQuestionsByMode?.[selectedMode]) || quizData.workQuestions;
+    const wq = workQuestions[qInWork];
     const text = wq.text.replace('{work}', workLabel);
 
     $('progress-fill').style.width = `${((currentQuestionIndex + 1) / totalQuestions) * 100}%`;
