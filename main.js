@@ -406,6 +406,15 @@ const quizData = {
       { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
       { key: 'emotion', text: '{work}를 보고 어떤 표정이 떠오르나요?', optionsKey: 'emotion' },
     ],
+    중장년: [
+      { key: 'farPrep', text: '{work}에서 다섯 걸음 뒤로 걸어가, 작품의 전체 분위기를 느껴보세요.', usePrep: true },
+      { key: 'far', text: '{work}를 멀리서 볼 때', optionsKey: 'far', useSliders: true },
+      { key: 'nearPrep', text: '{work} 앞으로 다섯 걸음 다가가서, 작품을 천천히 관찰해 보세요.', usePrep: true },
+      { key: 'near', text: '{work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
+      { key: 'captionPrep', text: '{work} 작품 옆 설명글을 읽어주세요.', usePrep: true },
+      { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
+      { key: 'emotion', text: '{work}를 보고 떠오르는 표정을 선택해 주세요.', optionsKey: 'emotion' },
+    ],
   },
   results: {
     A: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
@@ -725,6 +734,24 @@ quizData.questionsByMode.어린이 = [
   { text: '이런, 다른 사람이 내가 원하는 작품을 보고 있어요. 이때 나는 어떤 생각이 드나요?', options: quizData.questions[3].options },
   { text: '작품을 이해하려고 노력할 때 나는 어떤 생각이 드나요?', options: quizData.questions[4].options },
   { text: '오늘은 미술관에 가는 날! 어떤 옷을 입고 갈지 고민될 때 나는 어떤 생각이 드나요?', options: quizData.questions[5].options },
+];
+
+quizData.questionsByMode.청년 = [
+  { text: '미술관에서 정숙해야 한다.', options: quizData.questions[0].options },
+  { text: '미술관에서는 천천히 걸어 다녀야 한다.', options: quizData.questions[1].options },
+  { text: '전시장 내 음식물 반입은 금지되어 있다.', options: quizData.questions[2].options },
+  { text: '다른 관람객이 내가 원하는 작품을 보고 있다. 이때 나의 감정은?', options: quizData.questions[3].options },
+  { text: '작품을 이해하려고 노력할 때 나의 감정은?', options: quizData.questions[4].options },
+  { text: '미술관 방문용 코디를 고민할 때 나의 감정은?', options: quizData.questions[5].options },
+];
+
+quizData.questionsByMode.중장년 = [
+  { text: '미술관에서 조용히 해야 할 때, 어떤 기분이 드시나요?', options: quizData.questions[0].options },
+  { text: '미술관에서 천천히 걸어야 할 때, 어떻게 느끼시나요?', options: quizData.questions[1].options },
+  { text: '전시장 내 음식물 반입이 제한될 때, 어떤 생각이 드시나요?', options: quizData.questions[2].options },
+  { text: '다른 관람객이 내가 보고 싶은 작품을 보고 있을 때, 어떤 기분이 드시나요?', options: quizData.questions[3].options },
+  { text: '작품을 이해하려고 할 때, 어떤 느낌이 드시나요?', options: quizData.questions[4].options },
+  { text: '미술관에 갈 때 입을 옷을 고민할 때, 어떤 생각이 드시나요?', options: quizData.questions[5].options },
 ];
 
 // Supabase: config.js 또는 아래 직접 입력. config.js의 SUPABASE_ANON_KEY에 키를 넣으세요.
