@@ -741,8 +741,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   padding: 0.35rem 0;
   color: rgba(226, 232, 240, 0.95);
   background: rgba(255, 255, 255, 0.08);
@@ -777,8 +777,8 @@ body {
 }
 
 .btn-shuffle-icon .icon-shuffle {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
   display: block;
 }

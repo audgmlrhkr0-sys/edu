@@ -223,6 +223,8 @@ const quizData = {
     '2전시실': ['F', 'G', 'H', 'I', 'J'],
     '3전시실': ['K', 'L', 'M', 'N', 'O'],
   },
+  // 작품 질문 노출 순서: 2전시실 → 3전시실 → 1전시실
+  workOrderByRoom: ['F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'A', 'B', 'C', 'D', 'E'],
   workLabels: {
     A: '김지은, <부동산적 풍경화 #2>',
     B: '정세인, <Only.Love.gr.pu>',
@@ -753,6 +755,47 @@ async function loadSimilarResults() {
   return data || [];
 }
 
+// 결과는 항상 이 11개 유형 중 하나로만 표시 (선택지 + 슬라이더 통합)
+const RESULT_TYPES = ['편안함', '답답함', '조용함', '행복', '짜증', '당당함', '불쾌함', '강렬함', '어색함', '포근함', '두근거림'];
+const TYPE_DESCRIPTIONS = {
+  편안함: '들어오자마자 긴장 해제되는, 미술관 힐링형',
+  답답함: '벽이 점점 가까워지는 느낌, 탈출 욕구형',
+  조용함: '소리 없는 공간이 오히려 안정적인 무음 적응형',
+  행복: '괜히 기분 좋아지는, 이유 없는 만족형',
+  짜증: "'조용히 하세요'에 살짝 반감 드는 자유 추구형",
+  당당함: '눈치 안 보고 자기 템포 유지하는 마이웨이형',
+  불쾌함: '규칙 많은 공간에 예민해지는 제한 회피형',
+  강렬함: '괜히 더 의식돼서 긴장감 도는 집중 과부하형',
+  어색함: '손 어디 둬야 할지 고민되는 자세 방황형',
+  포근함: '공간에 스며들듯 편안해지는 감정 흡수형',
+  두근거림: '작품 앞에서 감정이 살짝 출렁이는 감성 반응형',
+};
+const TYPE_EMOJI = {
+  편안함: '🙂‍↕️', 답답함: '😢', 조용함: '😴', 행복: '😍', 짜증: '😡',
+  당당함: '😎', 불쾌함: '🫨', 강렬함: '😵‍💫', 어색함: '🤔', 포근함: '🧐', 두근거림: '🤩',
+};
+// 슬라이더 좌/우 라벨 → 11개 유형 매핑 (슬라이더도 최종 결과에 반영)
+const SLIDER_LABEL_TO_TYPE = {
+  편안함: '편안함', 답답함: '답답함', 편안한: '편안함', 갑갑한: '답답함',
+  차분함: '조용함', 혼란스러움: '답답함', 이상적: '행복', 현실적: '조용함',
+  공개적인: '당당함', 감춰진: '어색함', 감성적: '두근거림', 이성적: '조용함',
+  해방감: '행복', 압박감: '답답함', 밝음: '편안함', 어두움: '강렬함',
+  해맑음: '행복', 처량함: '강렬함', 안전한: '편안함', 위험한: '불쾌함',
+  가벼움: '편안함', 무거움: '답답함', 재밌음: '행복', 진중함: '조용함',
+  독창적임: '두근거림', 익숙함: '편안함', 자유로운: '행복', 정해진: '짜증',
+  부드러움: '포근함', 단단함: '답답함', 수줍음: '어색함', 거만함: '당당함',
+  웅장함: '당당함', 소박함: '편안함', 쓸모: '당당함', 무쓸모: '답답함',
+  과학자: '당당함', 괴짜: '당당함', 불편함: '불쾌함', '흰 글씨': '편안함', '빨간 글씨': '불쾌함',
+  복잡한: '강렬함', 단순한: '편안함', 곡선: '포근함', 직선: '조용함', 긴장한: '강렬함',
+  감시받는: '불쾌함', 소속감: '포근함', 고립감: '답답함', 개인적: '당당함', 집단적: '어색함',
+  슬픔: '강렬함', 무서움: '불쾌함', 고요함: '조용함', 불안함: '답답함',
+  공허한: '답답함', '의미 있는': '편안함', 평온한: '편안함', 어지러운: '답답함',
+  재밌는: '행복', 무서운: '불쾌함', 생명: '행복', 죽음: '강렬함',
+  찬란한: '행복', 천국: '행복', 지옥: '불쾌함', 빛: '편안함', 어둠: '불쾌함',
+  밀착된: '포근함', 분리된: '답답함', 단절된: '답답함', 귀여움: '포근함',
+  난해한: '두근거림', 떡볶이: '행복', 작품: '조용함',
+};
+
 // 유형별 고정 색상 - 11가지 유형만, 다양한 색감
 const TYPE_COLOR_MAP = {
   편안함: { color: '#22c55e', glow: '0 0 14px #22c55e', cls: 'star-green' },
@@ -789,7 +832,7 @@ function setResultStar(resultType, isMyResult = true) {
   const textEl = $('result-type');
   if (!starEl || !textEl) return;
   const style = getStyleForType(resultType);
-  starEl.textContent = '★';
+  starEl.textContent = TYPE_EMOJI[resultType] || '★';
   starEl.className = 'result-star ' + style.cls + (isMyResult ? ' result-star-mine' : '');
   starEl.style.color = style.color;
   starEl.style.textShadow = style.glow;
@@ -828,12 +871,13 @@ function renderOthersResults(countByType, hasSupabase = true) {
       ${stars.map((s) => {
         const left = (2 + Math.random() * 88).toFixed(1);
         const top = (2 + Math.random() * 88).toFixed(1);
+        const emoji = TYPE_EMOJI[s.type] || '★';
         return `
         <span class="sky-star ${s.cls}" 
           style="color:${s.color};text-shadow:${s.glow};left:${left}%;top:${top}%;"
           data-type="${s.type}"
           data-count="${s.count}"
-          title="${s.type} · ${s.count}명">★</span>
+          title="${emoji} ${s.type} · ${s.count}명">${emoji}</span>
       `;
       }).join('')}
     </div>
@@ -860,7 +904,8 @@ function showStarTooltip(e) {
   hideStarTooltip();
   starTooltip = document.createElement('div');
   starTooltip.className = 'star-tooltip';
-  starTooltip.textContent = `${el.dataset.type} · ${el.dataset.count}명`;
+  const emoji = TYPE_EMOJI[el.dataset.type] || '';
+  starTooltip.textContent = `${emoji} ${el.dataset.type} · ${el.dataset.count}명`.trim();
   document.body.appendChild(starTooltip);
   const rect = el.getBoundingClientRect();
   const ttW = starTooltip.offsetWidth;
@@ -1040,6 +1085,8 @@ function renderWorkSelect() {
 
   $('btn-confirm-works')?.addEventListener('click', () => {
     if (selectedWorks.length !== WORKS_TO_SELECT) return;
+    const order = quizData.workOrderByRoom || ['F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'A', 'B', 'C', 'D', 'E'];
+    selectedWorks.sort((a, b) => order.indexOf(a) - order.indexOf(b));
     currentQuestionIndex = BASIC_QUESTIONS; // 6부터 3단계 질문 시작
     showScreen(screens.question);
     renderQuestion();
@@ -1430,7 +1477,7 @@ function handleOptionClick(e) {
 }
 
 function sliderValuesToTypes() {
-  const types = [];
+  const raw = [];
   const defaultSliders = quizData.workSliders?.A || [
     { left: '편안함', right: '답답함', defaultVal: 50 },
     { left: '차분함', right: '혼란스러움', defaultVal: 50 },
@@ -1443,31 +1490,47 @@ function sliderValuesToTypes() {
     const o = Array.isArray(obj) ? { far: obj } : obj;
     const far = o.far;
     if (far && far.length >= 3 && sliders.length >= 3) {
-      types.push(far[0] < 50 ? sliders[0].left : sliders[0].right);
-      types.push(far[1] < 50 ? sliders[1].left : sliders[1].right);
-      types.push(far[2] < 50 ? sliders[2].left : sliders[2].right);
+      raw.push(far[0] < 50 ? sliders[0].left : sliders[0].right);
+      raw.push(far[1] < 50 ? sliders[1].left : sliders[1].right);
+      raw.push(far[2] < 50 ? sliders[2].left : sliders[2].right);
     }
     const near = o.near;
     if (near && near.length >= 3 && sliders.length >= 3) {
-      types.push(near[0] < 50 ? sliders[0].left : sliders[0].right);
-      types.push(near[1] < 50 ? sliders[1].left : sliders[1].right);
-      types.push(near[2] < 50 ? sliders[2].left : sliders[2].right);
+      raw.push(near[0] < 50 ? sliders[0].left : sliders[0].right);
+      raw.push(near[1] < 50 ? sliders[1].left : sliders[1].right);
+      raw.push(near[2] < 50 ? sliders[2].left : sliders[2].right);
     }
   });
-  return types;
+  // 슬라이더 라벨을 11개 유형으로만 변환 (선택지와 동일한 유형 체계)
+  return raw.map((label) => {
+    if (RESULT_TYPES.includes(label)) return label;
+    return SLIDER_LABEL_TO_TYPE[label] || '편안함';
+  });
 }
 
 function showResult() {
+  // 선택지 + 슬라이더를 유형 단위로 합쳐서 카운트 (항상 11개 유형 중 하나로 결과)
   const counts = {};
-  answers.forEach(v => counts[v] = (counts[v] || 0) + 1);
-  sliderValuesToTypes().forEach(t => counts[t] = (counts[t] || 0) + 1);
+  answers.forEach((key) => {
+    const r = quizData.results[key];
+    const type = r?.type && RESULT_TYPES.includes(r.type) ? r.type : '편안함';
+    counts[type] = (counts[type] || 0) + 1;
+  });
+  sliderValuesToTypes().forEach((type) => {
+    counts[type] = (counts[type] || 0) + 1;
+  });
 
-  const allValues = [...answers, ...sliderValuesToTypes()].filter(Boolean);
   const maxCount = Math.max(...Object.values(counts), 0);
-  const dominant = Object.entries(counts).find(([, c]) => c === maxCount)?.[0] || allValues[allValues.length - 1] || 'A';
-
-  const result = quizData.results[dominant] || { type: dominant, description: `${dominant} 유형으로 분석되었습니다.` };
-  $('result-type').textContent = result.type;
+  const dominantType = Object.entries(counts).find(([, c]) => c === maxCount)?.[0]
+    || RESULT_TYPES[0];
+  const description = (typeof window !== 'undefined' && window.RESULT_TYPE_MESSAGES && window.RESULT_TYPE_MESSAGES[dominantType])
+    ? window.RESULT_TYPE_MESSAGES[dominantType]
+    : (TYPE_DESCRIPTIONS[dominantType] || `${dominantType} 유형으로 분석되었습니다.`);
+  const result = {
+    type: dominantType,
+    description,
+  };
+  $('result-type').textContent = (TYPE_EMOJI[result.type] || '') + ' ' + result.type;
   setResultStar(result.type);
   $('result-description').textContent = result.description;
   showScreen(screens.result);
