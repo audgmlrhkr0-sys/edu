@@ -415,6 +415,33 @@ const quizData = {
       { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
       { key: 'emotion', text: '{work}를 보고 떠오르는 표정을 선택해 주세요.', optionsKey: 'emotion' },
     ],
+    뉴비: [
+      { key: 'farPrep', text: '{work}에서 다섯 걸음 뒤로 물러나서, 작품을 감상해 보자.', usePrep: true },
+      { key: 'far', text: '{work}를 멀리서 볼 때', optionsKey: 'far', useSliders: true },
+      { key: 'nearPrep', text: '{work} 앞으로 다섯 걸음 다가가서, 작품을 천천히 감상해 보자.', usePrep: true },
+      { key: 'near', text: '{work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
+      { key: 'captionPrep', text: '{work} 작품 옆 설명글을 읽어보자.', usePrep: true },
+      { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
+      { key: 'emotion', text: '{work}를 보고 나는 어떤 표정이 떠오르는지 선택해 보자.', optionsKey: 'emotion' },
+    ],
+    중수: [
+      { key: 'farPrep', text: '{work}에서 다섯 걸음 뒤로 물러나서, 작품을 감상해 보자.', usePrep: true },
+      { key: 'far', text: '{work}를 멀리서 볼 때', optionsKey: 'far', useSliders: true },
+      { key: 'nearPrep', text: '{work} 앞으로 다섯 걸음 다가가서, 작품을 천천히 감상해 보자.', usePrep: true },
+      { key: 'near', text: '{work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
+      { key: 'captionPrep', text: '{work} 작품 옆 캡션을 읽어보자.', usePrep: true },
+      { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
+      { key: 'emotion', text: '{work}를 보고 나는 어떤 표정이 떠오르는지 선택해 보자.', optionsKey: 'emotion' },
+    ],
+    고수: [
+      { key: 'farPrep', text: '{work}에서 다섯 걸음 물러나, 거리를 두고 감상해 보자.', usePrep: true },
+      { key: 'far', text: '{work}를 멀리서 볼 때', optionsKey: 'far', useSliders: true },
+      { key: 'nearPrep', text: '{work} 앞으로 다섯 걸음 다가가, 천천히 관찰해 보자.', usePrep: true },
+      { key: 'near', text: '{work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
+      { key: 'captionPrep', text: '{work} 옆 캡션을 읽으며, 작품의 맥락을 이해해 보자.', usePrep: true },
+      { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
+      { key: 'emotion', text: '{work}를 보고 떠오르는 감정을 선택해 보자.', optionsKey: 'emotion' },
+    ],
   },
   results: {
     A: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
@@ -752,6 +779,33 @@ quizData.questionsByMode.중장년 = [
   { text: '다른 관람객이 내가 보고 싶은 작품을 보고 있을 때, 어떤 기분이 드시나요?', options: quizData.questions[3].options },
   { text: '작품을 이해하려고 할 때, 어떤 느낌이 드시나요?', options: quizData.questions[4].options },
   { text: '미술관에 갈 때 입을 옷을 고민할 때, 어떤 생각이 드시나요?', options: quizData.questions[5].options },
+];
+
+quizData.questionsByMode.뉴비 = [
+  { text: '미술관에서는 조용히 해야 한대… 이때 나의 감정은?', options: quizData.questions[0].options },
+  { text: '미술관에서는 뛰면 안된대… 이때 나의 감정은?', options: quizData.questions[1].options },
+  { text: '전시실 내에는 먹을 거 못 들고 들어간대... 이때 나의 감정은?', options: quizData.questions[2].options },
+  { text: '아… 내가 보려던 작품 누가 보고 있다… 이때 나의 감정은?', options: quizData.questions[3].options },
+  { text: '이 작품… 어떻게 봐야 하는 거지... 이때 나의 감정은?', options: quizData.questions[4].options },
+  { text: '미술관 가는데 뭐 입어야 하지… 이때 나의 감정은?', options: quizData.questions[5].options },
+];
+
+quizData.questionsByMode.중수 = [
+  { text: '미술관에서는 조용히 해야 하네, 이때 나의 감정은?', options: quizData.questions[0].options },
+  { text: '미술관에서는 천천히 걸어야 하네, 이때 나의 감정은?', options: quizData.questions[1].options },
+  { text: '전시장 내에는 음식 반입이 안 되네, 이때 나의 감정은?', options: quizData.questions[2].options },
+  { text: '다른 관람객이 내가 보고 싶은 작품을 보고 있네, 이때 나의 감정은?', options: quizData.questions[3].options },
+  { text: '이 작품의 의도를 파악할 때, 나의 감정은?', options: quizData.questions[4].options },
+  { text: '미술관 분위기에 맞춰 옷을 고를 때, 나의 감정은?', options: quizData.questions[5].options },
+];
+
+quizData.questionsByMode.고수 = [
+  { text: '조용한 미술관 속에 있을 때, 나의 감정은?', options: quizData.questions[0].options },
+  { text: '천천히 걸으며 공간을 음미할 때, 나의 감정은?', options: quizData.questions[1].options },
+  { text: '전시장 내 음식물 반입이 제한된 상황에서, 나의 감정은?', options: quizData.questions[2].options },
+  { text: '나와 다른 관람객의 시선이 동시에 머무는 작품을 마주할 때, 나의 감정은?', options: quizData.questions[3].options },
+  { text: '작품의 의도와 의미를 사유할 때, 나의 감정은?', options: quizData.questions[4].options },
+  { text: '미술관의 분위기에 맞춰 스스로를 꾸밀 때, 나의 감정은?', options: quizData.questions[5].options },
 ];
 
 // Supabase: config.js 또는 아래 직접 입력. config.js의 SUPABASE_ANON_KEY에 키를 넣으세요.
