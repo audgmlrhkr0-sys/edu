@@ -421,7 +421,7 @@ const quizData = {
       { key: 'nearPrep', text: '{work} 앞으로 다섯 걸음 다가가서, 작품을 천천히 감상해 보자.', usePrep: true },
       { key: 'near', text: '{work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
       { key: 'captionPrep', text: '{work} 작품 옆 설명글을 읽어보자.', usePrep: true },
-      { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
+      { key: 'captionEmotion', text: '설명을 읽은 후 작품을 보면 어떤 감정이 떠오르는 지 선택해 보자.', optionsKey: 'captionEmotion' },
       { key: 'emotion', text: '{work}를 보고 나는 어떤 표정이 떠오르는지 선택해 보자.', optionsKey: 'emotion' },
     ],
     중수: [
@@ -430,7 +430,7 @@ const quizData = {
       { key: 'nearPrep', text: '{work} 앞으로 다섯 걸음 다가가서, 작품을 천천히 감상해 보자.', usePrep: true },
       { key: 'near', text: '{work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
       { key: 'captionPrep', text: '{work} 작품 옆 캡션을 읽어보자.', usePrep: true },
-      { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
+      { key: 'captionEmotion', text: '설명을 읽은 후 작품을 봤을 때 어떤 감정이 드는지 선택해 보자.', optionsKey: 'captionEmotion' },
       { key: 'emotion', text: '{work}를 보고 나는 어떤 표정이 떠오르는지 선택해 보자.', optionsKey: 'emotion' },
     ],
     고수: [
@@ -439,7 +439,7 @@ const quizData = {
       { key: 'nearPrep', text: '{work} 앞으로 다섯 걸음 다가가, 천천히 관찰해 보자.', usePrep: true },
       { key: 'near', text: '{work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
       { key: 'captionPrep', text: '{work} 옆 캡션을 읽으며, 작품의 맥락을 이해해 보자.', usePrep: true },
-      { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
+      { key: 'captionEmotion', text: '작가의 의도를 본 후, 나의 감정은?', optionsKey: 'captionEmotion' },
       { key: 'emotion', text: '{work}를 보고 떠오르는 감정을 선택해 보자.', optionsKey: 'emotion' },
     ],
     청소년: [
