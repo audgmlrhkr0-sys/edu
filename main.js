@@ -219,28 +219,27 @@ const quizData = {
     },
   ],
   exhibition: {
-    '1전시실': ['A', 'B', 'C', 'D', 'E'],
-    '2전시실': ['F', 'G', 'H', 'I', 'J'],
-    '3전시실': ['K', 'L', 'M', 'N', 'O'],
+    '파트 1': ['A', 'B', 'C', 'D'],
+    '파트 2': ['E', 'F', 'G', 'H', 'I', 'J', 'K'],
+    '파트 3': ['L', 'M', 'N', 'O'],
   },
-  // 작품 질문 노출 순서: 2전시실 → 3전시실 → 1전시실
-  workOrderByRoom: ['F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'A', 'B', 'C', 'D', 'E'],
+  workOrderByRoom: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O'],
   workLabels: {
-    A: '김지은, <부동산적 풍경화 #2>',
-    B: '정세인, <Only.Love.gr.pu>',
-    C: '김정우, <빨간내복 20097>',
-    D: '박소라, <에너지 드링크가 필요한 사회>',
-    E: '김승주, <Ruler No. 0>',
-    F: '신미경, <Angel Series 58>',
-    G: '최병석, <숲속 생활연구소>',
-    H: '홍승표, <CPR Board B>',
-    I: '오유경, <맺고 있는 얽힘 상태>',
-    J: '권순관, <Gestures in the Subway 3-39>',
-    K: '김우진, <유령과 바다, 그리고 뫼비우스>',
-    L: '정성진, <Moving City>',
-    M: '문소현, <Hollow Show-Night Life>',
-    N: '장서영, <터뷸런스>',
-    O: '더 브이오에이, <불판에 남은 떡볶이 떡의 마음속에서는 불가능한 물리적인 죽음>',
+    A: '남진우, <Destroyer/Protector>',
+    B: '고등어, <공동고백>',
+    C: '김우진, <유령과 바다, 그리고 뫼비우스>',
+    D: '김지은, <부동산적 풍경화 #2>',
+    E: '정세인, <Only.Love.gr.pu>',
+    F: '문소현, <Hollow Show-Night Life>',
+    G: '박소라, <에너지 드링크가 필요한 사회>',
+    H: '김정우, <빨간내복 20097>',
+    I: '천경우, <Face of Face #1, 3, 5>',
+    J: '장서영, <터뷸런스>',
+    K: '권순관, <Gestures in the Subway 3-39>',
+    L: '최병석, <숲속 생활연구소>',
+    M: '김승주, <Ruler No. 0>',
+    N: '잭슨홍, <CPR Board B>',
+    O: '김승영, <뇌>',
   },
   workQuestions: [
     { key: 'farPrep', text: '{work}에서 다섯 걸음 물러나, 작품의 전체 분위기를 느껴보세요.', usePrep: true },
@@ -253,80 +252,80 @@ const quizData = {
   ],
   // 작품별 슬라이더 (멀리서/가까이서 동일)
   workSliders: {
-    A: [ // 김지은
+    A: [ // 남진우
       { left: '편안함', right: '답답함', defaultVal: 50 },
       { left: '차분함', right: '혼란스러움', defaultVal: 50 },
       { left: '이상적', right: '현실적', defaultVal: 50 },
     ],
-    B: [ // 정세인
-      { left: '공개적인', right: '감춰진', defaultVal: 50 },
-      { left: '감성적', right: '이성적', defaultVal: 50 },
-      { left: '해방감', right: '압박감', defaultVal: 50 },
-    ],
-    C: [ // 김정우
-      { left: '밝음', right: '어두움', defaultVal: 50 },
-      { left: '해맑음', right: '처량함', defaultVal: 50 },
-      { left: '안전한', right: '위험한', defaultVal: 50 },
-    ],
-    D: [ // 박소라
-      { left: '가벼움', right: '무거움', defaultVal: 50 },
+    B: [ // 고등어
       { left: '편안함', right: '답답함', defaultVal: 50 },
-      { left: '재밌음', right: '진중함', defaultVal: 50 },
+      { left: '차분함', right: '혼란스러움', defaultVal: 50 },
+      { left: '이상적', right: '현실적', defaultVal: 50 },
     ],
-    E: [ // 김승주
-      { left: '재밌음', right: '혼란스러움', defaultVal: 50 },
-      { left: '독창적임', right: '익숙함', defaultVal: 50 },
-      { left: '자유로운', right: '정해진', defaultVal: 50 },
-    ],
-    F: [ // 신미경
-      { left: '부드러움', right: '단단함', defaultVal: 50 },
-      { left: '수줍음', right: '거만함', defaultVal: 50 },
-      { left: '웅장함', right: '소박함', defaultVal: 50 },
-    ],
-    G: [ // 최병석
-      { left: '쓸모', right: '무쓸모', defaultVal: 50 },
-      { left: '과학자', right: '괴짜', defaultVal: 50 },
-      { left: '재밌음', right: '불편함', defaultVal: 50 },
-    ],
-    H: [ // 홍승표
-      { left: '안전한', right: '위험한', defaultVal: 50 },
-      { left: '흰 글씨', right: '빨간 글씨', defaultVal: 50 },
-      { left: '재밌음', right: '불편함', defaultVal: 50 },
-    ],
-    I: [ // 오유경
-      { left: '복잡한', right: '단순한', defaultVal: 50 },
-      { left: '곡선', right: '직선', defaultVal: 50 },
-      { left: '편안한', right: '긴장한', defaultVal: 50 },
-    ],
-    J: [ // 권순관
-      { left: '자유로운', right: '감시받는', defaultVal: 50 },
-      { left: '소속감', right: '고립감', defaultVal: 50 },
-      { left: '개인적', right: '집단적', defaultVal: 50 },
-    ],
-    K: [ // 김우진
+    C: [ // 김우진
       { left: '슬픔', right: '무서움', defaultVal: 50 },
       { left: '고요함', right: '불안함', defaultVal: 50 },
       { left: '공허한', right: '의미 있는', defaultVal: 50 },
     ],
-    L: [ // 정성진
-      { left: '평온한', right: '어지러운', defaultVal: 50 },
-      { left: '재밌는', right: '무서운', defaultVal: 50 },
-      { left: '생명', right: '죽음', defaultVal: 50 },
+    D: [ // 김지은
+      { left: '편안함', right: '답답함', defaultVal: 50 },
+      { left: '차분함', right: '혼란스러움', defaultVal: 50 },
+      { left: '이상적', right: '현실적', defaultVal: 50 },
     ],
-    M: [ // 문소현
+    E: [ // 정세인
+      { left: '공개적인', right: '감춰진', defaultVal: 50 },
+      { left: '감성적', right: '이성적', defaultVal: 50 },
+      { left: '해방감', right: '압박감', defaultVal: 50 },
+    ],
+    F: [ // 문소현
       { left: '찬란한', right: '공허한', defaultVal: 50 },
       { left: '천국', right: '지옥', defaultVal: 50 },
       { left: '빛', right: '어둠', defaultVal: 50 },
     ],
-    N: [ // 장서영
+    G: [ // 박소라
+      { left: '가벼움', right: '무거움', defaultVal: 50 },
+      { left: '편안함', right: '답답함', defaultVal: 50 },
+      { left: '재밌음', right: '진중함', defaultVal: 50 },
+    ],
+    H: [ // 김정우
+      { left: '밝음', right: '어두움', defaultVal: 50 },
+      { left: '해맑음', right: '처량함', defaultVal: 50 },
+      { left: '안전한', right: '위험한', defaultVal: 50 },
+    ],
+    I: [ // 천경우
+      { left: '편안함', right: '답답함', defaultVal: 50 },
+      { left: '차분함', right: '혼란스러움', defaultVal: 50 },
+      { left: '이상적', right: '현실적', defaultVal: 50 },
+    ],
+    J: [ // 장서영
       { left: '편안한', right: '갑갑한', defaultVal: 50 },
       { left: '밀착된', right: '분리된', defaultVal: 50 },
       { left: '자유로운', right: '단절된', defaultVal: 50 },
     ],
-    O: [ // 더 브이오에이
-      { left: '귀여움', right: '무서움', defaultVal: 50 },
-      { left: '재밌는', right: '난해한', defaultVal: 50 },
-      { left: '떡볶이', right: '작품', defaultVal: 50 },
+    K: [ // 권순관
+      { left: '자유로운', right: '감시받는', defaultVal: 50 },
+      { left: '소속감', right: '고립감', defaultVal: 50 },
+      { left: '개인적', right: '집단적', defaultVal: 50 },
+    ],
+    L: [ // 최병석
+      { left: '쓸모', right: '무쓸모', defaultVal: 50 },
+      { left: '과학자', right: '괴짜', defaultVal: 50 },
+      { left: '재밌음', right: '불편함', defaultVal: 50 },
+    ],
+    M: [ // 김승주
+      { left: '재밌음', right: '혼란스러움', defaultVal: 50 },
+      { left: '독창적임', right: '익숙함', defaultVal: 50 },
+      { left: '자유로운', right: '정해진', defaultVal: 50 },
+    ],
+    N: [ // 잭슨홍
+      { left: '안전한', right: '위험한', defaultVal: 50 },
+      { left: '흰 글씨', right: '빨간 글씨', defaultVal: 50 },
+      { left: '재밌음', right: '불편함', defaultVal: 50 },
+    ],
+    O: [ // 김승영
+      { left: '편안함', right: '답답함', defaultVal: 50 },
+      { left: '차분함', right: '혼란스러움', defaultVal: 50 },
+      { left: '이상적', right: '현실적', defaultVal: 50 },
     ],
   },
   workOptions: {
@@ -415,33 +414,6 @@ const quizData = {
       { key: 'captionEmotion', text: '설명을 본 후 작품을 봤을 때 어떤 감정이 드나요?', optionsKey: 'captionEmotion' },
       { key: 'emotion', text: '{work}를 보고 떠오르는 표정을 선택해 주세요.', optionsKey: 'emotion' },
     ],
-    뉴비: [
-      { key: 'farPrep', text: '{work}에서 다섯 걸음 뒤로 물러나서, 작품을 감상해 보자.', usePrep: true },
-      { key: 'far', text: '{work}를 멀리서 볼 때', optionsKey: 'far', useSliders: true },
-      { key: 'nearPrep', text: '{work} 앞으로 다섯 걸음 다가가서, 작품을 천천히 감상해 보자.', usePrep: true },
-      { key: 'near', text: '{work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
-      { key: 'captionPrep', text: '{work} 작품 옆 설명글을 읽어보자.', usePrep: true },
-      { key: 'captionEmotion', text: '설명을 읽은 후 작품을 보면 어떤 감정이 떠오르는 지 선택해 보자.', optionsKey: 'captionEmotion' },
-      { key: 'emotion', text: '{work}를 보고 나는 어떤 표정이 떠오르는지 선택해 보자.', optionsKey: 'emotion' },
-    ],
-    중수: [
-      { key: 'farPrep', text: '{work}에서 다섯 걸음 뒤로 물러나서, 작품을 감상해 보자.', usePrep: true },
-      { key: 'far', text: '{work}를 멀리서 볼 때', optionsKey: 'far', useSliders: true },
-      { key: 'nearPrep', text: '{work} 앞으로 다섯 걸음 다가가서, 작품을 천천히 감상해 보자.', usePrep: true },
-      { key: 'near', text: '{work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
-      { key: 'captionPrep', text: '{work} 작품 옆 캡션을 읽어보자.', usePrep: true },
-      { key: 'captionEmotion', text: '설명을 읽은 후 작품을 봤을 때 어떤 감정이 드는지 선택해 보자.', optionsKey: 'captionEmotion' },
-      { key: 'emotion', text: '{work}를 보고 나는 어떤 표정이 떠오르는지 선택해 보자.', optionsKey: 'emotion' },
-    ],
-    고수: [
-      { key: 'farPrep', text: '{work}에서 다섯 걸음 물러나, 거리를 두고 감상해 보자.', usePrep: true },
-      { key: 'far', text: '{work}를 멀리서 볼 때', optionsKey: 'far', useSliders: true },
-      { key: 'nearPrep', text: '{work} 앞으로 다섯 걸음 다가가, 천천히 관찰해 보자.', usePrep: true },
-      { key: 'near', text: '{work}를 가까이서 볼 때', optionsKey: 'near', useSliders: true },
-      { key: 'captionPrep', text: '{work} 옆 캡션을 읽으며, 작품의 맥락을 이해해 보자.', usePrep: true },
-      { key: 'captionEmotion', text: '작가의 의도를 본 후, 나의 감정은?', optionsKey: 'captionEmotion' },
-      { key: 'emotion', text: '{work}를 보고 떠오르는 감정을 선택해 보자.', optionsKey: 'emotion' },
-    ],
     청소년: [
       { key: 'farPrep', text: '{work}에서 다섯 걸음 뒤로 걸어가, 작품의 전체적인 분위기를 보자.', usePrep: true },
       { key: 'far', text: '{work}를 멀리서 볼 때', optionsKey: 'far', useSliders: true },
@@ -464,45 +436,45 @@ const quizData = {
   results: {
     A: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     B: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    C: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
-    D: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
-    E: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
-    F: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    C: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
+    D: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    E: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
+    F: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
     G: { type: '당당함', description: '눈치 안 보고 자기 템포 유지하는 마이웨이형' },
     H: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
-    I: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
-    J: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
+    I: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
+    J: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
     // 1단계 1번 질문 (조용히 해야 한다) — 긍정
     S1: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    S2: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    S2: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     S3: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     S4: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     S5: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     S6: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    S7: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    S7: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     S8: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     S9: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    S10: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
-    S11: { type: '포근함', description: '공간에 스며들듯 편안해지는 감정 흡수형' },
+    S10: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    S11: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     S12: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     S13: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     S14: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    S15: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    S15: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     // 1단계 1번 질문 — 부정
     S16: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     S17: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     S18: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     S19: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     S20: { type: '불쾌함', description: '규칙 많은 공간에 예민해지는 제한 회피형' },
-    S21: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
+    S21: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
     S22: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     S23: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     S24: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
     S25: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
-    S26: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
+    S26: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
     S27: { type: '불쾌함', description: '규칙 많은 공간에 예민해지는 제한 회피형' },
     S28: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
-    S29: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
+    S29: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
     S30: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     // 1단계 2번 질문 (뛰면 안 된다) — 긍정
     R1: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
@@ -511,31 +483,31 @@ const quizData = {
     R4: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     R5: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     R6: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    R7: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    R7: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     R8: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     R9: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     R10: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     R11: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    R12: { type: '포근함', description: '공간에 스며들듯 편안해지는 감정 흡수형' },
-    R13: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
-    R14: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    R12: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
+    R13: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
+    R14: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
     R15: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     // 1단계 2번 질문 — 부정
     R16: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     R17: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     R18: { type: '불쾌함', description: '규칙 많은 공간에 예민해지는 제한 회피형' },
     R19: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
-    R20: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
-    R21: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
+    R20: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
+    R21: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
     R22: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     R23: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
-    R24: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
+    R24: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
     R25: { type: '불쾌함', description: '규칙 많은 공간에 예민해지는 제한 회피형' },
-    R26: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
-    R27: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
+    R26: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
+    R27: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
     R28: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     R29: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
-    R30: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
+    R30: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
     // 1단계 3번 질문 (음식물 반입 금지) — ① 긍정
     F1: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     F2: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
@@ -545,7 +517,7 @@ const quizData = {
     F6: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     F7: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     F8: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    F9: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    F9: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     F10: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     F11: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     F12: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
@@ -566,47 +538,47 @@ const quizData = {
     // 1단계 3번 질문 — ③ 중립·양가
     F26: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     F27: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    F28: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    F28: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     F29: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     F30: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     A1: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     A3: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    A4: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
+    A4: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
     A5: { type: '불쾌함', description: '규칙 많은 공간에 예민해지는 제한 회피형' },
-    A6: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
+    A6: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
     A7: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     A8: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    A9: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
-    B1: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
-    B2: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
-    B4: { type: '포근함', description: '공간에 스며들듯 편안해지는 감정 흡수형' },
+    A9: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
+    B1: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
+    B2: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
+    B4: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     B5: { type: '불쾌함', description: '규칙 많은 공간에 예민해지는 제한 회피형' },
     B6: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     B7: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     C1: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     C2: { type: '불쾌함', description: '규칙 많은 공간에 예민해지는 제한 회피형' },
     C3: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    C4: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    C4: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     C5: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     C6: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     C7: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     C8: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
     C9: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     D1: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
-    D2: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
-    D3: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    D2: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
+    D3: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     D4: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     D5: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    D6: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
-    D7: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
+    D6: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
+    D7: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
     V1: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     V2: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     V3: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     V4: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     V5: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     V6: { type: '불쾌함', description: '규칙 많은 공간에 예민해지는 제한 회피형' },
-    V7: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
-    V8: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
+    V7: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
+    V8: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
     V9: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
     V10: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
     V11: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
@@ -617,8 +589,8 @@ const quizData = {
     V16: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     V17: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     V18: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
-    V19: { type: '짜증', description: "\'조용히 하세요\'에 살짝 반감 드는 자유 추구형" },
-    V20: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    V19: { type: '짜증남', description: "'조용히 하세요'에 살짝 반감 드는 자유 추구형" },
+    V20: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     V21: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     V22: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     V23: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
@@ -632,54 +604,54 @@ const quizData = {
     W1: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     W2: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     W3: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    W4: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
-    W5: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    W4: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
+    W5: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     W6: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
     W7: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     W8: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     W9: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     W10: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
-    W11: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
-    W12: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    W11: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    W12: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
     W13: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     W14: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     W15: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     W16: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    W17: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    W17: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     W18: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
     W19: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     W20: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
     W21: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     W22: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    W23: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
-    W24: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
-    W25: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    W23: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    W24: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    W25: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
     W26: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     W27: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
-    W28: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    W28: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
     W29: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    W30: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    W30: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
     X1: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     X2: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
     X3: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
     X4: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
-    X5: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
-    X6: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    X5: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    X6: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
     X7: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     X8: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
-    X9: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    X9: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     X10: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     X11: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     X12: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
     X13: { type: '당당함', description: '눈치 안 보고 자기 템포 유지하는 마이웨이형' },
     X14: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    X15: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    X15: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
     X16: { type: '당당함', description: '눈치 안 보고 자기 템포 유지하는 마이웨이형' },
     X17: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     X18: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
     X19: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
-    X20: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
-    X21: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    X20: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    X21: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
     X22: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
     X23: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     X24: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
@@ -689,49 +661,49 @@ const quizData = {
     X28: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     X29: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     X30: { type: '당당함', description: '눈치 안 보고 자기 템포 유지하는 마이웨이형' },
-    FA1: { type: '두근거림', description: '작품 앞에서 감정이 살짝 출렁이는 감성 반응형' },
-    FA2: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    FA1: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
+    FA2: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     FA3: { type: '당당함', description: '눈치 안 보고 자기 템포 유지하는 마이웨이형' },
     FA4: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
     FA5: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    FA6: { type: '두근거림', description: '작품 앞에서 감정이 살짝 출렁이는 감성 반응형' },
+    FA6: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     FA7: { type: '당당함', description: '눈치 안 보고 자기 템포 유지하는 마이웨이형' },
-    FA8: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    FA8: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     FA9: { type: '당당함', description: '눈치 안 보고 자기 템포 유지하는 마이웨이형' },
-    FA10: { type: '두근거림', description: '작품 앞에서 감정이 살짝 출렁이는 감성 반응형' },
+    FA10: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     FA11: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     FA12: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     FA13: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     FA14: { type: '어색함', description: '손 어디 둬야 할지 고민되는 자세 방황형' },
     FA15: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
-    FA16: { type: '포근함', description: '공간에 스며들듯 편안해지는 감정 흡수형' },
+    FA16: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     FA17: { type: '불쾌함', description: '규칙 많은 공간에 예민해지는 제한 회피형' },
-    FA18: { type: '포근함', description: '공간에 스며들듯 편안해지는 감정 흡수형' },
+    FA18: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     FA19: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     FA20: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     CA1: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     CA2: { type: '당당함', description: '눈치 안 보고 자기 템포 유지하는 마이웨이형' },
-    CA3: { type: '포근함', description: '공간에 스며들듯 편안해지는 감정 흡수형' },
+    CA3: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     CA4: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
-    CA5: { type: '포근함', description: '공간에 스며들듯 편안해지는 감정 흡수형' },
+    CA5: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     CA6: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
-    CA7: { type: '두근거림', description: '작품 앞에서 감정이 살짝 출렁이는 감성 반응형' },
+    CA7: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     CA8: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
-    CA9: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
-    CA10: { type: '두근거림', description: '작품 앞에서 감정이 살짝 출렁이는 감성 반응형' },
+    CA9: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    CA10: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     CA11: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
     CA12: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    CA13: { type: '두근거림', description: '작품 앞에서 감정이 살짝 출렁이는 감성 반응형' },
+    CA13: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
     CA14: { type: '당당함', description: '눈치 안 보고 자기 템포 유지하는 마이웨이형' },
     CA15: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
-    CA16: { type: '포근함', description: '공간에 스며들듯 편안해지는 감정 흡수형' },
-    CA17: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    CA16: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
+    CA17: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     CA18: { type: '강렬함', description: '괜히 더 의식돼서 긴장감 도는 집중 과부하형' },
-    CA19: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    CA19: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     CA20: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
-    EM1: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
-    EM2: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
-    EM3: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    EM1: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    EM2: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    EM3: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
     EM4: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     EM5: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     EM6: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
@@ -759,10 +731,10 @@ const quizData = {
     CP18: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     CP19: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     CP20: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    CP21: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    CP21: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
     CP22: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
-    CP23: { type: '행복', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
-    CP24: { type: '조용함', description: '소리 없는 공간이 오히려 안정적인 무음 적응형' },
+    CP23: { type: '행복함', description: '괜히 기분 좋아지는, 이유 없는 만족형' },
+    CP24: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     CP25: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     CP26: { type: '편안함', description: '들어오자마자 긴장 해제되는, 미술관 힐링형' },
     CP27: { type: '답답함', description: '벽이 점점 가까워지는 느낌, 탈출 욕구형' },
@@ -782,9 +754,9 @@ quizData.questionsByMode.어린이 = [
 ];
 
 quizData.questionsByMode.청년 = [
-  { text: '미술관에서 정숙해야 한다.', options: quizData.questions[0].options },
-  { text: '미술관에서는 천천히 걸어 다녀야 한다.', options: quizData.questions[1].options },
-  { text: '전시장 내 음식물 반입은 금지되어 있다.', options: quizData.questions[2].options },
+  { text: '미술관에서 정숙해야 한다. 이때 나의 감정은?', options: quizData.questions[0].options },
+  { text: '미술관에서는 천천히 걸어 다녀야 한다. 이때 나의 감정은?', options: quizData.questions[1].options },
+  { text: '전시장 내 음식물 반입은 금지되어 있다. 이때 나의 감정은?', options: quizData.questions[2].options },
   { text: '다른 관람객이 내가 원하는 작품을 보고 있다. 이때 나의 감정은?', options: quizData.questions[3].options },
   { text: '작품을 이해하려고 노력할 때 나의 감정은?', options: quizData.questions[4].options },
   { text: '미술관 룩을 고민할 때 나의 감정은?', options: quizData.questions[5].options },
@@ -806,33 +778,6 @@ quizData.questionsByMode.중장년 = [
   { text: '다른 관람객이 내가 보고 싶은 작품을 보고 있을 때, 어떤 기분이 드시나요?', options: quizData.questions[3].options },
   { text: '작품을 이해하려고 할 때, 어떤 느낌이 드시나요?', options: quizData.questions[4].options },
   { text: '미술관에 갈 때 입을 옷을 고민할 때, 어떤 생각이 드시나요?', options: quizData.questions[5].options },
-];
-
-quizData.questionsByMode.뉴비 = [
-  { text: '미술관에서는 조용히 해야 한대… 이때 나의 감정은?', options: quizData.questions[0].options },
-  { text: '미술관에서는 뛰면 안 된대… 이때 나의 감정은?', options: quizData.questions[1].options },
-  { text: '전시실 내에는 먹을 거 못 들고 들어간대... 이때 나의 감정은?', options: quizData.questions[2].options },
-  { text: '아… 내가 보려던 작품을 누가 보고 있네… 이때 나의 감정은?', options: quizData.questions[3].options },
-  { text: '이 작품… 어떻게 봐야 하는 거지... 이때 나의 감정은?', options: quizData.questions[4].options },
-  { text: '미술관 가는데 뭐 입어야 하지… 이때 나의 감정은?', options: quizData.questions[5].options },
-];
-
-quizData.questionsByMode.중수 = [
-  { text: '미술관에서는 조용히 해야 하네, 이때 나의 감정은?', options: quizData.questions[0].options },
-  { text: '미술관에서는 천천히 걸어야 하네, 이때 나의 감정은?', options: quizData.questions[1].options },
-  { text: '전시장 내에는 음식 반입이 안 되네, 이때 나의 감정은?', options: quizData.questions[2].options },
-  { text: '다른 관람객이 내가 보고 싶은 작품을 보고 있네, 이때 나의 감정은?', options: quizData.questions[3].options },
-  { text: '이 작품의 의도를 파악할 때, 나의 감정은?', options: quizData.questions[4].options },
-  { text: '미술관 분위기에 맞춰 옷을 고를 때, 나의 감정은?', options: quizData.questions[5].options },
-];
-
-quizData.questionsByMode.고수 = [
-  { text: '조용한 미술관 속에 있을 때, 나의 감정은?', options: quizData.questions[0].options },
-  { text: '천천히 걸으며 공간을 음미할 때, 나의 감정은?', options: quizData.questions[1].options },
-  { text: '전시장 내 음식물 반입이 제한된 상황에서, 나의 감정은?', options: quizData.questions[2].options },
-  { text: '나와 다른 관람객의 시선이 동시에 머무는 작품을 마주할 때, 나의 감정은?', options: quizData.questions[3].options },
-  { text: '작품의 의도와 의미를 사유할 때, 나의 감정은?', options: quizData.questions[4].options },
-  { text: '미술관의 분위기에 맞춰 스스로를 꾸밀 때, 나의 감정은?', options: quizData.questions[5].options },
 ];
 
 // Supabase: config.js 또는 아래 직접 입력. config.js의 SUPABASE_ANON_KEY에 키를 넣으세요.
@@ -884,68 +829,59 @@ async function loadSimilarResults() {
 }
 
 // 결과는 항상 이 11개 유형 중 하나로만 표시 (선택지 + 슬라이더 통합)
-const RESULT_TYPES = ['편안함', '답답함', '조용함', '행복', '짜증', '당당함', '불쾌함', '강렬함', '어색함', '포근함', '두근거림'];
+const RESULT_TYPES = ['편안함', '답답함', '행복함', '짜증남', '당당함', '불쾌함', '강렬함', '어색함'];
 const TYPE_DESCRIPTIONS = {
   편안함: '들어오자마자 긴장 해제되는, 미술관 힐링형',
   답답함: '벽이 점점 가까워지는 느낌, 탈출 욕구형',
-  조용함: '소리 없는 공간이 오히려 안정적인 무음 적응형',
-  행복: '괜히 기분 좋아지는, 이유 없는 만족형',
-  짜증: "'조용히 하세요'에 살짝 반감 드는 자유 추구형",
+  행복함: '괜히 기분 좋아지는, 이유 없는 만족형',
+  짜증남: "'조용히 하세요'에 살짝 반감 드는 자유 추구형",
   당당함: '눈치 안 보고 자기 템포 유지하는 마이웨이형',
   불쾌함: '규칙 많은 공간에 예민해지는 제한 회피형',
   강렬함: '괜히 더 의식돼서 긴장감 도는 집중 과부하형',
   어색함: '손 어디 둬야 할지 고민되는 자세 방황형',
-  포근함: '공간에 스며들듯 편안해지는 감정 흡수형',
-  두근거림: '작품 앞에서 감정이 살짝 출렁이는 감성 반응형',
 };
 const TYPE_EMOJI = {
   편안함: '\u{1F642}\u200D\u2195\uFE0F',   // 🙂‍↕️
   답답함: '\u{1F622}',                     // 😢
-  조용함: '\u{1F634}',                     // 😴
-  행복: '\u{1F60D}',                       // 😍
-  짜증: '\u{1F620}',                      // 😠 (화남, 넓은 지원)
+  행복함: '\u{1F60D}',                     // 😍
+  짜증남: '\u{1F620}',                     // 😠
   당당함: '\u{1F60E}',                     // 😎
   불쾌함: '\u{1FAE8}',                    // 🫨
   강렬함: '\u{1F635}\u200D\u{1F4AB}',    // 😵‍💫
   어색함: '\u{1F914}',                    // 🤔
-  포근함: '\u{1F9D0}',                    // 🧐
-  두근거림: '\u{1F929}',                   // 🤩
 };
-// 슬라이더 좌/우 라벨 → 11개 유형 매핑 (슬라이더도 최종 결과에 반영)
+// 슬라이더 좌/우 라벨 → 8개 유형 매핑 (슬라이더도 최종 결과에 반영)
 const SLIDER_LABEL_TO_TYPE = {
   편안함: '편안함', 답답함: '답답함', 편안한: '편안함', 갑갑한: '답답함',
-  차분함: '조용함', 혼란스러움: '답답함', 이상적: '행복', 현실적: '조용함',
-  공개적인: '당당함', 감춰진: '어색함', 감성적: '두근거림', 이성적: '조용함',
-  해방감: '행복', 압박감: '답답함', 밝음: '편안함', 어두움: '강렬함',
-  해맑음: '행복', 처량함: '강렬함', 안전한: '편안함', 위험한: '불쾌함',
-  가벼움: '편안함', 무거움: '답답함', 재밌음: '행복', 진중함: '조용함',
-  독창적임: '두근거림', 익숙함: '편안함', 자유로운: '행복', 정해진: '짜증',
-  부드러움: '포근함', 단단함: '답답함', 수줍음: '어색함', 거만함: '당당함',
+  차분함: '편안함', 혼란스러움: '답답함', 이상적: '행복함', 현실적: '편안함',
+  공개적인: '당당함', 감춰진: '어색함', 감성적: '강렬함', 이성적: '편안함',
+  해방감: '행복함', 압박감: '답답함', 밝음: '편안함', 어두움: '강렬함',
+  해맑음: '행복함', 처량함: '강렬함', 안전한: '편안함', 위험한: '불쾌함',
+  가벼움: '편안함', 무거움: '답답함', 재밌음: '행복함', 진중함: '편안함',
+  독창적임: '강렬함', 익숙함: '편안함', 자유로운: '행복함', 정해진: '짜증남',
+  부드러움: '편안함', 단단함: '답답함', 수줍음: '어색함', 거만함: '당당함',
   웅장함: '당당함', 소박함: '편안함', 쓸모: '당당함', 무쓸모: '답답함',
   과학자: '당당함', 괴짜: '당당함', 불편함: '불쾌함', '흰 글씨': '편안함', '빨간 글씨': '불쾌함',
-  복잡한: '강렬함', 단순한: '편안함', 곡선: '포근함', 직선: '조용함', 긴장한: '강렬함',
-  감시받는: '불쾌함', 소속감: '포근함', 고립감: '답답함', 개인적: '당당함', 집단적: '어색함',
-  슬픔: '강렬함', 무서움: '불쾌함', 고요함: '조용함', 불안함: '답답함',
+  복잡한: '강렬함', 단순한: '편안함', 곡선: '편안함', 직선: '편안함', 긴장한: '강렬함',
+  감시받는: '불쾌함', 소속감: '편안함', 고립감: '답답함', 개인적: '당당함', 집단적: '어색함',
+  슬픔: '강렬함', 무서움: '불쾌함', 고요함: '편안함', 불안함: '답답함',
   공허한: '답답함', '의미 있는': '편안함', 평온한: '편안함', 어지러운: '답답함',
-  재밌는: '행복', 무서운: '불쾌함', 생명: '행복', 죽음: '강렬함',
-  찬란한: '행복', 천국: '행복', 지옥: '불쾌함', 빛: '편안함', 어둠: '불쾌함',
-  밀착된: '포근함', 분리된: '답답함', 단절된: '답답함', 귀여움: '포근함',
-  난해한: '두근거림', 떡볶이: '행복', 작품: '조용함',
+  재밌는: '행복함', 무서운: '불쾌함', 생명: '행복함', 죽음: '강렬함',
+  찬란한: '행복함', 천국: '행복함', 지옥: '불쾌함', 빛: '편안함', 어둠: '불쾌함',
+  밀착된: '편안함', 분리된: '답답함', 단절된: '답답함', 귀여움: '편안함',
+  난해한: '강렬함', 떡볶이: '행복함', 작품: '편안함',
 };
 
 // 유형별 고정 색상 - 11가지 유형만, 다양한 색감
 const TYPE_COLOR_MAP = {
   편안함: { color: '#22c55e', glow: '0 0 14px #22c55e', cls: 'star-green' },
   답답함: { color: '#3b82f6', glow: '0 0 14px #3b82f6', cls: 'star-blue' },
-  조용함: { color: '#f8fafc', glow: '0 0 14px #f8fafc', cls: 'star-white' },
-  포근함: { color: '#c71585', glow: '0 0 14px #c71585', cls: 'star-pink' },
   불쾌함: { color: '#6b7280', glow: '0 0 14px #6b7280', cls: 'star-gray' },
   어색함: { color: '#a855f7', glow: '0 0 14px #a855f7', cls: 'star-purple' },
   당당함: { color: '#92400e', glow: '0 0 14px #92400e', cls: 'star-brown' },
-  행복: { color: '#eab308', glow: '0 0 14px #eab308', cls: 'star-yellow' },
-  짜증: { color: '#f97316', glow: '0 0 14px #f97316', cls: 'star-orange' },
+  행복함: { color: '#eab308', glow: '0 0 14px #eab308', cls: 'star-yellow' },
+  짜증남: { color: '#f97316', glow: '0 0 14px #f97316', cls: 'star-orange' },
   강렬함: { color: '#dc2626', glow: '0 0 14px #dc2626', cls: 'star-red-dark' },
-  두근거림: { color: '#f472b6', glow: '0 0 14px #f472b6', cls: 'star-pink-light' },
   흐릿함: { color: '#94a3b8', glow: '0 0 14px #94a3b8', cls: 'star-slate' },
   웅장함: { color: '#b45309', glow: '0 0 14px #b45309', cls: 'star-amber' },
   현실적: { color: '#64748b', glow: '0 0 14px #64748b', cls: 'star-slate-dark' },
@@ -1058,15 +994,15 @@ function hideStarTooltip() {
 
 let currentQuestionIndex = 0;
 let answers = [];
-let selectedWorks = [];   // 3단계 선택 작품 3개 (A~O 중)
-let workSliderAnswers = []; // 3단계 far: 작품별 [s1,s2,s3] 슬라이더 값 (0-100)
+let selectedWorks = [];   // 3단계 선택 작품 1개 (A~O 중)
+let workSliderAnswers = []; // 3단계 far/near: 작품별 슬라이더 값 (0-100)
 let selectedGender = null; // 남 | 녀
-let selectedMode = null;   // 어린이 | 청소년 | 청년 | 중장년 | 뉴비 | 중수 | 고수
+let selectedMode = null;   // 어린이 | 청소년 | 청년 | 중장년
 let optionPartIndex = 0;  // 30개 보기 질문: 1·2·3파트 중 현재 파트 (0,1,2)
 let lastOptionPartQuestionIndex = -1; // 파트 초기화용
 
 const BASIC_QUESTIONS = 6;   // 1+2단계 질문 수
-const WORKS_TO_SELECT = 3;   // 3단계에서 선택할 작품 수
+const WORKS_TO_SELECT = 1;   // 3단계에서 선택할 작품 수
 const QUESTIONS_PER_WORK = 7; // 작품당 질문 수 (멀리준비, 멀리, 가까이준비, 가까이, 캡션준비, 캡션감정, 감정)
 
 const $ = (id) => document.getElementById(id);
@@ -1210,6 +1146,10 @@ function renderWorkSelect() {
       if (idx >= 0) {
         selectedWorks.splice(idx, 1);
         btn.classList.remove('selected');
+      } else if (WORKS_TO_SELECT === 1) {
+        container.querySelectorAll('.work-option.selected').forEach(b => b.classList.remove('selected'));
+        selectedWorks = [work];
+        btn.classList.add('selected');
       } else if (selectedWorks.length < WORKS_TO_SELECT) {
         selectedWorks.push(work);
         btn.classList.add('selected');
@@ -1220,7 +1160,7 @@ function renderWorkSelect() {
 
   $('btn-confirm-works')?.addEventListener('click', () => {
     if (selectedWorks.length !== WORKS_TO_SELECT) return;
-    const order = quizData.workOrderByRoom || ['F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'A', 'B', 'C', 'D', 'E'];
+    const order = quizData.workOrderByRoom || ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O'];
     selectedWorks.sort((a, b) => order.indexOf(a) - order.indexOf(b));
     currentQuestionIndex = BASIC_QUESTIONS; // 6부터 3단계 질문 시작
     showScreen(screens.question);
