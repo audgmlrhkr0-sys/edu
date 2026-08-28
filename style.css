@@ -419,6 +419,29 @@ body {
   box-shadow: 0 0 25px rgba(0, 245, 255, 0.4);
 }
 
+.admin-reset-wrap {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.btn-admin-reset {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.65rem;
+  color: rgba(255, 80, 80, 0.5);
+  background: none;
+  border: 1px solid rgba(255, 80, 80, 0.2);
+  border-radius: 4px;
+  padding: 4px 12px;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.btn-admin-reset:hover {
+  color: rgba(255, 80, 80, 0.9);
+  border-color: rgba(255, 80, 80, 0.6);
+}
+
 .btn-retry:disabled,
 .btn-confirm-works:disabled {
   opacity: 0.5;

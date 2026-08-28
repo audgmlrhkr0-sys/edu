@@ -1674,6 +1674,30 @@ function showResult() {
     });
 }
 
+async function resetSupabaseData() {
+  const pw = prompt('관리자 비밀번호를 입력하세요:');
+  if (pw === null) return;
+  if (pw !== '2376') {
+    alert('비밀번호가 올바르지 않습니다.');
+    return;
+  }
+  if (!confirm('Supabase에 저장된 모든 결과 데이터를 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다.')) return;
+  const client = supabaseClient();
+  if (!client) {
+    alert('Supabase가 연결되어 있지 않습니다.');
+    return;
+  }
+  const { error } = await client.from('test_results').delete().neq('id', 0);
+  if (error) {
+    alert('삭제 실패: ' + error.message);
+    console.error('Supabase 초기화 실패:', error);
+  } else {
+    alert('결과 데이터가 모두 삭제되었습니다.');
+    const othersEl = $('others-results');
+    if (othersEl) othersEl.innerHTML = '';
+  }
+}
+
 const resetSettings = () => {
   currentQuestionIndex = 0;
   answers = [];
